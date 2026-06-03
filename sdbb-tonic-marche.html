@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDBB Tonic & Basket En Marchant - Saint Doulchard Basketball</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
+
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="logo">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#">Le Club <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                            <li><a href="coach.html">Coach</a></li>
+                            <li><a href="projet-club.html">Projet Club</a></li>
+
+                            <li><a href="labels.html">Nos Labels</a></li>
+                            <li><a href="reglement-sdbb.html">Règlement</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlement Fédéraux</a>
+                            </li>
+
+                            <li>
+                                <a href="Document/créneaux.pdf" target="_blank" rel="noopener">Créneaux d'entraînement</a>
+                            </li>
+
+                            <li>
+                                <a href="https://docs.google.com/spreadsheets/d/1j-IA_FY40LEulchpNvNbRPvi2CXn0QF2wuzDTgFygts/edit?gid=0#gid=0" target="_blank" rel="noopener">Planning des matchs</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#">Découvrir <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="equipes.html">Équipes</a></li>
+                            <li><a href="evenements.html">Évènements</a></li>
+                            <li><a href="inscription-2025-2026.html">inscription-2025-2026</a></li>
+                            <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
+                            <li><a href="sdbb-tonic-marche.html">sdbbTonic/BasketEnMarchant</a></li>
+                            <li><a href="mini-basket.html">Mini-basket</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Partenaires <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="partenaires.html">Nos Partenaires</a></li>
+                            <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                    <a href="inscription-2025-2026.html" class="btn btn-primary">Nous rejoindre</a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>SDBB Tonic & Basket En Marchant</h1>
+            <p>Deux pratiques adaptées à tous pour garder la forme en s'amusant !</p>
+        </div>
+    </div>
+
+    <!-- Main Content with Tabs -->
+    <section class="tonic-page container">
+        <!-- Hero compact -->
+        <div class="tonic-hero">
+            <div class="tonic-hero-badge"><i class="fas fa-basketball-ball"></i> Pratiques adaptées & conviviales</div>
+            <h2 class="tonic-hero-title">SDBB Tonic & Basket en Marchant</h2>
+            <p class="tonic-hero-subtitle">Fitness, santé et plaisir du jeu… sans la pression de la compétition.</p>
+
+            <div class="tonic-hero-ctas">
+                        <a class="btn btn-primary btn-large" href="#programmes-tonic"><i class="far fa-calendar-alt"></i> Voir les séances</a>
+
+
+                <a class="btn btn-secondary btn-large" href="informations.html"><i class="fas fa-door-open"></i> Vivre l’expérience</a>
+            </div>
+        </div>
+
+        <!-- Tabs (accessibles) -->
+        <div class="tonic-tabs" role="tablist" aria-label="Choisir une pratique">
+            <button class="tab-btn" role="tab" id="tab-sdbb-tonic" aria-selected="true" aria-controls="panel-sdbb-tonic" tabindex="0" data-tab="sdbb-tonic">
+                SDBB Tonic
+            </button>
+            <button class="tab-btn" role="tab" id="tab-basket-marche" aria-selected="false" aria-controls="panel-basket-marche" tabindex="-1" data-tab="basket-marche">
+                Basket En Marchant
+            </button>
+        </div>
+
+        <div class="tonic-panels">
+            <!-- SDBB TONIC TAB -->
+            <div id="panel-sdbb-tonic" class="tab-content" role="tabpanel" aria-labelledby="tab-sdbb-tonic">
+                <div class="content-card">
+                    <div class="card-header-row">
+                        <h2 class="section-heading">SDBB Tonic</h2>
+                        <div class="underline" aria-hidden="true"></div>
+                    </div>
+                    <p class="lead">Le SDBB Tonic mélange fitness, renforcement musculaire et fondamentaux du basket-ball, le tout en musique et dans la bonne humeur.</p>
+                    <div class="grid-2">
+                        <div class="program-card" id="programmes-tonic">
+
+
+                            <h3><i class="far fa-calendar-alt"></i> Calendrier des séances</h3>
+                            <p class="muted">Retrouvez ci-dessous les prochaines dates (à remplacer par un calendrier réel si besoin).</p>
+                            <ul class="check-list">
+                                <li><i class="fas fa-circle"></i> Séance 1 : Date à venir</li>
+                                <li><i class="fas fa-circle"></i> Séance 2 : Date à venir</li>
+                                <li><i class="fas fa-circle"></i> Séance 3 : Date à venir</li>
+                            </ul>
+                            <a class="btn btn-outline mt-3" href="evenements.html"><i class="fas fa-list"></i> Agenda club</a>
+                        </div>
+
+                        <div class="program-card">
+                            <h3><i class="fas fa-bolt"></i> Ce que vous allez ressentir</h3>
+                            <ul class="check-list">
+                                <li><i class="fas fa-check-circle"></i> Une séance dynamique</li>
+                                <li><i class="fas fa-check-circle"></i> Renforcement progressif</li>
+                                <li><i class="fas fa-check-circle"></i> Apports basket en douceur</li>
+                            </ul>
+                            <div class="gallery-row">
+                                <figure class="gallery-card">
+                                    <img src="BaskeTonic-et-Marche/BaskeTonic1.JPG" alt="SDBB Tonic - photo 1">
+                                    <figcaption>Ambiance & énergie</figcaption>
+                                </figure>
+                                <figure class="gallery-card">
+                                    <img src="BaskeTonic-et-Marche/BaskeTonic2.JPG" alt="SDBB Tonic - photo 2">
+                                    <figcaption>Renforcement & jeu</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BASKET EN MARCHANT TAB -->
+            <div id="panel-basket-marche" class="tab-content" role="tabpanel" aria-labelledby="tab-basket-marche">
+                <div class="content-card">
+                    <div class="card-header-row">
+                        <h2 class="section-heading">Basket En Marchant</h2>
+                        <div class="underline" aria-hidden="true"></div>
+                    </div>
+                    <p class="lead">Le Basket en marchant est une variante inclusive : il est interdit de courir. Accessible à toutes et tous, pour bouger et jouer ensemble.</p>
+
+                    <div class="grid-2">
+                        <div class="program-card" id="programmes-marche">
+
+                            <h3><i class="far fa-calendar-alt"></i> Calendrier des séances</h3>
+                            <p class="muted">Dates à venir (à brancher sur un vrai calendrier si tu veux ensuite).</p>
+                            <ul class="check-list">
+                                <li><i class="fas fa-circle"></i> Séance 1 : Date à venir</li>
+                                <li><i class="fas fa-circle"></i> Séance 2 : Date à venir</li>
+                                <li><i class="fas fa-circle"></i> Séance 3 : Date à venir</li>
+                            </ul>
+                            <a class="btn btn-outline mt-3" href="evenements.html"><i class="fas fa-list"></i> Agenda club</a>
+                        </div>
+
+                        <div class="program-card">
+                            <h3 class="tonic-rules-title"><i class="fas fa-basketball-ball"></i> 🏀 Règlement — Basket Intergénérationnel en Marchant</h3>
+
+                            <p class="muted">Des règles claires, pour bouger ensemble en toute sécurité et avec le bon rythme.</p>
+
+                            <div class="tonic-rules">
+                                <div class="tonic-rule">
+                                    <button class="tonic-rule-toggle" type="button" aria-expanded="true">
+                                        <span class="tonic-rule-num">1</span>
+                                        <h4>La Règle d’Or : Interdiction de Courir</h4>
+                                    </button>
+                                    <div class="tonic-rule-body">
+                                        <div class="tonic-rule-body-inner">
+                                            <p>Un joueur est considéré comme « marchant » s’il a toujours un pied en contact avec le sol.</p>
+                                            <ul class="check-list">
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Sanction : tout abus (course ou saut) = perte de balle (possession rendue sur la ligne de touche la plus proche).</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Le saut est interdit (rebond, contrer, passer, tirer).</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tonic-rule">
+                                    <button class="tonic-rule-toggle" type="button" aria-expanded="false">
+                                        <span class="tonic-rule-num">2</span>
+                                        <h4>Maîtrise du Ballon et Dribbles Limités</h4>
+                                    </button>
+                                    <div class="tonic-rule-body" hidden>
+                                        <div class="tonic-rule-body-inner">
+                                            <p>Pour favoriser le jeu collectif et limiter les traversées en solo :</p>
+                                            <ul class="check-list">
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Maximum : 3 dribbles par prise de balle.</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Après 3 dribbles : passer ou tirer obligatoirement.</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> « Porter de balle » : très strictement sifflé.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tonic-rule">
+                                    <button class="tonic-rule-toggle" type="button" aria-expanded="false">
+                                        <span class="tonic-rule-num">3</span>
+                                        <h4>Zéro Contact et « Cylindre » de Sécurité</h4>
+                                    </button>
+                                    <div class="tonic-rule-body" hidden>
+                                        <div class="tonic-rule-body-inner">
+                                            <p>Mixité d’âge et de gabarit = sécurité totale.</p>
+                                            <ul class="check-list">
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Distance de garde : défenseur à ≥ 50 cm du porteur de balle.</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Interception uniquement sur la trajectoire de la passe.</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Écrans mobiles interdits ; écrans statiques autorisés (pieds ancrés).</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Sanction : lancer franc direct ou remise en jeu selon la zone.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tonic-rule">
+                                    <button class="tonic-rule-toggle" type="button" aria-expanded="false">
+                                        <span class="tonic-rule-num">4</span>
+                                        <h4>Dynamique de Jeu et Mixité</h4>
+                                    </button>
+                                    <div class="tonic-rule-body" hidden>
+                                        <div class="tonic-rule-body-inner">
+                                            <ul class="check-list">
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Règle des 3 passes : après la ligne médiane, minimum 3 passes avant de tenter un tir.</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Temps de possession : 24 s pouvant être assouplies à 30/40 s.</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Le pivot : outil majeur pour se libérer de la défense sans courir.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tonic-rule">
+                                    <button class="tonic-rule-toggle" type="button" aria-expanded="false">
+                                        <span class="tonic-rule-num">5</span>
+                                        <h4>Format des Matchs</h4>
+                                    </button>
+                                    <div class="tonic-rule-body" hidden>
+                                        <div class="tonic-rule-body-inner">
+                                            <ul class="check-list">
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Durée : 4 périodes de 9 minutes (temps non arrêté).</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Terrain : 5x5 ou 4x4 (pour libérer de l’espace).</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Hauteur : 3,05 m (possible 2,85 m).</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Ballons : T6.</li>
+                                                <li><i class="fas fa-circle" aria-hidden="true"></i> Points :
+                                                    <ul class="check-list" style="margin-top: 10px;">
+                                                        <li><i class="fas fa-circle" aria-hidden="true"></i> À l’intérieur de la raquette : tir « propre » (sans toucher l’arceau) = 3 pts.</li>
+                                                        <li><i class="fas fa-circle" aria-hidden="true"></i> Tir classique = 2 pts.</li>
+                                                        <li><i class="fas fa-circle" aria-hidden="true"></i> Extérieur : valeurs officielles.</li>
+                                                        <li><i class="fas fa-circle" aria-hidden="true"></i> Lancer franc : 1 pt.</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gallery-row">
+                                <figure class="gallery-card">
+                                    <img src="BaskeTonic-et-Marche/EnMarche1.JPG" alt="Basket en Marchant - photo 1">
+                                    <figcaption>Jeu en douceur</figcaption>
+                                </figure>
+                                <figure class="gallery-card">
+                                    <img src="BaskeTonic-et-Marche/EnMarche2.JPG" alt="Basket en Marchant - photo 2">
+                                    <figcaption>Convivialité</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <img src="Logo-club/logo SDBB.png" alt="SDBB Logo" class="footer-logo">
+                    <p>Saint Doulchard Basketball - Plus qu'un club, une famille. Rejoignez la meute !</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sdbbofficiel/?locale=fr_FR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/saintdoulchard_basketball/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Le Club</h3>
+                    <ul>
+                        <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                        <li><a href="projet-club.html">Projet Club</a></li>
+                        <li><a href="labels.html">Nos Labels</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Accès Rapides</h3>
+                    <ul>
+                        <li><a href="equipes.html">Nos Équipes</a></li>
+                        <li><a href="evenements.html">Évènements</a></li>
+                        <li><a href="informations.html">Infos & Inscriptions</a></li>
+                        <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        <li><a href="boutique.html">Boutique</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact & Accès</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Gymnase COSEC, 30 Av. du 11 Novembre, 18230 Saint-Doulchard</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Saint Doulchard Basketball (SDBB). Tous droits réservés.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="JS/script.js"></script>
+    <script>
+        // Tabs accessibles (sans inline onclick)
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabButtons = document.querySelectorAll('.tonic-tabs [role="tab"]');
+            const panels = document.querySelectorAll('.tonic-panels .tab-content');
+
+            // Accordéon règlement (Basket en Marchant)
+            const accordions = document.querySelectorAll('.tonic-rule-toggle');
+            accordions.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const expanded = btn.getAttribute('aria-expanded') === 'true';
+                    const body = btn.parentElement.querySelector('.tonic-rule-body');
+
+                    btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+                    if (body) {
+                        if (expanded) {
+                            body.setAttribute('hidden', '');
+                        } else {
+                            body.removeAttribute('hidden');
+                        }
+                    }
+                });
+            });
+
+
+            const setActiveTab = (tabName) => {
+                tabButtons.forEach(btn => {
+                    const isActive = btn.dataset.tab === tabName;
+                    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                    btn.tabIndex = isActive ? 0 : -1;
+                    btn.classList.toggle('active', isActive);
+                });
+
+                panels.forEach(panel => {
+                    panel.classList.toggle('active', panel.id === `panel-${tabName}`);
+                });
+            };
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', () => setActiveTab(btn.dataset.tab));
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'Home' && e.key !== 'End') return;
+                    e.preventDefault();
+
+                    const tabs = Array.from(tabButtons);
+                    const currentIndex = tabs.indexOf(btn);
+                    let nextIndex = currentIndex;
+
+                    if (e.key === 'ArrowRight') nextIndex = (currentIndex + 1) % tabs.length;
+                    if (e.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+                    if (e.key === 'Home') nextIndex = 0;
+                    if (e.key === 'End') nextIndex = tabs.length - 1;
+
+                    tabs[nextIndex].focus();
+                    setActiveTab(tabs[nextIndex].dataset.tab);
+                });
+            });
+
+            // Initialisation : actif = SDBB Tonic
+            setActiveTab('sdbb-tonic');
+        });
+    </script>
+</body>
+</html>
+

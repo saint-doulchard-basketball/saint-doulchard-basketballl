@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Saint Doulchard Basketball (SDBB)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="logo">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#">Le Club <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                            <li><a href="coach.html">Coach</a></li>
+                            <li><a href="projet-club.html">Projet Club</a></li>
+
+                            <li><a href="labels.html">Nos Labels</a></li>
+                            <li><a href="reglement-sdbb.html">Règlement</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlement Fédéraux</a>
+                            </li>
+
+                            <li>
+                                <a href="Document/créneaux.pdf" target="_blank" rel="noopener">Créneaux d'entraînement</a>
+                            </li>
+
+                            <li>
+                                <a href="https://docs.google.com/spreadsheets/d/1j-IA_FY40LEulchpNvNbRPvi2CXn0QF2wuzDTgFygts/edit?gid=0#gid=0" target="_blank" rel="noopener">Planning des matchs</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#">Découvrir <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="equipes.html">Équipes</a></li>
+                            <li><a href="evenements.html">Évènements</a></li>
+                            <li><a href="inscription-2025-2026.html">inscription-2025-2026</a></li>
+                            <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
+                            <li><a href="sdbb-tonic-marche.html">sdbbTonic/BasketEnMarchant</a></li>
+                            <li><a href="mini-basket.html">Mini-basket</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Partenaires <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="partenaires.html">Nos Partenaires</a></li>
+                            <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                    <a href="inscription-2025-2026.html" class="btn btn-primary">Nous rejoindre</a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Nous Contacter</h1>
+            <p>Une question ? N'hésitez pas à nous envoyer un message.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section section-padding">
+        <div class="container contact-wrapper">
+            
+            <div class="contact-form-container">
+                <h2>Envoyez-nous un message</h2>
+                <form action="https://formspree.io/f/mzdqpkpv" method="POST" class="contact-form">
+                    <div class="input-group">
+                        <label for="email">Votre adresse mail <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="exemple@email.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="sujet">Sujet <span class="required">*</span></label>
+                        <input type="text" id="sujet" name="sujet" placeholder="Motif de votre contact" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="demande">Votre demande <span class="required">*</span></label>
+                        <textarea id="demande" name="message" rows="5" placeholder="Détaillez votre demande ici..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Envoyer le message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="commissions-container">
+                <h2>Contacts des Commissions</h2>
+                <div class="commission-list">
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-user-tie"></i></div>
+                        <div class="commission-details">
+                            <h4>Président</h4>
+                            <p>Julien Tessiot</p>
+                            <a href="mailto:president.sdbb@gmail.com">president.sdbb@gmail.com</a><br>
+                            <a href="tel:0684908835">06 84 90 88 35</a>
+                        </div>
+                    </div>
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-pen-nib"></i></div>
+                        <div class="commission-details">
+                            <h4>Secrétaire</h4>
+                            <p>Sylvie Pacheco</p>
+                            <a href="mailto:basket.sdbb@gmail.com">basket.sdbb@gmail.com</a><br>
+                            <a href="tel:0620453837">06 20 45 38 37</a>
+                        </div>
+                    </div>
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-coins"></i></div>
+                        <div class="commission-details">
+                            <h4>Trésorière</h4>
+                            <p>Alexandra Tessiot</p>
+                            <a href="mailto:tresoriere.sdbb@gmail.com">tresoriere.sdbb@gmail.com</a><br>
+                            <a href="tel:0681618272">06 81 61 82 72</a>
+                        </div>
+                    </div>
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-stopwatch"></i></div>
+                        <div class="commission-details">
+                            <h4>Ecole d'arbitrage</h4>
+                            <p>Mathis Cholet</p>
+                            <a href="mailto:arbitrage.sdbb@gmail.com">arbitrage.sdbb@gmail.com</a><br>
+                            <a href="tel:0699091444">06 99 09 14 44</a>
+                        </div>
+                    </div>
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-phone"></i></div>
+                        <div class="commission-details">
+                            <h4>Communications</h4>
+                            <p>Mathis Cholet</p>
+                            <a href="mailto:communications.sdbb@gmail.com">communications.sdbb@gmail.com</a><br>
+                            <a href="tel:0699091444">06 99 09 14 44</a>
+                        </div>
+                    </div>
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-handshake"></i></div>
+                        <div class="commission-details">
+                            <h4>Partenariats</h4>
+                            <p>Julien Tessiot</p>
+                            <a href="mailto:partenariats.sdbb@gmail.com">partenariats.sdbb@gmail.com</a><br>
+                            <a href="tel:0684908835">06 84 90 88 35</a>
+                        </div>
+                    </div>
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-users"></i></div>
+                        <div class="commission-details">
+                            <h4>Société et Mixité</h4>
+                            <p>Alexandra Tessiot</p>
+                            <a href="mailto:evenements.sdbb@gmail.com">evenements.sdbb@gmail.com</a><br>
+                            <a href="tel:0681618272">06 81 61 82 72</a>
+                        </div>
+                    </div>
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fa-solid fa-baby"></i></i></div>
+                        <div class="commission-details">
+                            <h4>Mini Basket</h4>
+                            <p>Sylvie Pacheco</p>
+                            <a href="mailto:basket.sdbb@gmail.com">basket.sdbb@gmail.com</a><br>
+                            <a href="tel:0620453837">06 20 45 38 37</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="commissions-container">
+                <h2>Contacts des Salariés et Apprentis</h2>
+                <div class="commission-list">
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-briefcase"></i></div>
+                        <div class="commission-details">
+                            <h4>Salarié - Resp. Sportif Masculin</h4>
+                            <p>Yann Pacheco</p>
+                            <a href="mailto:pacheco.yann@gmail.com">pacheco.yann@gmail.com</a><br>
+                            <a href="tel:0629544711">06 29 54 47 11</a>
+                        </div>
+                    </div>
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-briefcase"></i></div>
+                        <div class="commission-details">
+                            <h4>Salarié - Resp. Sportif Féminin</h4>
+                            <p>Lucas Bianconi</p>
+                            <a href="mailto:lucasbianconi.pro@gmail.com">lucasbianconi.pro@gmail.com</a><br>
+                            <a href="tel:0643928232">06 43 92 82 32</a>
+                        </div>
+                    </div>
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="commission-details">
+                            <h4>Apprenti BPJEPS & responsable 3x3</h4>
+                            <p>Mathéo Tessiot</p>
+                            <a href="mailto:mathtess18@gmail.com">mathtess18@gmail.com</a><br>
+                            <a href="tel:0649768858">06 49 76 88 58</a>
+                        </div>
+                    </div>
+                    <div class="commission-item">
+                        <div class="icon-box"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="commission-details">
+                            <h4>Apprenti BPJEPS & responsable 3x3</h4>
+                            <p>Noa Lopez</p>
+                            <a href="mailto:lopeznoa018@gmail.com">lopeznoa018@gmail.com</a><br>
+                            <a href="tel:0601330204">06 01 33 02 04</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <img src="Logo-club/logo SDBB.png" alt="SDBB Logo" class="footer-logo">
+                    <p>Saint Doulchard Basketball - Plus qu'un club, une famille. Rejoignez la meute !</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sdbbofficiel/?locale=fr_FR"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/saintdoulchard_basketball/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Le Club</h3>
+                    <ul>
+                        <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                        <li><a href="projet-club.html">Projet Club</a></li>
+                        <li><a href="labels.html">Nos Labels</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Accès Rapides</h3>
+                    <ul>
+                        <li><a href="equipes.html">Nos équipes</a></li>
+                        <li><a href="evenements.html">Evènements</a></li>
+                        <li><a href="informations.html">Infos & Inscriptions</a></li>
+                        <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact & Accès</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Gymnase COSEC, 30 Av. du 11 Novembre, 18230 Saint-Doulchard</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Saint Doulchard Basketball (SDBB). Tous droits réservés.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="JS/script.js"></script>
+</body>
+</html>

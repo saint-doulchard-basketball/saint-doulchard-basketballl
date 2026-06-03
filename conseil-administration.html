@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conseil d'Administration - SDBB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
+    <style>
+        /* Grille des membres d'équipe */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+        .team-grid-center {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .team-grid-center .team-member {
+            flex: 0 1 280px;
+            max-width: 100%;
+        }
+        .team-member {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+        .team-img-wrapper {
+            width: 120px;
+            height: 120px;
+            margin: 20px auto 10px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+.team-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .team-info {
+            padding: 10px 20px 20px;
+        }
+        .team-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .team-contact {
+            font-size: 0.8rem;
+        }
+        .team-contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: block;
+            margin-top: 5px;
+        }
+        .team-contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="logo">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#">Le Club <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                            <li><a href="coach.html">Coach</a></li>
+                            <li><a href="projet-club.html">Projet Club</a></li>
+
+                            <li><a href="labels.html">Nos Labels</a></li>
+                            <li><a href="reglement-sdbb.html">Règlement</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlement Fédéraux</a>
+                            </li>
+
+                            <li>
+                                <a href="Document/créneaux.pdf" target="_blank" rel="noopener">Créneaux d'entraînement</a>
+                            </li>
+
+                            <li>
+                                <a href="https://docs.google.com/spreadsheets/d/1j-IA_FY40LEulchpNvNbRPvi2CXn0QF2wuzDTgFygts/edit?gid=0#gid=0" target="_blank" rel="noopener">Planning des matchs</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#">Découvrir <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="equipes.html">Équipes</a></li>
+                            <li><a href="evenements.html">Évènements</a></li>
+                            <li><a href="inscription-2025-2026.html">inscription-2025-2026</a></li>
+                            <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
+                            <li><a href="sdbb-tonic-marche.html">sdbbTonic/BasketEnMarchant</a></li>
+                            <li><a href="mini-basket.html">Mini-basket</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Partenaires <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="partenaires.html">Nos Partenaires</a></li>
+                            <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                    <a href="inscription-2025-2026.html" class="btn btn-primary">Nous rejoindre</a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container animate-on-scroll">
+            <h1>Conseil d'Administration</h1>
+            <p>Découvrez les bénévoles qui font vivre le Saint Doulchard Basketball au quotidien.</p>
+        </div>
+    </section>
+
+    <section class="content-section bg-light">
+        <div class="container">
+            <div class="section-title text-center animate-on-scroll">
+                <h2>Le Bureau</h2>
+                <div class="underline center"></div>
+            </div>
+            
+            <div class="team-grid team-grid-center">
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Conseil d_administration/Julien.jpg" alt="Julien Tessiot"></div>
+                    <div class="team-info">
+                        <h4>Julien Tessiot</h4>
+                        <p class="team-role">Président & Responsable Partenariat</p>
+                        <div class="team-contact">
+                            <a href="mailto:president.sdbb@gmail.com">president.sdbb@gmail.com</a>
+                            <a href="mailto:partenariats.sdbb@gmail.com">partenariats.sdbb@gmail.com</a>
+                            <a href="tel:0684908835">06 84 90 88 35</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Conseil d_administration/Alexandra.png" alt="Alexandra Tessiot"></div>
+                    <div class="team-info">
+                        <h4>Alexandra Tessiot</h4>
+                        <p class="team-role">Trésorière & Responsable Société et mixité</p>
+                        <div class="team-contact">
+                            <a href="mailto:tresoriere.sdbb@gmail.com">tresoriere.sdbb@gmail.com</a>
+                            <a href="mailto:evenements.sdbb@gmail.com">evenements.sdbb@gmail.com</a>
+                            <a href="tel:0681618272">06 81 61 82 72</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Conseil d_administration/Sylvie.jpg" alt="Sylvie Pacheco"></div>
+                    <div class="team-info">
+                        <h4>Sylvie Pacheco</h4>
+                        <p class="team-role">Secrétaire & responsable Sportive & reponsable mini-basket</p>
+                        <div class="team-contact">
+                            <a href="mailto:basket.sdbb@gmail.com">basket.sdbb@gmail.com</a>
+                            <a href="tel:0620453837">06 20 45 38 37</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title text-center animate-on-scroll mt-3" style="margin-top: 80px;">
+                <h2>Le Conseil d'Administration</h2>
+                <div class="underline center"></div>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Conseil d_administration/Mathis.png" alt="Mathis Cholet"></div>
+                    <div class="team-info">
+                        <h4>Mathis Cholet</h4>
+                        <p class="team-role">Responsable Arbitrage / Communication</p>
+                        <div class="team-contact">
+                            <a href="mailto:communications.sdbb@gmail.com">communications.sdbb@gmail.com</a>
+                            <a href="mailto:arbitrage.sdbb@gmail.com">arbitrage.sdbb@gmail.com</a>
+                            <a href="tel:0699091444">06 99 09 14 44</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Conseil d_administration/Patrice.png" alt="Patrice Aucler"></div>
+                    <div class="team-info">
+                        <h4>Patrice Aucler</h4>
+                        <p class="team-role">Responsable Intendance</p>
+                         <div class="team-contact">
+                            <a href="mailto:patriceaucler@neuf.fr">patriceaucler@neuf.fr</a>
+                            <a href="tel:0617389140">06 17 38 91 40</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Conseil d_administration/Murielle.png" alt="Murielle Garnié"></div>
+                    <div class="team-info">
+                        <h4>Murielle Garnier</h4>
+                        <p class="team-role">Responsable Buvette</p>
+                        <div class="team-contact">
+                            <a href="mailto:mubeno@gmail.com">mubeno@gmail.com</a>
+                            <a href="tel:0629449089">06 29 44 90 89</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Conseil d_administration/Yann.jpg" alt="Yann Pacheco"></div>
+                    <div class="team-info">
+                        <h4>Yann Pacheco</h4>
+                        <p class="team-role">Salarié</p>
+                        <p class="team-role">Responsable sportive secteur Masculin</p>
+                        <div class="team-contact">
+                            <a href="mailto:pacheco.yann@gmail.com">pacheco.yann@gmail.com</a>
+                            <a href="tel:0629544711">0629544711</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Conseil d_administration/Lucas.jpg" alt="Lucas Bianconi"></div>
+                    <div class="team-info">
+                        <h4>Lucas Bianconi</h4>
+                        <p class="team-role">Salarié</p>
+                        <p class="team-role">Responsable sportive secteur féminin</p>
+                        <div class="team-contact">
+                            <a href="mailto:lucasbianconi.pro@gmail.com">lucasbianconi.pro@gmail.com</a>
+                            <a href="tel:0643928232">06 43 92 82 32</a>
+                        </div>
+
+                        
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Conseil d_administration/Mathéo.jpg" alt="Mathéo Tessiot"></div>
+                    <div class="team-info">
+                        <h4>Mathéo Tessiot</h4>
+                        <p class="team-role">Apprenti BPJEPS</p>
+                        <p class="team-role">Responsable 3x3</p>
+                        <div class="team-contact">
+                            <a href="mailto:mathtess18@gmail.com">mathtess18@gmail.com</a>
+                            <a href="tel:0649768858">06 49 76 88 58</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Conseil d_administration/Noa.jpg" alt="Noa Lopez"></div>
+                    <div class="team-info">
+                        <h4>Noa Lopez</h4>
+                        <p class="team-role">Apprenti BPJEPS</p>
+                        <p class="team-role">Responsable 3x3</p>
+                        <div class="team-contact">
+                            <a href="mailto:lopeznoa018@gmail.com">lopeznoa018@gmail.com</a>
+                            <a href="tel:0601330204">06 01 33 02 04</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <img src="Logo-club/logo SDBB.png" alt="SDBB Logo" class="footer-logo">
+                    <p>Saint Doulchard Basketball - Plus qu'un club, une famille.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Le Club</h3>
+                    <ul>
+                        <li><a href="conseil-administration.html">CA</a></li>
+                        <li><a href="projet-club.html">Projet Club</a></li>
+                        <li><a href="labels.html">Nos Labels</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Accès Rapides</h3>
+                    <ul>
+                        <li><a href="equipes.html">Nos Équipes</a></li>
+                        <li><a href="evenements.html">Évènements</a></li>
+                        <li><a href="informations.html">Infos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact & Accès</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Gymnase COSEC, 30 Av. du 11 Novembre, 18230 Saint-Doulchard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JS/script.js"></script>
+</body>
+</html>

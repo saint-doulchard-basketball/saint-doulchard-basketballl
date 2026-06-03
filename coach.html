@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach - SDBB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
+    <style>
+        /* Grille des membres d'équipe */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+        .team-grid-center {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .team-grid-center .team-member {
+            flex: 0 1 280px;
+            max-width: 100%;
+        }
+        .team-member {
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+        .team-img-wrapper {
+            width: 140px;
+            height: 140px;
+            margin: 20px auto 10px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .team-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            /* Permet de voir toute la photo sans la recouper */
+            object-fit: contain;
+            background: transparent;
+        }
+
+        .team-info {
+            padding: 10px 20px 20px;
+        }
+        .team-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .team-contact {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .team-contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 6px;
+        }
+        .team-contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="logo">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#">Le Club <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                            <li><a href="coach.html">Coach</a></li>
+                            <li><a href="projet-club.html">Projet Club</a></li>
+
+                            <li><a href="labels.html">Nos Labels</a></li>
+                            <li><a href="reglement-sdbb.html">Règlement</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlement Fédéraux</a>
+                            </li>
+
+                            <li>
+                                <a href="Document/créneaux.pdf" target="_blank" rel="noopener">Créneaux d'entraînement</a>
+                            </li>
+
+                            <li>
+                                <a href="https://docs.google.com/spreadsheets/d/1j-IA_FY40LEulchpNvNbRPvi2CXn0QF2wuzDTgFygts/edit?gid=0#gid=0" target="_blank" rel="noopener">Planning des matchs</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#">Découvrir <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="equipes.html">Équipes</a></li>
+                            <li><a href="evenements.html">Évènements</a></li>
+                            <li><a href="inscription-2025-2026.html">inscription-2025-2026</a></li>
+                            <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
+                            <li><a href="sdbb-tonic-marche.html">sdbbTonic/BasketEnMarchant</a></li>
+                            <li><a href="mini-basket.html">Mini-basket</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Partenaires <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="partenaires.html">Nos Partenaires</a></li>
+                            <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                    <a href="inscription-2025-2026.html" class="btn btn-primary">Nous rejoindre</a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container animate-on-scroll">
+            <h1>Coach</h1>
+            <p>Encadrement du Saint Doulchard Basketball.</p>
+        </div>
+    </section>
+
+    <section class="content-section bg-light">
+        <div class="container">
+            <div class="section-title text-center animate-on-scroll">
+                <h2>Nos Coaches</h2>
+                <div class="underline center"></div>
+            </div>
+
+            <div class="team-grid">
+
+                <!-- Micro -->
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/Micro.jpg" alt="Sylvie Pacheco"></div>
+                    <div class="team-info">
+                        <h4>Sylvie Pacheco</h4>
+                        <div class="team-role">Coach (Micro)</div>
+                        <div class="team-contact">06 20 45 38 37</div>
+                    </div>
+                </div>
+
+                <!-- U7 -->
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/U7-assistantU9-U15M.jpg" alt="Mathéo Tessiot"></div>
+                    <div class="team-info">
+                        <h4>Mathéo Tessiot</h4>
+                        <div class="team-role">Apprenti BPJEPS</div>
+                        <div class="team-role">Coach (15M / U7) assistant (U9)</div>
+                        <div class="team-contact">06 49 76 88 58</div>
+                    </div>
+                </div>
+
+                <!-- U9 -->
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/U92.png" alt="Carla Loiseau"></div>
+                    <div class="team-info">
+                        <h4>Carla Loiseau</h4>
+                        <div class="team-role">Coach (U9)</div>
+                        <div class="team-contact">07 76 30 11 51</div>
+                    </div>
+                </div>
+
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/U9.png" alt="Olivia Garnier"></div>
+                    <div class="team-info">
+                        <h4>Olivia Garnier</h4>
+                        <div class="team-role">Coach (U9)</div>
+                        <div class="team-contact">07 69 97 73 70</div>
+                    </div>
+                </div>
+
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/U13M-AssistantPNM-U7.jpg" alt="Noa Lopez"></div>
+                    <div class="team-info">
+                        <h4>Noa Lopez</h4>
+                        <div class="team-role">Apprenti BPJEPS</div>
+                        <div class="team-role">Coach (U9 / U13M), asssistant (PNM)</div>
+                        <div class="team-contact">—</div>
+                    </div>
+                </div>
+
+                <!-- U11M -->
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/U11M.png" alt="Jeanelle Malleron"></div>
+                    <div class="team-info">
+                        <h4>Jeanelle Malleron</h4>
+                        <div class="team-role">Coach (U11M)</div>
+                        <div class="team-contact">06 87 58 93 52</div>
+                    </div>
+                </div>
+
+                <!-- U11F -->
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/U11F-PNM.jpg" alt="Yann Pacheco"></div>
+                    <div class="team-info">
+                        <h4>Yann Pacheco</h4>
+                        <div class="team-role">Salarié</div>
+                        <div class="team-role">Coach (U11F / PNM)</div>
+                        <div class="team-contact">06 29 54 47 11</div>
+                    </div>
+                </div>
+
+
+                <!-- U13F / Loisir -->
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/U13F-loisir.png" alt="Bastien Dupuy"></div>
+                    <div class="team-info">
+                        <h4>Bastien Dupuy</h4>
+                        <div class="team-role">Coach (U13F / Loisir)</div>
+                        <div class="team-contact">06 64 41 55 77</div>
+                    </div>
+                </div>
+
+
+                <!-- U15F -->
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/U15F.jpg" alt="Julien Tessiot"></div>
+                    <div class="team-info">
+                        <h4>Julien Tessiot</h4>
+                        <div class="team-role">Coach (U15F)</div>
+                        <div class="team-contact">06 84 90 88 35</div>
+                    </div>
+                </div>
+
+                <!-- U18M -->
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/U18M.png" alt="Marc Dumont"></div>
+                    <div class="team-info">
+                        <h4>Marc Dumont</h4>
+                        <div class="team-role">Coach (U18M)</div>
+                        <div class="team-contact">06 30 50 42 14</div>
+                    </div>
+                </div>
+
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/assistantU18M.png" alt="Cathy Martin"></div>
+                    <div class="team-info">
+                        <h4>Cathy Martin</h4>
+                        <div class="team-role">Coach assitante (U18M)</div>
+                        <div class="team-contact">06 71 03 30 93</div>
+                    </div>
+                </div>
+
+                <!-- U18F -->
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/U18F-RM3.jpg" alt="Lucas Bianconi"></div>
+                    <div class="team-info">
+                        <h4>Lucas Bianconi</h4>
+                        <div class="team-role">Salarié</div>
+                        <div class="team-role">Coach (U18F / RM3)</div>
+                        <div class="team-contact">06 43 92 82 32</div>
+                    </div>
+                </div>
+
+                <!-- PRM -->
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/PRM.png" alt="Romain Lagneau"></div>
+                    <div class="team-info">
+                        <h4>Romain Lagneau</h4>
+                        <div class="team-role">Coach (PRM)</div>
+                        <div class="team-contact">06 59 58 68 26</div>
+                    </div>
+                </div>
+
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/PRMassistant.png" alt="Nicolas Delgado"></div>
+                    <div class="team-info">
+                        <h4>Nicolas Delgado</h4>
+                        <div class="team-role">Coach assistant (PRM)</div>
+                        <div class="team-contact">06 70 94 73 61</div>
+                    </div>
+                </div>
+
+                <div class="team-member animate-on-scroll">
+                    <div class="team-img-wrapper"><img src="Coach/PRF.png" alt="Thierry Bonnan"></div>
+                    <div class="team-info">
+                        <h4>Thierry Bonnan</h4>
+                        <div class="team-role">Coach (PRF)</div>
+                        <div class="team-contact">06 61 24 39 09</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <img src="Logo-club/logo SDBB.png" alt="SDBB Logo" class="footer-logo">
+                    <p>Saint Doulchard Basketball - Plus qu'un club, une famille.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Le Club</h3>
+                    <ul>
+                        <li><a href="conseil-administration.html">CA</a></li>
+                        <li><a href="projet-club.html">Projet Club</a></li>
+                        <li><a href="labels.html">Nos Labels</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Accès Rapides</h3>
+                    <ul>
+                        <li><a href="equipes.html">Nos Équipes</a></li>
+                        <li><a href="evenements.html">Évènements</a></li>
+                        <li><a href="informations.html">Infos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact & Accès</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Gymnase COSEC, 30 Av. du 11 Novembre, 18230 Saint-Doulchard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JS/script.js"></script>
+</body>
+</html>
+
