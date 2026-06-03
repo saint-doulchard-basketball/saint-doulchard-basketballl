@@ -179,7 +179,9 @@ img {
     top: 0;
     z-index: 1000;
     padding: 10px 0;
+    overflow: visible;
 }
+
 
 .header-container {
     display: flex;
@@ -208,12 +210,17 @@ img {
 }
 
 .hero-logo-img {
-    /* Grossir légèrement le logo et garder le fond transparent */
-    height: 150px;
+    height: 120px; /* Légèrement réduit pour s'adapter à l'iPhone SE */
     width: auto;
-    background: transparent;
-    mix-blend-mode: multiply;
-    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.25));
+    display: block;
+    margin: 0 auto;
+    background: transparent !important;
+    
+    /* On supprime ou écrase le mix-blend-mode qui fait planter Safari iOS */
+    mix-blend-mode: normal !important; 
+    
+    /* On retire le filtre d'ombre qui peut accentuer le bug de rendu sur vieux iOS */
+    filter: none !important; 
 }
 
 /* Logo du header (page d'accueil): enlever le fond blanc + agrandir */
@@ -849,6 +856,36 @@ img {
         display: block;
     }
 
+    /* Ajustements header / logo (éviter rognage) */
+    #main-header {
+        padding: 6px 0;
+    }
+
+    .header-container {
+        align-items: center;
+    }
+
+    /* Le header sticky se contraint sur mobile : on évite la hauteur fixe */
+    #main-header .logo {
+        height: auto;
+        max-height: 72px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+        /* Détourage visuel (si le png a encore un fond/contour sur mobile) */
+        background: transparent;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    /* Sécurise le conteneur : éviter rognage vertical */
+    .logo-container {
+        height: auto;
+        align-items: center;
+        gap: 10px;
+    }
+
+
     /* Page Qui sommes-nous */
     .grid-2 { grid-template-columns: 1fr; }
     .side-card { margin-bottom: 30px; }
@@ -913,6 +950,7 @@ img {
         text-align: center;
     }
 }
+
 
 /* =========================================
    ANIMATIONS
@@ -1755,3 +1793,70 @@ html {
     }
 }
 
+/* Désactive l'effet masqué du scroll uniquement pour la section Hero sur mobile */
+@media (max-width: 768px) {
+    .hero-content.animate-on-scroll {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
+    /* On supprime aussi le mix-blend-mode sur mobile qui cause le rectangle blanc */
+    .hero-logo-img {
+        mix-blend-mode: normal !important;
+        background: transparent !important;
+        height: 110px; /* Légère réduction pour s'adapter à l'iPhone */
+    }
+}
+
+/* Styles spécifiques pour l'iPhone SE et les très petits écrans (375px et moins) */
+@media (max-width: 375px) {
+    
+    /* 1. On force le mini-logo du header à rester petit et discret */
+    #main-header .logo {
+        max-height: 45px !important; /* On réduit sa hauteur pour qu'il ne pousse pas le reste */
+        width: auto;
+    }
+
+    /* 2. On empêche le conteneur du haut de casser la mise en page */
+    .header-container {
+        display: flex !important;
+        flex-direction: row !important; /* Force l'alignement horizontal (Logo à gauche, Menu à droite) */
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 10px !important;
+    }
+
+    /* 3. Ajustement de la section Hero pour l'iPhone SE */
+    .hero {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+        min-height: auto !important; /* Supprime la contrainte de hauteur qui étouffe le logo */
+    }
+
+    /* 4. On ajuste la taille du grand logo du milieu pour qu'il rentre pile dans l'écran */
+    .hero-logo-img {
+        height: 85px !important; /* Taille parfaite pour l'écran de l'iPhone SE */
+        width: auto !important;
+        mix-blend-mode: normal !important;
+        filter: none !important; /* Enlève l'ombre qui peut bugger sur les vieux iOS */
+    }
+
+    /* 5. On réduit un peu le titre pour laisser de la place au logo */
+    .hero-content h1 {
+        font-size: 1.8rem !important;
+        margin-bottom: 10px !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: auto !important;
+        min-height: calc(100vh - 60px) !important; /* S'adapte dynamiquement à l'écran du téléphone */
+        padding: 30px 0 !important;
+    }
+}

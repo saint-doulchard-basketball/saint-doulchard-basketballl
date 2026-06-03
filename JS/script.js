@@ -54,18 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 5. Scroll Animations (Intersection Observer)
+    // 5. Scroll Animations (Intersection Observer avec correctif de démarrage rapide)
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.15 // Trigger when 15% of the element is visible
+        threshold: 0.05 // Se déclenche dès que 5% de l'élément est visible (plus réactif sur mobile)
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
+            // Si l'élément est visible à l'écran
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // Stop observing once animated
+                observer.unobserve(entry.target); // Stop l'écoute
             }
         });
     }, observerOptions);
@@ -73,6 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach(el => {
         observer.observe(el);
+        
+        // SÉCURITÉ : Si l'élément est en haut de la page (Hero), on force l'affichage immédiatement
+        const rect = el.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top <= window.innerHeight) {
+            el.classList.add('is-visible');
+        }
     });
 
     // 6. Event lightbox
