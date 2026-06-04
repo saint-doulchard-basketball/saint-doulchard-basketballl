@@ -130,5 +130,45 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isOpen) closeLightbox();
         }
     });
+
+    // 7. Welcome Popup (Home Page)
+    const welcomePopup = document.getElementById('welcome-popup');
+    const welcomePopupClose = document.getElementById('welcome-popup-close');
+
+    if (welcomePopup && welcomePopupClose) {
+        // Optionnel : on peut utiliser sessionStorage pour ne l'afficher qu'une fois par session de navigation
+        if (!sessionStorage.getItem('welcomePopupShown')) {
+            // Afficher le popup
+            welcomePopup.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden'; // Empêche de scroller
+            
+            // Marquer comme affiché
+            sessionStorage.setItem('welcomePopupShown', 'true');
+        }
+
+        const closeWelcomePopup = () => {
+            welcomePopup.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        };
+
+        // Fermeture via le bouton X
+        welcomePopupClose.addEventListener('click', closeWelcomePopup);
+
+        // Fermeture via le clic en dehors du contenu (sur le fond gris)
+        welcomePopup.addEventListener('click', (e) => {
+            if (e.target === welcomePopup) {
+                closeWelcomePopup();
+            }
+        });
+
+        // Fermeture avec la touche Échap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && welcomePopup.getAttribute('aria-hidden') === 'false') {
+                closeWelcomePopup();
+            }
+        });
+    }
+
+    
 });
 
