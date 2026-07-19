@@ -594,7 +594,12 @@
 
             let dateText = cleanVal(row["jour"]);
             if (row["Date"]) dateText += " " + row["Date"].trim();
-            if (row["heure"]) dateText += " à " + row["heure"].trim();
+            
+            // MODIFIÉ ICI : Lecture ultra-sécurisée insensible à la casse ("Heure" ou "heure")
+            let heureSaisie = row["Heure"] || row["heure"];
+            if (heureSaisie && heureSaisie.trim() !== "" && heureSaisie.trim() !== "—") {
+                dateText += " à " + heureSaisie.trim();
+            }
 
             formattedMatches.push({
                 semaineTextAffichage: semaineKey,
