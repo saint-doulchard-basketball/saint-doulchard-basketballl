@@ -71,7 +71,7 @@
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         }
 
-        /* --- SÉLECTEUR DE VUE (NOUVEAU) --- */
+        /* --- SÉLECTEUR DE VUE --- */
         .view-toggle-container {
             display: flex;
             justify-content: center;
@@ -329,7 +329,7 @@
             font-weight: 500;
         }
 
-        /* --- STYLE 2: VUE CALENDRIER / SYNTHÉTIQUE (LISTE ÉPURÉE) --- */
+        /* --- STYLE 2: VUE CALENDRIER / SYNTHÉTIQUE --- */
         .matchs-list-compact {
             width: 100%;
             display: flex;
@@ -443,20 +443,11 @@
                             <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
                             <li><a href="coach.html">Coach</a></li>
                             <li><a href="projet-club.html">Projet Club</a></li>
-
                             <li><a href="labels.html">Nos Labels</a></li>
                             <li><a href="reglement-sdbb.html">Règlement</a></li>
-                            <li>
-                                <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlements Fédéraux</a>
-                            </li>
-
-                            <li>
-                                <a href="Document/planning-entrainements-2026-2027.jpeg" target="_blank" rel="noopener">Créneaux d'entraînements</a>
-                            </li>
-
-                            <li>
-                                <a href="planning.html">Planning des matchs</a>
-                            </li>
+                            <li><a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlements Fédéraux</a></li>
+                            <li><a href="Document/planning-entrainements-2026-2027.jpeg" target="_blank" rel="noopener">Créneaux d'entraînements</a></li>
+                            <li><a href="planning.html">Planning des matchs</a></li>
                         </ul>
                     </li>
 
@@ -469,11 +460,7 @@
                             <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
                             <li><a href="sdbb-tonic-marche.html">sdbbTonic/BasketEnMarchant</a></li>
                             <li><a href="mini-basket.html">Mini-basket</a></li>
-                            <li>
-                                <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
-                            </li>
-
-
+                            <li><a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -485,13 +472,11 @@
                     </li>
                     <li><a href="boutique.html">Boutique</a></li>
                     <li><a href="contact.html">Contact</a></li>
-
-
                 </ul>
             </nav>
 
             <div class="header-actions">
-                    <a href="inscription-2026-2027.html" class="btn btn-primary">Nous rejoindre</a>
+                <a href="inscription-2026-2027.html" class="btn btn-primary">Nous rejoindre</a>
                 <div class="menu-toggle" id="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -541,7 +526,34 @@
     let globalData = [];
     let currentWeek = "";
     let currentTeam = "ALL"; 
-    let currentViewMode = "DETAIL"; // DETAIL ou CALENDAR
+    let currentViewMode = "DETAIL"; 
+
+    // Fonction utilitaire pour calculer le lundi et le dimanche d'un numéro de semaine ISO
+    function getWeekRangeString(numSemaine) {
+        let year = 2026; // Année de début de saison
+        if (numSemaine >= 1 && numSemaine <= 30) {
+            year = 2027; // Passage à l'année suivante en janvier
+        }
+        
+        // Calcul basé sur la méthode de la semaine ISO 8601
+        let simple = new Date(year, 0, 1 + (numSemaine - 1) * 7);
+        let dow = simple.getDay();
+        let ISOweekStart = simple;
+        if (dow <= 4) {
+            ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+        } else {
+            ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+        }
+        
+        let ISOweekEnd = new Date(ISOweekStart);
+        ISOweekEnd.setDate(ISOweekStart.getDate() + 6);
+        
+        let pad = (n) => String(n).padStart(2, '0');
+        let debutStr = pad(ISOweekStart.getDate()) + "/" + pad(ISOweekStart.getMonth() + 1);
+        let finStr = pad(ISOweekEnd.getDate()) + "/" + pad(ISOweekEnd.getMonth() + 1);
+        
+        return `SEMAINE ${numSemaine} (du ${debutStr} au ${finStr})`;
+    }
 
     function init() {
         Papa.parse(googleSheetCsvUrl, {
@@ -559,21 +571,16 @@
     }
 
     function processSheetData(dataRows) {
-        let weekDatesMap = {}; 
         let formattedMatches = [];
         let teamsSet = new Set(); 
+        let uniqueWeeks = new Set();
 
         dataRows.forEach(row => {
             if (!row["Semaine"] || row["Semaine"].trim() === "") return;
 
-            let numSemaine = row["Semaine"].trim();
-            let semaineKey = "Semaine " + numSemaine;
-
-            let rowDate = row["Date"] ? row["Date"].trim() : "";
-            if (rowDate && rowDate !== "" && rowDate !== "—" && rowDate !== "-") {
-                if (!weekDatesMap[semaineKey]) weekDatesMap[semaineKey] = [];
-                if (!weekDatesMap[semaineKey].includes(rowDate)) weekDatesMap[semaineKey].push(rowDate);
-            }
+            let numSemaine = parseInt(row["Semaine"].trim());
+            let semaineKey = getWeekRangeString(numSemaine);
+            uniqueWeeks.add(semaineKey);
 
             let cleanVal = (val) => {
                 if (!val) return "—";
@@ -589,7 +596,7 @@
             if (row["heure"]) dateText += " à " + row["heure"].trim();
 
             formattedMatches.push({
-                semaineId: semaineKey,
+                semaineTextAffichage: semaineKey,
                 equipe: eq,
                 adversaire: cleanVal(row["adversaire"]),
                 lieu: cleanVal(row["Lieu"]),
@@ -605,39 +612,25 @@
             });
         });
 
-        // Génération libellé des semaines
-        let finalWeeksMenu = {};
-        Object.keys(weekDatesMap).forEach(semKey => {
-            let dates = weekDatesMap[semKey];
-            if (dates.length > 0) {
-                dates.sort();
-                let partA = dates[0].split("/");
-                let partB = dates[dates.length - 1].split("/");
-                if (partA[1] === partB[1]) {
-                    finalWeeksMenu[semKey] = `${semKey.toUpperCase()} : ${dates[0]} - ${dates[dates.length - 1]}`;
-                } else {
-                    finalWeeksMenu[semKey] = `${semKey.toUpperCase()} : ${dates[0]} - ${dates[dates.length - 1]}`;
-                }
-            } else {
-                finalWeeksMenu[semKey] = semKey.toUpperCase();
-            }
-        });
-
-        formattedMatches.forEach(m => {
-            m.semaineTextAffichage = finalWeeksMenu[m.semaineId] || m.semaineId;
-        });
-
         globalData = formattedMatches;
 
         // Remplissage menu déroulant semaine
         let selectWeek = document.getElementById('weekSelect');
-        selectWeek.innerHTML = "";
-        let sortedWeekIds = Object.keys(finalWeeksMenu).sort((a, b) => parseInt(a.replace(/\D/g, '')) - parseInt(b.replace(/\D/g, '')));
+        selectWeek.innerHTML = '<option value="ALL">🗓️ Voir tous les matchs</option>';
+        
+        // Tri intelligent des semaines selon la saison sportive (août à juillet)
+        let sortedWeeks = Array.from(uniqueWeeks).sort((a, b) => {
+            let numA = parseInt(a.match(/\d+/)[0]);
+            let numB = parseInt(b.match(/\d+/)[0]);
+            let weightA = numA >= 30 ? numA : numA + 100;
+            let weightB = numB >= 30 ? numB : numB + 100;
+            return weightA - weightB;
+        });
 
-        sortedWeekIds.forEach(id => {
+        sortedWeeks.forEach(weekStr => {
             let opt = document.createElement('option');
-            opt.value = finalWeeksMenu[id];
-            opt.innerText = finalWeeksMenu[id];
+            opt.value = weekStr;
+            opt.innerText = weekStr;
             selectWeek.appendChild(opt);
         });
 
@@ -651,38 +644,25 @@
             selectTeam.appendChild(opt);
         });
 
-        // Détection auto semaine en cours / à venir
-        let defaultWeekAffichage = "";
-        if (sortedWeekIds.length > 0) {
-            let today = new Date();
-            let compareDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-            if (today.getDay() === 1) compareDate.setDate(compareDate.getDate() + 3);
-            else if (today.getDay() === 2) compareDate.setDate(compareDate.getDate() + 2);
+        // Sélection auto de la semaine en cours si elle existe
+        let today = new Date();
+        // Calcule le numéro ISO de la semaine courante en JS
+        let d = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
+        let dayNum = d.getUTCDay() || 7;
+        d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+        let yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+        let currentISOWeek = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+        
+        let currentWeekStr = getWeekRangeString(currentISOWeek);
 
-            let minDiffInMs = Infinity;
-            let closestWeekId = sortedWeekIds[0];
-
-            sortedWeekIds.forEach(id => {
-                (weekDatesMap[id] || []).forEach(dStr => {
-                    let parts = dStr.split("/");
-                    if (parts.length === 2) {
-                        let targetDate = new Date(today.getFullYear(), parseInt(parts[1]) - 1, parseInt(parts[0]));
-                        let diff = Math.abs(targetDate - compareDate);
-                        if (diff < minDiffInMs) {
-                            minDiffInMs = diff;
-                            closestWeekId = id;
-                        }
-                    }
-                });
-            });
-            defaultWeekAffichage = finalWeeksMenu[closestWeekId];
+        if (uniqueWeeks.has(currentWeekStr)) {
+            selectWeek.value = currentWeekStr;
+            currentWeek = currentWeekStr;
+        } else if (sortedWeeks.length > 0) {
+            selectWeek.value = sortedWeeks[0];
+            currentWeek = sortedWeeks[0];
         }
-
-        if (defaultWeekAffichage !== "") {
-            selectWeek.value = defaultWeekAffichage;
-            currentWeek = defaultWeekAffichage;
-            render();
-        }
+        render();
     }
 
     function switchView(mode) {
@@ -696,7 +676,11 @@
         let grid = document.getElementById('matchsGrid');
         grid.innerHTML = "";
 
-        let filtered = globalData.filter(m => m.semaineTextAffichage === currentWeek);
+        let filtered = globalData;
+        if (currentWeek !== "ALL") {
+            filtered = filtered.filter(m => m.semaineTextAffichage === currentWeek);
+        }
+        
         if (currentTeam !== "ALL") filtered = filtered.filter(m => m.equipe === currentTeam);
 
         if (filtered.length === 0) {
@@ -706,7 +690,7 @@
 
         // --- MODE 1: DÉTAILLÉ (LOGISTIQUE COMPLÈTE) ---
         if (currentViewMode === "DETAIL") {
-            grid.className = "matchs-grid"; // Remet en mode grille de cartes
+            grid.className = "matchs-grid"; 
             filtered.forEach(m => {
                 let lieuLower = m.lieu.toLowerCase();
                 let isHome = lieuLower.includes("cosec") || lieuLower.includes("domicile");
@@ -748,9 +732,9 @@
             });
         } 
         
-        // --- MODE 2: CALENDRIER ÉPURÉ (SANS ARBITRES NI LOGISTIQUE) ---
+        // --- MODE 2: CALENDRIER ÉPURÉ ---
         else {
-            grid.className = ""; // Retire la grille pour faire une liste de lignes
+            grid.className = ""; 
             let containerList = document.createElement('div');
             containerList.className = "matchs-list-compact";
 
