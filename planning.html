@@ -219,6 +219,7 @@
         }
         .match-card.home::before { background-color: var(--success-green); }
         .match-card.away::before { background-color: var(--danger-red); }
+        .match-card.tbd::before { background-color: var(--sdbb-blue-light); }
         .match-card.event::before { background-color: var(--sdbb-yellow); }
 
         .match-card:hover {
@@ -260,6 +261,7 @@
 
         .type-home { background-color: #e6fcf5; color: #0c6a46; }
         .type-away { background-color: #fff5f5; color: #991b1b; }
+        .type-tbd { background-color: #eff6ff; color: #1d4ed8; }
         .type-event { background-color: #fefce8; color: #854d0e; }
 
         .card-body {
@@ -356,6 +358,7 @@
 
         .match-row-compact.home { border-left-color: var(--success-green); }
         .match-row-compact.away { border-left-color: var(--danger-red); }
+        .match-row-compact.tbd { border-left-color: var(--sdbb-blue-light); }
         .match-row-compact.event { border-left-color: var(--sdbb-yellow); }
 
         .compact-col-team {
@@ -528,14 +531,12 @@
     let currentTeam = "ALL"; 
     let currentViewMode = "DETAIL"; 
 
-    // Fonction utilitaire pour calculer le lundi et le dimanche d'un numéro de semaine ISO
     function getWeekRangeString(numSemaine) {
-        let year = 2026; // Année de début de saison
+        let year = 2026; 
         if (numSemaine >= 1 && numSemaine <= 30) {
-            year = 2027; // Passage à l'année suivante en janvier
+            year = 2027; 
         }
         
-        // Calcul basé sur la méthode de la semaine ISO 8601
         let simple = new Date(year, 0, 1 + (numSemaine - 1) * 7);
         let dow = simple.getDay();
         let ISOweekStart = simple;
@@ -618,7 +619,6 @@
         let selectWeek = document.getElementById('weekSelect');
         selectWeek.innerHTML = '<option value="ALL">🗓️ Voir tous les matchs</option>';
         
-        // Tri intelligent des semaines selon la saison sportive (août à juillet)
         let sortedWeeks = Array.from(uniqueWeeks).sort((a, b) => {
             let numA = parseInt(a.match(/\d+/)[0]);
             let numB = parseInt(b.match(/\d+/)[0]);
@@ -646,7 +646,6 @@
 
         // Sélection auto de la semaine en cours si elle existe
         let today = new Date();
-        // Calcule le numéro ISO de la semaine courante en JS
         let d = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
         let dayNum = d.getUTCDay() || 7;
         d.setUTCDate(d.getUTCDate() + 4 - dayNum);
@@ -697,8 +696,16 @@
                 let isEvent = m.equipe.toLowerCase().includes("evenement") || m.equipe.toLowerCase().includes("manifestation");
                 
                 let cardClass = "away", badgeClass = "type-away", badgeText = "<i class='fas fa-bus'></i> Extérieur";
-                if (isEvent) { cardClass = "event"; badgeClass = "type-event"; badgeText = "<i class='fas fa-star'></i> Club"; }
-                else if (isHome) { cardClass = "home"; badgeClass = "type-home"; badgeText = "<i class='fas fa-home'></i> Domicile"; }
+                let lieuAffichage = `Salle : ${m.lieu}`;
+
+                if (isEvent) { 
+                    cardClass = "event"; badgeClass = "type-event"; badgeText = "<i class='fas fa-star'></i> Club"; 
+                } else if (isHome) { 
+                    cardClass = "home"; badgeClass = "type-home"; badgeText = "<i class='fas fa-home'></i> Domicile"; 
+                } else if (m.lieu === "—" || m.lieu === "" || lieuLower.includes("attente") || lieuLower.includes("inconnu")) {
+                    cardClass = "tbd"; badgeClass = "type-tbd"; badgeText = "<i class='fas fa-question-circle'></i> Lieu en attente";
+                    lieuAffichage = "En attente du lieu";
+                }
 
                 grid.innerHTML += `
                     <div class="match-card ${cardClass}">
@@ -711,7 +718,7 @@
                                 <div class="match-opponent">${m.adversaire !== "—" ? m.adversaire : "Match"}</div>
                                 <div class="match-details-box">
                                     <div class="detail-item time"><i class="fas fa-clock"></i> ${m.horaire}</div>
-                                    <div class="detail-item location"><i class="fas fa-map-marker-alt"></i> Salle : ${m.lieu}</div>
+                                    <div class="detail-item location"><i class="fas fa-map-marker-alt"></i> ${lieuAffichage}</div>
                                 </div>
                             </div>
                             <div>
@@ -731,7 +738,6 @@
                     </div>`;
             });
         } 
-        
         // --- MODE 2: CALENDRIER ÉPURÉ ---
         else {
             grid.className = ""; 
@@ -744,8 +750,16 @@
                 let isEvent = m.equipe.toLowerCase().includes("evenement") || m.equipe.toLowerCase().includes("manifestation");
                 
                 let rowClass = "away", badgeClass = "type-away", badgeText = "Extérieur";
-                if (isEvent) { rowClass = "event"; badgeClass = "type-event"; badgeText = "Club"; }
-                else if (isHome) { rowClass = "home"; badgeClass = "type-home"; badgeText = "Domicile"; }
+                let lieuAffichage = `(${m.lieu})`;
+
+                if (isEvent) { 
+                    rowClass = "event"; badgeClass = "type-event"; badgeText = "Club"; 
+                } else if (isHome) { 
+                    rowClass = "home"; badgeClass = "type-home"; badgeText = "Domicile"; 
+                } else if (m.lieu === "—" || m.lieu === "" || lieuLower.includes("attente") || lieuLower.includes("inconnu")) {
+                    rowClass = "tbd"; badgeClass = "type-tbd"; badgeText = "Lieu en attente";
+                    lieuAffichage = "(En attente du lieu)";
+                }
 
                 containerList.innerHTML += `
                     <div class="match-row-compact ${rowClass}">
@@ -753,7 +767,7 @@
                         <div class="compact-col-vs">vs</div>
                         <div class="compact-col-opponent">${m.adversaire !== "—" ? m.adversaire : "Rassemblement Club"}</div>
                         <div class="compact-col-datetime"><i class="far fa-clock"></i> ${m.horaire}</div>
-                        <div class="compact-col-venue ${badgeClass}">${badgeText} (${m.lieu})</div>
+                        <div class="compact-col-venue ${badgeClass}">${badgeText} ${lieuAffichage}</div>
                     </div>`;
             });
             grid.appendChild(containerList);
