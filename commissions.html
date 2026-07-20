@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devenir Bénévole - Commissions SDBB</title>
+    <meta name="description" content="Découvrez toutes les commissions du Saint Doulchard Basketball et devenez bénévole.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
+
+<style>
+        .commission-hero-text {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-light);
+        }
+
+        .commission-full-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .commission-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--secondary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .commission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .commission-card.bureau-card {
+            border-top-color: var(--primary-color);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0, 51, 160, 0.05));
+        }
+
+        .commission-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .commission-card-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(0, 51, 160, 0.1);
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .commission-card.bureau-card .commission-card-icon {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--secondary-dark);
+        }
+
+        .commission-card h3 {
+            margin: 0;
+            font-size: 1.15rem;
+        }
+
+        .commission-card p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .commission-sublist {
+            list-style: none;
+            margin-top: 10px;
+            padding: 0;
+        }
+
+        .commission-sublist li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .commission-sublist li:last-child {
+            border-bottom: none;
+        }
+
+        .commission-sublist li i {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+
+        /* Contact info box at bottom of each commission card */
+        .commission-contact {
+            margin-top: 14px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(0, 51, 160, 0.06), rgba(255, 215, 0, 0.08));
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+.commission-contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .commission-contact-row i {
+            width: 16px;
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .commission-contact-row .label {
+            color: var(--text-light);
+            font-weight: 500;
+            min-width: 85px;
+            flex-shrink: 0;
+        }
+
+        .commission-contact-row .value {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .commission-contact-row a {
+            color: var(--secondary-color);
+            font-weight: 500;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            font-size: 0.82rem;
+        }
+
+        .commission-contact-row a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .commission-cta-box {
+            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+            color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 50px 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .commission-cta-box h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .commission-cta-box p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 25px;
+            font-size: 1.05rem;
+        }
+
+        /* Contact form help box */
+        .contact-help-box {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px 35px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 2px dashed var(--primary-color);
+        }
+
+        .contact-help-box i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-help-box h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-help-box p {
+            color: var(--text-light);
+            max-width: 550px;
+            margin: 0 auto 20px;
+        }
+
+        @media (max-width: 768px) {
+            .commission-full-list {
+                grid-template-columns: 1fr;
+            }
+            .commission-cta-box {
+                padding: 30px 20px;
+            }
+            .contact-help-box {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="logo">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#">Le Club <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                            <li><a href="coach.html">Coach</a></li>
+                            <li><a href="projet-club.html">Projet Club</a></li>
+                            <li><a href="labels.html">Nos Labels</a></li>
+                            <li><a href="reglement-sdbb.html">Règlement</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlements Fédéraux</a>
+                            </li>
+                            <li>
+                                <a href="Document/planning-entrainements-2026-2027.jpeg" target="_blank" rel="noopener">Créneaux d'entraînements</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.google.com/spreadsheets/d/1j-IA_FY40LEulchpNvNbRPvi2CXn0QF2wuzDTgFygts/edit?gid=0#gid=0" target="_blank" rel="noopener">Planning des matchs</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#">Découvrir <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="equipes.html">Équipes</a></li>
+                            <li><a href="evenements.html">Évènements</a></li>
+                            <li><a href="inscription-2026-2027.html">Inscription 2026-2027</a></li>
+                            <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
+                            <li><a href="sdbb-tonic-marche.html">SDBB Tonic / Basket En Marchant</a></li>
+                            <li><a href="mini-basket.html">Mini-basket</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Partenaires <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="partenaires.html">Nos Partenaires</a></li>
+                            <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="rejoindre.html" class="btn btn-primary">Nous rejoindre</a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container animate-on-scroll">
+            <h1>Devenir Bénévole</h1>
+            <p>Découvrez nos commissions et trouvez celle qui vous correspond</p>
+            <p class="commission-hero-text mt-3">
+                Le SDBB vit grâce à ses bénévoles. Que vous ayez quelques heures par mois ou plus de disponibilité,
+                votre aide est précieuse pour faire grandir le club. Rejoignez une ou plusieurs commissions !
+            </p>
+        </div>
+    </section>
+
+    <!-- Commissions List -->
+    <section class="content-section">
+        <div class="container">
+
+            <div class="commission-full-list">
+
+<!-- Société et Mixité -->
+                <div class="commission-card animate-on-scroll delay-100">
+                    <div class="commission-card-header">
+                        <div class="commission-card-icon"><i class="fas fa-globe-americas"></i></div>
+                        <h3>Société et Mixité</h3>
+                    </div>
+                    <p>Organisation d'événements conviviaux et sportifs pour favoriser la mixité sociale et les échanges au sein du club et avec l'extérieur.</p>
+                    <ul class="commission-sublist">
+                        <li><i class="fas fa-circle"></i> Organisation de tournois et animations</li>
+                        <li><i class="fas fa-circle"></i> Actions en faveur de l'inclusion et de la mixité</li>
+                        <li><i class="fas fa-circle"></i> Événements intergénérationnels et familiaux</li>
+                    </ul>
+                    <div class="commission-contact">
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Responsable</span>
+                            <span class="value">Alexandra Tessiot</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:evenements.sdbb@gmail.com">evenements.sdbb@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buvette -->
+                <div class="commission-card animate-on-scroll delay-100">
+                    <div class="commission-card-header">
+                        <div class="commission-card-icon"><i class="fas fa-mug-hot"></i></div>
+                        <h3>Buvette</h3>
+                    </div>
+                    <p>Gestion et tenue de la buvette lors des matchs à domicile et des événements du club. Un maillon essentiel pour l'accueil et la convivialité.</p>
+                    <ul class="commission-sublist">
+                        <li><i class="fas fa-circle"></i> Tenue de la buvette les jours de match</li>
+                        <li><i class="fas fa-circle"></i> Propositions de nouvelles recettes et animations</li>
+                    </ul>
+                    <div class="commission-contact">
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Responsable</span>
+                            <span class="value">Alexandra Tessiot</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:evenements.sdbb@gmail.com">evenements.sdbb@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arbitrage -->
+                <div class="commission-card animate-on-scroll delay-200">
+                    <div class="commission-card-header">
+                        <div class="commission-card-icon"><i class="fas fa-stopwatch"></i></div>
+                        <h3>Arbitrage</h3>
+                    </div>
+                    <p>Développement de l'école d'arbitrage du SDBB. Accompagnement et formation des jeunes arbitres pour assurer la progression et la qualité des rencontres.</p>
+                    <ul class="commission-sublist">
+                        <li><i class="fas fa-circle"></i> Encadrement de l'école d'arbitrage</li>
+                        <li><i class="fas fa-circle"></i> Formation et suivi des jeunes arbitres</li>
+                        <li><i class="fas fa-circle"></i> Sensibilisation aux règles et à l'éthique sportive</li>
+                    </ul>
+                    <div class="commission-contact">
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Responsable</span>
+                            <span class="value">Mathis Cholet</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:arbitrage.sdbb@gmail.com">arbitrage.sdbb@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Communication -->
+                <div class="commission-card animate-on-scroll delay-200">
+                    <div class="commission-card-header">
+                        <div class="commission-card-icon"><i class="fas fa-bullhorn"></i></div>
+                        <h3>Communication</h3>
+                    </div>
+                    <p>Valorisation de l'image du club via les réseaux sociaux, le site internet, la presse locale et les affichages. Faire rayonner le SDBB !</p>
+                    <ul class="commission-sublist">
+                        <li><i class="fas fa-circle"></i> Gestion des réseaux sociaux (Facebook, Instagram)</li>
+                        <li><i class="fas fa-circle"></i> Mise à jour du site internet</li>
+                        <li><i class="fas fa-circle"></i> Photographie et vidéo des événements</li>
+                    </ul>
+                    <div class="commission-contact">
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Responsable</span>
+                            <span class="value">Mathis Cholet</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:communications.sdbb@gmail.com">communications.sdbb@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partenariat -->
+                <div class="commission-card animate-on-scroll delay-300">
+                    <div class="commission-card-header">
+                        <div class="commission-card-icon"><i class="fas fa-handshake"></i></div>
+                        <h3>Partenariat</h3>
+                    </div>
+                    <p>Recherche et fidélisation des partenaires et sponsors du club. Développement de nouvelles offres et relations avec les entreprises locales.</p>
+                    <ul class="commission-sublist">
+                        <li><i class="fas fa-circle"></i> Démarchage et prospection de nouveaux sponsors</li>
+                        <li><i class="fas fa-circle"></i> Suivi et animation du réseau de partenaires</li>
+                        <li><i class="fas fa-circle"></i> Organisation d'événements partenaires</li>
+                    </ul>
+                    <div class="commission-contact">
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Responsable</span>
+                            <span class="value">Julien Tessiot</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:partenariats.sdbb@gmail.com">partenariats.sdbb@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini-basket -->
+                <div class="commission-card animate-on-scroll delay-300">
+                    <div class="commission-card-header">
+                        <div class="commission-card-icon"><i class="fas fa-baby"></i></div>
+                        <h3>Mini-basket</h3>
+                    </div>
+                    <p>Animation et encadrement de l'école de mini-basket (Micro, U7, U9, U11). Initiation ludique au basket pour les plus jeunes dans un cadre sécurisé.</p>
+                    <ul class="commission-sublist">
+                        <li><i class="fas fa-circle"></i> Encadrement des séances Micro et U7/U9</li>
+                        <li><i class="fas fa-circle"></i> Organisation de plateaux et animations</li>
+                        <li><i class="fas fa-circle"></i> Accueil et information des parents</li>
+                    </ul>
+                    <div class="commission-contact">
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Responsable</span>
+                            <span class="value">Sylvie Pacheco</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:basket.sdbb@gmail.com">basket.sdbb@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sportive -->
+                <div class="commission-card animate-on-scroll delay-100">
+                    <div class="commission-card-header">
+                        <div class="commission-card-icon"><i class="fas fa-futbol"></i></div>
+                        <h3>Sportive</h3>
+                    </div>
+                    <p>Organisation et suivi de la vie sportive du club : entraînements, suivi des équipes, gestion des compétitions.</p>
+                    <ul class="commission-sublist">
+                        <li><i class="fas fa-circle"></i> Coordination des équipes et des matchs</li>
+                       </ul>
+                    <div class="commission-contact">
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Responsable</span>
+                            <span class="value">Sylvie Pacheco</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:basket.sdbb@gmail.com">basket.sdbb@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intendance -->
+                <div class="commission-card animate-on-scroll delay-200">
+                    <div class="commission-card-header">
+                        <div class="commission-card-icon"><i class="fas fa-toolbox"></i></div>
+                        <h3>Intendance</h3>
+                    </div>
+                    <p>Gestion de la logistique, du matériel sportif et de l'entretien des installations. Garantir le bon fonctionnement du club au quotidien.</p>
+                    <ul class="commission-sublist">
+                        <li><i class="fas fa-circle"></i> Gestion et entretien du matériel</li>
+                        <li><i class="fas fa-circle"></i> Logistique des matchs et événements</li>
+                        <li><i class="fas fa-circle"></i> Logistiques des courses pour évènements et matchs</li>
+                        <li><i class="fas fa-circle"></i> Entretien du club house</li>
+                    </ul>
+                    <div class="commission-contact">
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Responsable</span>
+                            <span class="value">Patrice Aucler</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:president.sdbb@gmail.com">président.sdbb@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commission 3x3 -->
+                <div class="commission-card animate-on-scroll delay-200">
+                    <div class="commission-card-header">
+                        <div class="commission-card-icon"><i class="fas fa-basketball-ball"></i></div>
+                        <h3>3×3</h3>
+                    </div>
+                    <p>Développement de la discipline 3×3 au sein du club. Organisation de tournois, entraînements spécifiques et participation aux compétitions régionales.</p>
+                    <ul class="commission-sublist">
+                        <li><i class="fas fa-circle"></i> Organisation d'événements et tournois 3×3</li>
+                        <li><i class="fas fa-circle"></i> Développement de la pratique chez les jeunes</li>
+                    </ul>
+                    <div class="commission-contact">
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Responsable</span>
+                            <span class="value">Loan Joly</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:basket.sdbb@gmail.com">basket.sdbb@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bureau (Président adjoint, Secrétaire adjoint, Trésorier adjoint) -->
+                <div class="commission-card bureau-card animate-on-scroll delay-300">
+                    <div class="commission-card-header">
+                        <div class="commission-card-icon"><i class="fas fa-user-tie"></i></div>
+                        <h3>Bureau du Club</h3>
+                    </div>
+                    <p>Rejoignez les instances dirigeantes du club en tant que membre du bureau. Contribuez à la stratégie et à la gestion du SDBB.</p>
+                    <ul class="commission-sublist">
+                        <li><i class="fas fa-star"></i> <strong>Président adjoint</strong> — Appui à la présidence, représentation du club, pilotage des projets – <em style="font-size:0.85rem; color:var(--text-light);">Julien Tessiot</em></li>
+                        <li><i class="fas fa-star"></i> <strong>Secrétaire adjoint</strong> — Gestion administrative, comptes-rendus, suivi des licences – <em style="font-size:0.85rem; color:var(--text-light);">Sylvie Pacheco</em></li>
+                        <li><i class="fas fa-star"></i> <strong>Trésorier adjoint</strong> — Suivi budgétaire, gestion des comptes, recherche de financements – <em style="font-size:0.85rem; color:var(--text-light);">Alexandra Tessiot</em></li>
+                    </ul>
+                    <div class="commission-contact">
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Président</span>
+                            <span class="value">Julien Tessiot</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:president.sdbb@gmail.com">president.sdbb@gmail.com</a>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Secrétariat</span>
+                            <span class="value">Sylvie Pacheco</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:basket.sdbb@gmail.com">basket.sdbb@gmail.com</a>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-user"></i>
+                            <span class="label">Tresorerie</span>
+                            <span class="value">Alexandra Tessiot</span>
+                        </div>
+                        <div class="commission-contact-row">
+                            <i class="fas fa-envelope"></i>
+                            <span class="label">Contact</span>
+                            <a href="mailto:tresoriere.sdbb@gmail.com ">tresoriere.sdbb@gmail.com </a>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Contact help box "Vous ne savez pas qui contacter ?" -->
+            <div class="contact-help-box animate-on-scroll">
+                <!-- <i class="fas fa-question-circle"></i> -->
+                <h3>Vous ne savez pas qui contacter ?</h3>
+                <p>Si vous avez la moindre question et que vous ne savez pas à quelle commission vous adresser, remplissez simplement notre formulaire de contact. Nous vous répondrons dans les plus brefs délais !</p>
+                <a href="contact.html" class="btn btn-primary btn-large">
+                 Remplir le formulaire de contact
+                </a>
+            </div>
+
+            <!-- CTA Box -->
+            <div class="commission-cta-box animate-on-scroll">
+                <h2>🫱 Envie de nous rejoindre ?</h2>
+                <p>Que vous ayez une préférence pour une commission ou que vous souhaitiez nous aider ponctuellement, contactez-nous ! Un bénévole de plus fait toujours la différence.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="contact.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-envelope"></i> Nous contacter
+                    </a>
+                    <a href="mailto:basket.sdbb@gmail.com" class="btn btn-outline btn-large" style="color: white; border-color: white;">
+                        <i class="fas fa-paper-plane"></i> basket.sdbb@gmail.com
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <img src="Logo-club/logo SDBB.png" alt="SDBB Logo" class="footer-logo">
+                    <p>Saint Doulchard Basketball - Plus qu'un club, une famille. Rejoignez la meute !</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sdbbofficiel/?locale=fr_FR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/saintdoulchard_basketball/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Le Club</h3>
+                    <ul>
+                        <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                        <li><a href="projet-club.html">Projet Club</a></li>
+                        <li><a href="labels.html">Nos Labels</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Accès Rapides</h3>
+                    <ul>
+                        <li><a href="equipes.html">Nos Équipes</a></li>
+                        <li><a href="evenements.html">Évènements</a></li>
+                        <li><a href="inscription-2026-2027.html">Infos & Inscriptions</a></li>
+                        <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        <li><a href="boutique.html">Boutique</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact & Accès</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Gymnase COSEC, 30 Av. du 11 Novembre, 18230 Saint-Doulchard</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Saint Doulchard Basketball (SDBB). Tous droits réservés.</p>
+                <div class="footer-bottom-links">
+                    <a href="mentions-legales.html">Mentions Légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="JS/script.js"></script>
+</body>
+</html>
