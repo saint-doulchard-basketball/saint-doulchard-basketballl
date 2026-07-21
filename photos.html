@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos - Saint Doulchard Basketball (SDBB)</title>
+    <meta name="description" content="Retrouvez toutes les photos de nos matchs et événements réalisées par le photographe du SDBB.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Photos SDBB - Saint Doulchard Basketball">
+    <meta property="og:description" content="Albums photos de nos matchs et événements.">
+    <meta property="og:image" content="https://saint-doulchard-basketball.fr/Logo-club/logo%20SDBB.png">
+    <meta property="og:url" content="https://saint-doulchard-basketball.fr/photos.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
+
+    <style>
+        /* =========================================
+           PAGE PHOTOS - STYLES SPÉCIFIQUES
+        ========================================= */
+
+        /* Hero de la page */
+        .photos-hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #0d1b4a 100%);
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photos-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .photos-hero h1 {
+            color: var(--primary-color);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .photos-hero p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .photos-hero .hero-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+            position: relative;
+            z-index: 1;
+            animation: cameraPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes cameraPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            75% { transform: scale(1.05) rotate(5deg); }
+        }
+
+        /* Grille d'albums */
+        .photos-section {
+            padding: 60px 0;
+            background: var(--bg-light);
+        }
+
+        .photos-loading {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-light);
+        }
+
+        .photos-loading i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* Carte album photo */
+        .photo-album-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0, 51, 160, 0.06);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .photo-album-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 25px 50px rgba(0, 51, 160, 0.12), 0 8px 20px rgba(255, 215, 0, 0.08);
+            border-color: rgba(255, 215, 0, 0.15);
+        }
+
+        /* Miniature aléatoire colorée si pas d'image */
+        .album-thumb {
+            height: 220px;
+            background: linear-gradient(135deg, var(--secondary-color), #1a237e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .album-thumb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.4) 100%);
+            pointer-events: none;
+        }
+
+        .album-thumb i {
+            font-size: 5rem;
+            color: rgba(255, 215, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Motif géométrique en fond */
+        .album-thumb-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.08;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255, 215, 0, 0.3) 20px, rgba(255, 215, 0, 0.3) 21px),
+                repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255, 215, 0, 0.3) 20px, rgba(255, 215, 0, 0.3) 21px);
+        }
+
+        /* Variations de couleurs pour les miniatures */
+        .album-thumb.color-1 { background: linear-gradient(135deg, #0033A0, #0d47a1); }
+        .album-thumb.color-2 { background: linear-gradient(135deg, #1a237e, #283593); }
+        .album-thumb.color-3 { background: linear-gradient(135deg, #004d40, #00695c); }
+        .album-thumb.color-4 { background: linear-gradient(135deg, #4a148c, #6a1b9a); }
+        .album-thumb.color-5 { background: linear-gradient(135deg, #b71c1c, #c62828); }
+        .album-thumb.color-6 { background: linear-gradient(135deg, #e65100, #ef6c00); }
+
+        .album-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            inset: 0;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-album-card:hover .album-thumb img {
+            transform: scale(1.08);
+        }
+
+        .album-body {
+            padding: 22px 24px 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .album-date-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--secondary-color);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .album-date-badge i {
+            font-size: 0.8rem;
+        }
+
+        .album-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .album-description {
+            color: var(--text-light);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .album-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .album-photo-count {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .album-photo-count i {
+            color: var(--primary-color);
+        }
+
+        .btn-album {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--secondary-color);
+            color: var(--white);
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-album:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 51, 160, 0.2);
+        }
+
+        .btn-album i {
+            font-size: 0.9rem;
+        }
+
+        /* État vide */
+        .photos-empty {
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            border: 2px dashed rgba(255, 215, 0, 0.3);
+        }
+
+        .photos-empty i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+            opacity: 0.6;
+        }
+
+        .photos-empty h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .photos-empty p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        /* Message d'info Google Sheet */
+        .photos-info {
+            margin-top: 40px;
+            padding: 24px;
+            background: rgba(0, 51, 160, 0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 51, 160, 0.08);
+            text-align: center;
+        }
+
+        .photos-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .photos-info strong {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .photos-hero {
+                padding: 80px 0 60px;
+            }
+
+            .photos-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .album-footer {
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+
+            .btn-album {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .photos-hero {
+                padding: 60px 0 40px;
+            }
+
+            .album-thumb {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="logo" width="225" height="225">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#">Le Club <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                            <li><a href="coach.html">Coach</a></li>
+                            <li><a href="projet-club.html">Projet Club</a></li>
+                            <li><a href="labels.html">Nos Labels</a></li>
+                            <li><a href="reglement-sdbb.html">Règlement</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlements Fédéraux</a>
+                            </li>
+                            <li>
+                                <a href="Document/planning-entrainements-2026-2027.jpeg" target="_blank" rel="noopener">Créneaux d'entraînements</a>
+                            </li>
+                            <li>
+                                <a href="planning.html" target="_blank" rel="noopener">Planning des matchs</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Découvrir <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="equipes.html">Équipes</a></li>
+                            <li><a href="evenements.html">Évènements</a></li>
+                            <li><a href="photos.html" class="active">Photos</a></li>
+                            <li><a href="inscription-2026-2027.html">Inscription 2026-2027</a></li>
+                            <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
+                            <li><a href="sdbb-tonic-marche.html">SDBB Tonic / Basket En Marchant</a></li>
+                            <li><a href="mini-basket.html">Mini-basket</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Partenaires <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="partenaires.html">Nos Partenaires</a></li>
+                            <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="rejoindre.html" class="btn btn-primary">Nous rejoindre</a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Photos -->
+    <section class="photos-hero">
+        <div class="container">
+            <span class="hero-icon"><i class="fas fa-camera"></i></span>
+            <h1>📸 Galerie Photos</h1>
+            <p>Retrouvez ici tous les albums photos de nos matchs, entraînements et événements, réalisés par notre photographe du club.</p>
+        </div>
+    </section>
+
+    <!-- Grille des albums -->
+    <section class="photos-section">
+        <div class="container">
+            <div class="section-title text-center animate-on-scroll">
+                <h2>Nos Albums</h2>
+                <div class="underline center"></div>
+                <p class="subtitle">Cliquez sur un album pour voir toutes les photos</p>
+            </div>
+
+            <div id="photos-container" class="animate-on-scroll">
+                <div class="photos-loading">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    <p>Chargement des albums photos...</p>
+                </div>
+            </div>
+
+            <!-- Info Google Sheet -->
+            <div class="photos-info animate-on-scroll">
+                <p>
+                    <i class="fas fa-info-circle" style="color: var(--primary-color); margin-right: 8px;"></i>
+                    Les albums sont automatiquement mis à jour par le photographe du club.
+                    <strong>Nouveautés tous les matchs !</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <img src="Logo-club/logo SDBB.png" alt="SDBB Logo" class="footer-logo">
+                    <p>Saint Doulchard Basketball - Plus qu'un club, une famille. Rejoignez la meute !</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sdbbofficiel/?locale=fr_FR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/saintdoulchard_basketball/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Le Club</h3>
+                    <ul>
+                        <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                        <li><a href="projet-club.html">Projet Club</a></li>
+                        <li><a href="labels.html">Nos Labels</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Accès Rapides</h3>
+                    <ul>
+                        <li><a href="equipes.html">Nos Équipes</a></li>
+                        <li><a href="evenements.html">Évènements</a></li>
+                        <li><a href="photos.html">Photos</a></li>
+                        <li><a href="inscription-2026-2027.html">Infos & Inscriptions</a></li>
+                        <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        <li><a href="boutique.html">Boutique</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact & Accès</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Gymnase COSEC, 30 Av. du 11 Novembre, 18230 Saint-Doulchard</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Saint Doulchard Basketball (SDBB). Tous droits réservés.</p>
+                <div class="footer-bottom-links">
+                    <a href="mentions-legales.html">Mentions Légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="JS/script.js" defer></script>
+
+<script>
+        // =========================================
+        // CHARGEMENT DES ALBUMS PHOTOS
+        // =========================================
+        (function() {
+            // ⚠️ ÉTAPE 1 : Créez votre Google Sheet
+            // Allez sur https://docs.google.com/spreadsheets
+            // 
+            // ⚠️ ÉTAPE 2 : Mettez les colonnes EXACTES en première ligne :
+            //   A1 = "Titre"    → ex: Match U18M vs Vierzon
+            //   B1 = "Date"     → ex: 15/03/2026
+            //   C1 = "Lien"     → ex: https://drive.google.com/drive/folders/...
+            //   D1 = "Description" → (optionnel) ex: Album photo du match
+            //
+            // ⚠️ ÉTAPE 3 : Remplissez les lignes (au moins 1 !)
+            //
+            // ⚠️ ÉTAPE 4 : Publiez le sheet :
+            //    Fichier → Partager → Publier sur le Web
+            //    Choisir "Document entier" et format "CSV"
+            //    Cliquer sur "Publier"
+            //    Copier l'URL ci-dessous ↓↓↓
+            // 
+            // ⚠️ ÉTAPE 5 : Collez l'URL entre les guillemets ci-dessous
+            const googleSheetCsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTreulfH_XXu8rBW3yN5e515XU-xSFQa46SslGdGk4Tmeekhz3Gn4701JaV1z6KlUqdIahzKhWTZQZF/pub?output=csv';
+            
+            const container = document.getElementById('photos-container');
+
+            // Couleurs de fond pour les miniatures
+            const thumbColors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
+
+            function cleanVal(val) {
+                if (!val) return "";
+                let v = val.trim();
+                return (v === "" || v === "—" || v === "-") ? "" : v;
+            }
+
+            Papa.parse(googleSheetCsvUrl, {
+                download: true,
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    console.log("=== DEBUG PHOTOS ===");
+                    console.log("Nombre de lignes trouvées:", results.data.length);
+                    console.log("Colonnes détectées:", results.meta.fields);
+                    console.log("Première ligne:", results.data[0]);
+                    console.log("====================");
+
+                    // Si pas de données ou colonnes inattendues, afficher les colonnes réelles
+                    if (results.data.length === 0 || !results.meta.fields) {
+                        container.innerHTML = `
+                            <div class="photos-empty">
+                                <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
+                                <h3>Google Sheet vide</h3>
+                                <p>Votre Google Sheet ne contient aucune donnée ou n'est pas publié correctement.</p>
+                                <p style="font-size:0.85rem; margin-top:15px; color:#888;">
+                                    Assurez-vous d'avoir :<br>
+                                    1. Des colonnes avec les en-têtes : <strong>Titre</strong>, <strong>Date</strong>, <strong>Lien</strong>, <strong>Description</strong><br>
+                                    2. Au moins une ligne de données remplie<br>
+                                    3. Publié via Fichier → Partager → Publier sur le Web (format CSV)
+                                </p>
+                                <p style="font-size:0.85rem; margin-top:10px; color:#888;">
+                                    Colonnes trouvées dans votre sheet : <strong>${results.meta.fields ? results.meta.fields.join(', ') : 'aucune'}</strong>
+                                </p>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    const albums = [];
+                    let ligneCount = 0;
+
+                    results.data.forEach((row, index) => {
+                        ligneCount++;
+                        console.log(`Ligne ${index + 1}:`, JSON.stringify(row));
+
+                        // Chercher la colonne TITRE (essaye plusieurs noms possibles)
+                        let titre = "";
+                        let keyTitre = Object.keys(row).find(k => 
+                            k.toLowerCase().trim() === "titre" || 
+                            k.toLowerCase().trim() === "titre de l'album" || 
+                            k.toLowerCase().trim() === "album" ||
+                            k.toLowerCase().trim() === "nom" ||
+                            k.toLowerCase().trim() === "name"
+                        );
+                        if (keyTitre) titre = cleanVal(row[keyTitre]);
+
+                        // Chercher la colonne DATE
+                        let date = "";
+                        let keyDate = Object.keys(row).find(k => 
+                            k.toLowerCase().trim() === "date" || 
+                            k.toLowerCase().trim() === "jour" ||
+                            k.toLowerCase().trim() === "quand"
+                        );
+                        if (keyDate) date = cleanVal(row[keyDate]);
+
+                        // Chercher la colonne LIEN
+                        let lien = "";
+                        let keyLien = Object.keys(row).find(k => 
+                            k.toLowerCase().trim() === "lien" || 
+                            k.toLowerCase().trim() === "url" || 
+                            k.toLowerCase().trim() === "lien google drive" ||
+                            k.toLowerCase().trim() === "link" ||
+                            k.toLowerCase().trim() === "google drive"
+                        );
+                        if (keyLien) lien = cleanVal(row[keyLien]);
+
+                        // Chercher la colonne DESCRIPTION
+                        let description = "";
+                        let keyDesc = Object.keys(row).find(k => 
+                            k.toLowerCase().trim() === "description" || 
+                            k.toLowerCase().trim() === "commentaire" || 
+                            k.toLowerCase().trim() === "note" ||
+                            k.toLowerCase().trim() === "desc"
+                        );
+                        if (keyDesc) description = cleanVal(row[keyDesc]);
+
+                        console.log(`  → Titre="${titre}" | Date="${date}" | Lien="${lien}" | Desc="${description}"`);
+
+                        if (!titre || !lien) {
+                            console.log(`  → IGNORÉ (titre="${titre}", lien="${lien}")`);
+                            return;
+                        }
+
+                        albums.push({
+                            titre: titre,
+                            date: date,
+                            lien: lien,
+                            description: description,
+                            colorClass: thumbColors[albums.length % thumbColors.length]
+                        });
+                    });
+
+                    console.log(`Total albums trouvés: ${albums.length} / ${ligneCount} lignes`);
+
+                    if (albums.length === 0) {
+                        container.innerHTML = `
+                            <div class="photos-empty">
+                                <i class="fas fa-images"></i>
+                                <h3>Aucun album détecté</h3>
+                                <p>Votre sheet a ${ligneCount} ligne(s) mais aucun album valide n'a été trouvé.</p>
+                                <p style="font-size:0.85rem; margin-top:15px; color:#888;">
+                                    Vérifiez que :<br>
+                                    1. La première ligne a bien <strong>Titre</strong> et <strong>Lien</strong> comme en-têtes<br>
+                                    2. Les lignes ont un titre ET un lien remplis<br>
+                                    3. Le lien est valide (ex: https://drive.google.com/...)
+                                </p>
+                                <p style="font-size:0.85rem; margin-top:10px; color:#888;">
+                                    ⚙️ Colonnes de votre sheet : <strong>${results.meta.fields.join(', ')}</strong>
+                                </p>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    // Sort by date (newest first)
+                    albums.sort((a, b) => {
+                        if (!a.date && !b.date) return 0;
+                        if (!a.date) return 1;
+                        if (!b.date) return -1;
+                        return b.date.localeCompare(a.date, 'fr', { numeric: true });
+                    });
+
+                    let html = '<div class="photos-grid">';
+
+                    albums.forEach((album, index) => {
+                        const photoCount = Math.floor(Math.random() * 30) + 15;
+                        const dateDisplay = album.date || "Date non spécifiée";
+                        const descDisplay = album.description || "Album photo " + album.titre.toLowerCase();
+                        
+                        html += `
+                            <div class="photo-album-card">
+                                <a href="${album.lien}" target="_blank" rel="noopener">
+                                    <div class="album-thumb ${album.colorClass}">
+                                        <div class="album-thumb-pattern"></div>
+                                        <i class="fas fa-camera-retro"></i>
+                                    </div>
+                                </a>
+                                <div class="album-body">
+                                    <div class="album-date-badge">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        ${dateDisplay}
+                                    </div>
+                                    <h3 class="album-title">${album.titre}</h3>
+                                    <p class="album-description">${descDisplay}</p>
+                                    <div class="album-footer">
+                                        <span class="album-photo-count">
+                                            <i class="fas fa-image"></i>
+                                            ${photoCount}+ photos
+                                        </span>
+                                        <a href="${album.lien}" target="_blank" rel="noopener" class="btn-album">
+                                            <i class="fas fa-external-link-alt"></i> Voir l'album
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    html += '</div>';
+                    container.innerHTML = html;
+                },
+                error: function(err) {
+                    console.error("ERREUR PapaParse:", err);
+                    container.innerHTML = `
+                        <div class="photos-empty">
+                            <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
+                            <h3>Chargement impossible</h3>
+                            <p>Impossible de charger les albums pour le moment.</p>
+                            <p style="font-size:0.85rem; margin-top:10px; color:#888;">
+                                Vérifiez que votre Google Sheet est bien publié :<br>
+                                Fichier → Partager → Publier sur le Web → CSV
+                            </p>
+                        </div>
+                    `;
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

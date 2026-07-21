@@ -14,15 +14,23 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
 
+    <!-- Préchargement prioritaire de l'image de la pop-up (LCP) -->
+    <link rel="preload" as="image" href="Document/Permanance.webp" type="image/webp" fetchpriority="high">
+
+    <!-- Optimisation des polices Google Fonts (non bloquantes) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    </noscript>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
 </head>
 <body>
-
 
     <!-- Header / Navigation -->
     <header id="main-header">
@@ -42,17 +50,14 @@
                             <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
                             <li><a href="coach.html">Coach</a></li>
                             <li><a href="projet-club.html">Projet Club</a></li>
-
                             <li><a href="labels.html">Nos Labels</a></li>
                             <li><a href="reglement-sdbb.html">Règlement</a></li>
                             <li>
                                 <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlements Fédéraux</a>
                             </li>
-
                             <li>
                                 <a href="Document/planning-entrainements-2026-2027.jpeg" target="_blank" rel="noopener">Créneaux d'entraînements</a>
                             </li>
-
                             <li>
                                 <a href="planning.html" target="_blank" rel="noopener">Planning des matchs</a>
                             </li>
@@ -71,8 +76,6 @@
                             <li>
                                 <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
                             </li>
-
-
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -84,13 +87,11 @@
                     </li>
                     <li><a href="boutique.html">Boutique</a></li>
                     <li><a href="contact.html">Contact</a></li>
-
-
                 </ul>
             </nav>
 
             <div class="header-actions">
-                    <a href="rejoindre.html" class="btn btn-primary">Nous rejoindre</a>
+                <a href="rejoindre.html" class="btn btn-primary">Nous rejoindre</a>
                 <div class="menu-toggle" id="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -101,12 +102,11 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-overlay"></div>
-            <div class="container hero-content animate-on-scroll">
-                <div class="hero-logo">
-                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="hero-logo-img" width="225" height="225">
-                </div>
-                <h1>Saint Doulchard Basketball</h1>
-
+        <div class="container hero-content animate-on-scroll">
+            <div class="hero-logo">
+                <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="hero-logo-img" width="225" height="225">
+            </div>
+            <h1>Saint Doulchard Basketball</h1>
 
             <p class="hero-subtitle">Plus qu'un club, une famille. Rejoignez-nous pour la saison 2026-2027 !</p>
             <div class="hero-buttons">
@@ -114,7 +114,7 @@
                 <a href="evenements.html" class="btn btn-outline btn-large">Évènements à venir</a>
                 <a href="planning.html" target="_blank" rel="noopener" class="btn btn-secondary btn-large">Voir le planning des matchs</a>
                 <a href="Document/planning-entrainements-2026-2027.jpeg" target="_blank" class="btn btn-outline btn-large">Créneaux d'entraînements</a>
-                <a href="Document/Permanance.png" target="_blank" class="btn btn-outline btn-large">Permanences d'inscription</a>
+                <a href="Document/Permanance.webp" target="_blank" class="btn btn-outline btn-large">Permanences d'inscription</a>
             </div>
         </div>
     </section>
@@ -123,40 +123,37 @@
     <section class="quick-links section-padding">
         <div class="container">
             <div class="section-title animate-on-scroll">
-
                 <h2>À la une au SDBB</h2>
                 <div class="underline"></div>
             </div>
             
-                <div class="news-slider" data-news-slider>
-
-                    <div class="news-slider-inner">
-                        <div class="news-slide" data-news-slide>
-                            <img src="Actualité/Détection-PNM.jpg"  alt="Détection-PNM" width="600" height="901">
-                        </div>
-                        <div class="news-slide" data-news-slide>
-                            <img src="Document/Permanance.png"  alt="Permanance" width="1100" height="1375">
-                        </div>
-                        <div class="news-slide" data-news-slide>
-                            <img src="evenement/InfoRentree.jpg"  alt="Permanance" width="600" height="849">
-                        </div>
+            <div class="news-slider" data-news-slider>
+                <div class="news-slider-inner">
+                    <div class="news-slide" data-news-slide>
+                        <img src="Actualité/Détection-PNM.jpg" alt="Détection-PNM" width="600" height="901">
                     </div>
-
-                    <button class="news-slider-btn prev" type="button" data-news-prev aria-label="Slide précédent"><i class="fas fa-chevron-left"></i></button>
-                    <button class="news-slider-btn next" type="button" data-news-next aria-label="Slide suivant"><i class="fas fa-chevron-right"></i></button>
-
-                    <div class="news-slider-dots" aria-label="Navigation des actualités">
-                        <button class="news-dot active" type="button" data-news-dot aria-label="Aller au slide 1"></button>
-                        <button class="news-dot" type="button" data-news-dot aria-label="Aller au slide 2"></button>
-                        <button class="news-dot" type="button" data-news-dot aria-label="Aller au slide 3"></button>
+                    <div class="news-slide" data-news-slide>
+                        <img src="Document/Permanance.webp" alt="Permanance" width="1100" height="1375" loading="lazy">
+                    </div>
+                    <div class="news-slide" data-news-slide>
+                        <img src="evenement/InfoRentree.jpg" alt="Info Rentrée" width="600" height="849" loading="lazy">
                     </div>
                 </div>
 
-                <div class="text-center mt-3">
-                    <a href="evenements.html" class="btn btn-primary">Voir toutes les actualités</a>
+                <button class="news-slider-btn prev" type="button" data-news-prev aria-label="Slide précédent"><i class="fas fa-chevron-left"></i></button>
+                <button class="news-slider-btn next" type="button" data-news-next aria-label="Slide suivant"><i class="fas fa-chevron-right"></i></button>
+
+                <div class="news-slider-dots" aria-label="Navigation des actualités">
+                    <button class="news-dot active" type="button" data-news-dot aria-label="Aller au slide 1"></button>
+                    <button class="news-dot" type="button" data-news-dot aria-label="Aller au slide 2"></button>
+                    <button class="news-dot" type="button" data-news-dot aria-label="Aller au slide 3"></button>
                 </div>
-                <br>
-                <br>
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="evenements.html" class="btn btn-primary">Voir toutes les actualités</a>
+            </div>
+            <br><br>
 
             <!-- Événements à venir (depuis le planning Google Sheet) -->
             <div id="upcoming-events-section" class="animate-on-scroll" style="margin-bottom: 50px;">
@@ -174,12 +171,9 @@
             <br>
 
             <div class="cards-grid">
-
-
-
                 <div class="card animate-on-scroll delay-100">
                     <div class="card-img">
-                        <img src="Images/Loto du sdbb.jpg" alt="Loto du SDBB" width="600" height="338">
+                        <img src="Images/Loto du sdbb.jpg" alt="Loto du SDBB" width="600" height="338" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>Évènements</h3>
@@ -190,7 +184,7 @@
 
                 <div class="card animate-on-scroll delay-200">
                     <div class="card-img">
-                        <img src="Images/708573445_1452262476937188_741820945812330283_n.jpg" alt="Nos Équipes" width="600" height="338">
+                        <img src="Images/708573445_1452262476937188_741820945812330283_n.jpg" alt="Nos Équipes" width="600" height="338" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>Nos Équipes</h3>
@@ -201,7 +195,7 @@
 
                 <div class="card animate-on-scroll delay-300">
                     <div class="card-img">
-                        <img src="Images/713004246_1452262460270523_1757830148393662170_n.jpg" alt="Le Projet Club" width="600" height="338">
+                        <img src="Images/713004246_1452262460270523_1757830148393662170_n.jpg" alt="Le Projet Club" width="600" height="338" loading="lazy">
                     </div>
                     <div class="card-content">
                         <h3>Le Projet Club</h3>
@@ -228,7 +222,7 @@
                     <a href="inscription-2026-2027.html" class="btn btn-primary mt-3">Infos & Inscriptions</a>
                 </div>
                 <div class="info-image animate-on-scroll delay-200">
-                    <img src="Mini-Basket/photo micro.png" alt="Enfants jouant au basket" class="rounded-img shadow" width="600" height="418">
+                    <img src="Mini-Basket/photo micro.png" alt="Enfants jouant au basket" class="rounded-img shadow" width="600" height="418" loading="lazy">
                 </div>
             </div>
         </div>
@@ -243,9 +237,9 @@
                 <p class="subtitle">Gage de qualité et d'engagement de notre club</p>
             </div>
             <div class="labels-grid animate-on-scroll delay-100">
-                <img src="Label/CartoucheLabelEcoleFrancaiseMiniBasket3Etoiles-V.jpg" alt="Label Ecole Française MiniBasket 3 Etoiles" class="label-img" width="600" height="887">
-                <img src="Label/CartoucheLabelFFBBCitoyenVertical-1Stars (1).png" alt="Label FFBB Citoyen 1 Etoile" class="label-img" width="600" height="886">
-                <img src="Label/LOGO DETOURE.png" alt="Autre Label" class="label-img" width="600" height="890">
+                <img src="Label/CartoucheLabelEcoleFrancaiseMiniBasket3Etoiles-V.jpg" alt="Label Ecole Française MiniBasket 3 Etoiles" class="label-img" width="600" height="887" loading="lazy">
+                <img src="Label/CartoucheLabelFFBBCitoyenVertical-1Stars (1).png" alt="Label FFBB Citoyen 1 Etoile" class="label-img" width="600" height="886" loading="lazy">
+                <img src="Label/LOGO DETOURE.png" alt="Autre Label" class="label-img" width="600" height="890" loading="lazy">
             </div>
             <div class="text-center mt-3 animate-on-scroll delay-200">
                 <a href="labels.html" class="btn btn-outline" style="color:var(--secondary-color); border-color:var(--secondary-color);">En savoir plus sur nos labels</a>
@@ -262,15 +256,15 @@
             </div>
             <div class="partners-marquee">
                 <div class="partners-track">
-                    <div class="partner-logo"><img src="Partenaire/Credit-Agricole-Embleme (1).jpg" alt="Credit Agricole" width="300" height="169"></div>
-                    <div class="partner-logo"><img src="Partenaire/InterSport-Embleme.png" alt="Intersport" width="300" height="169"></div>
-                    <div class="partner-logo"><img src="Partenaire/vandb_logo (1).jpg" alt="V and B" width="300" height="241"></div>
-                    <div class="partner-logo"><img src="Partenaire/EEE.png" alt="EEE" width="300" height="111"></div>
-                    <div class="partner-logo"><img src="Partenaire/Design sans titre.png" alt="Partenaire" width="300" height="111"></div>
-                    <div class="partner-logo"><img src="Partenaire/274145215_4649593398501519_6012524253839782573_n.jpg" alt="Partenaire" width="300" height="300"></div>
-                    <div class="partner-logo"><img src="Partenaire/483522626_1042011964628910_1506342249293235695_n.jpg" alt="Partenaire" width="300" height="155"></div>
-                    <div class="partner-logo"><img src="Partenaire/BANNIERE ONGLERIE DEFINITIVE (1).png" alt="Partenaire" width="300" height="150"></div>
-                    <div class="partner-logo"><img src="Partenaire/BANNIERE SARL TESSIOT DEFINITIVE (1).png" alt="Partenaire" width="300" height="150"></div>
+                    <div class="partner-logo"><img src="Partenaire/Credit-Agricole-Embleme (1).jpg" alt="Credit Agricole" width="300" height="169" loading="lazy"></div>
+                    <div class="partner-logo"><img src="Partenaire/InterSport-Embleme.png" alt="Intersport" width="300" height="169" loading="lazy"></div>
+                    <div class="partner-logo"><img src="Partenaire/vandb_logo (1).jpg" alt="V and B" width="300" height="241" loading="lazy"></div>
+                    <div class="partner-logo"><img src="Partenaire/EEE.png" alt="EEE" width="300" height="111" loading="lazy"></div>
+                    <div class="partner-logo"><img src="Partenaire/Design sans titre.png" alt="Partenaire" width="300" height="111" loading="lazy"></div>
+                    <div class="partner-logo"><img src="Partenaire/274145215_4649593398501519_6012524253839782573_n.jpg" alt="Partenaire" width="300" height="300" loading="lazy"></div>
+                    <div class="partner-logo"><img src="Partenaire/483522626_1042011964628910_1506342249293235695_n.jpg" alt="Partenaire" width="300" height="155" loading="lazy"></div>
+                    <div class="partner-logo"><img src="Partenaire/BANNIERE ONGLERIE DEFINITIVE (1).png" alt="Partenaire" width="300" height="150" loading="lazy"></div>
+                    <div class="partner-logo"><img src="Partenaire/BANNIERE SARL TESSIOT DEFINITIVE (1).png" alt="Partenaire" width="300" height="150" loading="lazy"></div>
                 </div>
             </div>
             <div class="text-center mt-4">
@@ -310,7 +304,7 @@
                         <li><a href="inscription-2026-2027.html">Infos & Inscriptions</a></li>
                         <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
                         <li><a href="boutique.html">Boutique</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
 
@@ -331,21 +325,18 @@
         </div>
     </footer>
 
-    <!-- Popup de bienvenue  -->
+    <!-- Popup de bienvenue -->
     <div id="welcome-popup" class="welcome-popup" aria-hidden="true">
         <div class="welcome-popup-content">
             <button id="welcome-popup-close" class="welcome-popup-close" aria-label="Fermer">
                 <i class="fas fa-times"></i>
             </button>
-            <img src="Document/Permanance.png" alt="Affiche Permanance d'inscription" class="welcome-popup-img" width="1100" height="1375">
+            <img src="Document/Permanance.webp" alt="Affiche Permanence d'inscription" class="welcome-popup-img" width="1100" height="1375" fetchpriority="high">
         </div>
     </div>
 
     <!-- Style pour la section événements à venir -->
     <style>
-        /* =========================================
-           ÉVÉNEMENTS À VENIR - STYLES SPÉCIFIQUES
-        ========================================= */
         #upcoming-events-section {
             position: relative;
         }
@@ -479,6 +470,7 @@
             display: flex;
             flex-direction: column;
             background: linear-gradient(180deg, var(--white) 0%, #fafcff 100%);
+            position: relative;
         }
 
         .event-upcoming-title {
@@ -582,11 +574,6 @@
             color: var(--text-light);
         }
 
-        /* Effet de particules décoratives */
-        .event-upcoming-body {
-            position: relative;
-        }
-
         .event-upcoming-body::after {
             content: '🏀';
             position: absolute;
@@ -626,202 +613,188 @@
     </style>
 
     <!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-<script src="JS/script.js" defer></script>
-<script src="JS/actualite-slider.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="JS/script.js" defer></script>
+    <script src="JS/actualite-slider.js" defer></script>
 
-<script>
-    // =========================================
-    // CHARGEMENT DES ÉVÉNEMENTS À VENIR
-    // =========================================
-    (function() {
-        const googleSheetCsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQCdqZz86gad3qoETASJvaQqpA_IZkcefdjQqRQzOMzKiLS3G-5n_kJNYzrnKyZyaRa2qRdOnKNK1Om/pub?gid=0&single=true&output=csv';
-        const container = document.getElementById('upcoming-events-container');
+    <script>
+        (function() {
+            const googleSheetCsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQCdqZz86gad3qoETASJvaQqpA_IZkcefdjQqRQzOMzKiLS3G-5n_kJNYzrnKyZyaRa2qRdOnKNK1Om/pub?gid=0&single=true&output=csv';
+            const container = document.getElementById('upcoming-events-container');
 
-        function getWeekRangeString(numSemaine) {
-            let year = 2026;
-            if (numSemaine >= 1 && numSemaine <= 30) year = 2027;
-            let simple = new Date(year, 0, 1 + (numSemaine - 1) * 7);
-            let dow = simple.getDay();
-            let ISOweekStart = simple;
-            if (dow <= 4) {
-                ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
-            } else {
-                ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
-            }
-            let ISOweekEnd = new Date(ISOweekStart);
-            ISOweekEnd.setDate(ISOweekStart.getDate() + 6);
-            let pad = (n) => String(n).padStart(2, '0');
-            let debutStr = pad(ISOweekStart.getDate()) + "/" + pad(ISOweekStart.getMonth() + 1);
-            let finStr = pad(ISOweekEnd.getDate()) + "/" + pad(ISOweekEnd.getMonth() + 1);
-            return `SEMAINE ${numSemaine} (du ${debutStr} au ${finStr})`;
-        }
-
-        function cleanVal(val) {
-            if (!val) return "—";
-            let v = val.trim();
-            return (v === "" || v === "—" || v === "-") ? "—" : v;
-        }
-
-        function parseDateFromHoraire(horaireStr) {
-            if (!horaireStr || horaireStr === "—") return null;
-            // Try to extract a date from the horaire string
-            // Format examples: "Samedi 29 Août", "Samedi 29 Août à 14h", etc.
-            const months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
-            const lowercaseStr = horaireStr.toLowerCase();
-            
-            for (let i = 0; i < months.length; i++) {
-                if (lowercaseStr.includes(months[i])) {
-                    // Found a month, try to extract day number
-                    const match = horaireStr.match(/(\d+)/);
-                    if (match) {
-                        const day = parseInt(match[1]);
-                        // Create a date - use year 2026 as base
-                        let year = 2026;
-                        if (i <= 5) year = 2027; // Jan-Jun = 2027 (next year in our context)
-                        return new Date(year, i, day);
-                    }
+            function getWeekRangeString(numSemaine) {
+                let year = 2026;
+                if (numSemaine >= 1 && numSemaine <= 30) year = 2027;
+                let simple = new Date(year, 0, 1 + (numSemaine - 1) * 7);
+                let dow = simple.getDay();
+                let ISOweekStart = simple;
+                if (dow <= 4) {
+                    ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+                } else {
+                    ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
                 }
+                let ISOweekEnd = new Date(ISOweekStart);
+                ISOweekEnd.setDate(ISOweekStart.getDate() + 6);
+                let pad = (n) => String(n).padStart(2, '0');
+                let debutStr = pad(ISOweekStart.getDate()) + "/" + pad(ISOweekStart.getMonth() + 1);
+                let finStr = pad(ISOweekEnd.getDate()) + "/" + pad(ISOweekEnd.getMonth() + 1);
+                return `SEMAINE ${numSemaine} (du ${debutStr} au ${finStr})`;
             }
-            return null;
-        }
 
-        function formatDateDisplay(horaireStr) {
-            if (!horaireStr || horaireStr === "—") return "Date à définir";
-            
-            // Clean up the horaire string: remove the day name if present, keep date + time
-            let display = horaireStr;
-            // If it has "Samedi 29 Août" format, keep as is since it's already well formatted
-            const dayNames = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
-            let hasDayName = false;
-            for (let d of dayNames) {
-                if (display.toLowerCase().includes(d)) {
-                    hasDayName = true;
-                    break;
-                }
+            function cleanVal(val) {
+                if (!val) return "—";
+                let v = val.trim();
+                return (v === "" || v === "—" || v === "-") ? "—" : v;
             }
-            
-            if (hasDayName) {
-                return display.charAt(0).toUpperCase() + display.slice(1);
-            }
-            
-            return display;
-        }
 
-        Papa.parse(googleSheetCsvUrl, {
-            download: true,
-            header: true,
-            skipEmptyLines: true,
-            complete: function(results) {
-                const events = [];
+            function parseDateFromHoraire(horaireStr) {
+                if (!horaireStr || horaireStr === "—") return null;
+                const months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+                const lowercaseStr = horaireStr.toLowerCase();
                 
-                results.data.forEach(row => {
-                    if (!row["Semaine"] || row["Semaine"].trim() === "") return;
-                    
-                    let equipe = cleanVal(row["equipe"]).toLowerCase();
-                    // Filter only rows where equipe contains "evenement" or "manifestation"
-                    if (equipe.includes("evenement") || equipe.includes("manifestation") || equipe.includes("club")) {
-                        
-                        let dateText = cleanVal(row["jour"]);
-                        if (row["Date"]) dateText += " " + row["Date"].trim();
-                        
-                        let heureSaisie = row["Heure"] || row["heure"];
-                        if (heureSaisie && heureSaisie.trim() !== "" && heureSaisie.trim() !== "—") {
-                            dateText += " à " + heureSaisie.trim();
+                for (let i = 0; i < months.length; i++) {
+                    if (lowercaseStr.includes(months[i])) {
+                        const match = horaireStr.match(/(\d+)/);
+                        if (match) {
+                            const day = parseInt(match[1]);
+                            let year = 2026;
+                            if (i <= 5) year = 2027;
+                            return new Date(year, i, day);
                         }
-
-                        events.push({
-                            semaine: getWeekRangeString(parseInt(row["Semaine"].trim())),
-                            equipe: cleanVal(row["equipe"]),
-                            adversaire: cleanVal(row["adversaire"]),
-                            lieu: cleanVal(row["Lieu"]),
-                            horaire: dateText,
-                            commentaire: row["Commentaire"] && row["Commentaire"].trim() !== "—" ? row["Commentaire"].trim() : "",
-                            dateObj: parseDateFromHoraire(dateText)
-                        });
                     }
-                });
+                }
+                return null;
+            }
 
-                // Filter only FUTURE events (date is today or later)
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
+            function formatDateDisplay(horaireStr) {
+                if (!horaireStr || horaireStr === "—") return "Date à définir";
                 
-                const futureEvents = events.filter(event => {
-                    if (!event.dateObj) return true; // No date = keep it (still upcoming)
-                    return event.dateObj >= today;   // Only future or today
-                });
+                let display = horaireStr;
+                const dayNames = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
+                let hasDayName = false;
+                for (let d of dayNames) {
+                    if (display.toLowerCase().includes(d)) {
+                        hasDayName = true;
+                        break;
+                    }
+                }
+                
+                if (hasDayName) {
+                    return display.charAt(0).toUpperCase() + display.slice(1);
+                }
+                
+                return display;
+            }
 
-                // Sort by date (ascending) - events with no date go to the end
-                futureEvents.sort((a, b) => {
-                    if (!a.dateObj && !b.dateObj) return 0;
-                    if (!a.dateObj) return 1;
-                    if (!b.dateObj) return -1;
-                    return a.dateObj - b.dateObj;
-                });
+            Papa.parse(googleSheetCsvUrl, {
+                download: true,
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    const events = [];
+                    
+                    results.data.forEach(row => {
+                        if (!row["Semaine"] || row["Semaine"].trim() === "") return;
+                        
+                        let equipe = cleanVal(row["equipe"]).toLowerCase();
+                        if (equipe.includes("evenement") || equipe.includes("manifestation") || equipe.includes("club")) {
+                            
+                            let dateText = cleanVal(row["jour"]);
+                            if (row["Date"]) dateText += " " + row["Date"].trim();
+                            
+                            let heureSaisie = row["Heure"] || row["heure"];
+                            if (heureSaisie && heureSaisie.trim() !== "" && heureSaisie.trim() !== "—") {
+                                dateText += " à " + heureSaisie.trim();
+                            }
 
-                // Show max 6 upcoming events
-                const eventsToShow = futureEvents.slice(0, 6);
+                            events.push({
+                                semaine: getWeekRangeString(parseInt(row["Semaine"].trim())),
+                                equipe: cleanVal(row["equipe"]),
+                                adversaire: cleanVal(row["adversaire"]),
+                                lieu: cleanVal(row["Lieu"]),
+                                horaire: dateText,
+                                commentaire: row["Commentaire"] && row["Commentaire"].trim() !== "—" ? row["Commentaire"].trim() : "",
+                                dateObj: parseDateFromHoraire(dateText)
+                            });
+                        }
+                    });
 
-                if (eventsToShow.length === 0) {
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    
+                    const futureEvents = events.filter(event => {
+                        if (!event.dateObj) return true;
+                        return event.dateObj >= today;
+                    });
+
+                    futureEvents.sort((a, b) => {
+                        if (!a.dateObj && !b.dateObj) return 0;
+                        if (!a.dateObj) return 1;
+                        if (!b.dateObj) return -1;
+                        return a.dateObj - b.dateObj;
+                    });
+
+                    const eventsToShow = futureEvents.slice(0, 6);
+
+                    if (eventsToShow.length === 0) {
+                        container.innerHTML = `
+                            <div class="event-upcoming-empty">
+                                <i class="fas fa-calendar-check"></i>
+                                <p>Aucun événement planifié pour le moment. Revenez bientôt !</p>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    let html = '<div class="events-upcoming-grid">';
+                    
+                    eventsToShow.forEach(event => {
+                        let lieuDisplay = event.lieu !== "—" ? event.lieu : "Lieu à définir";
+                        let lieuIcon = event.lieu !== "—" ? 'fa-map-marker-alt' : 'fa-question-circle';
+                        let horaireDisplay = formatDateDisplay(event.horaire);
+                        
+                        html += `
+                            <div class="event-upcoming-card">
+                                <div class="event-upcoming-header">
+                                    <span class="event-upcoming-team">
+                                        <span class="team-icon"><i class="fas fa-star"></i></span>
+                                        ${event.equipe}
+                                    </span>
+                                    <span class="event-upcoming-badge">
+                                        <i class="fas fa-calendar"></i> À venir
+                                    </span>
+                                </div>
+                                <div class="event-upcoming-body">
+                                    <h3 class="event-upcoming-title">${event.adversaire !== "—" ? event.adversaire : "Événement SDBB"}</h3>
+                                    <div class="event-upcoming-details">
+                                        <div class="event-upcoming-detail">
+                                            <i class="fas fa-calendar-day"></i>
+                                            <span><strong>Date :</strong> ${horaireDisplay}</span>
+                                        </div>
+                                        <div class="event-upcoming-detail">
+                                            <i class="fas ${lieuIcon}"></i>
+                                            <span><strong>Lieu :</strong> ${lieuDisplay}</span>
+                                        </div>
+                                    </div>
+                                    ${event.commentaire ? `<div class="event-upcoming-comment"><i class="fas fa-info-circle"></i> ${event.commentaire}</div>` : ''}
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    html += '</div>';
+                    container.innerHTML = html;
+                },
+                error: function() {
                     container.innerHTML = `
                         <div class="event-upcoming-empty">
-                            <i class="fas fa-calendar-check"></i>
-                            <p>Aucun événement planifié pour le moment. Revenez bientôt !</p>
+                            <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
+                            <p>Impossible de charger les événements pour le moment.</p>
                         </div>
                     `;
-                    return;
                 }
-
-                let html = '<div class="events-upcoming-grid">';
-                
-                eventsToShow.forEach(event => {
-                    let lieuDisplay = event.lieu !== "—" ? event.lieu : "Lieu à définir";
-                    let lieuIcon = event.lieu !== "—" ? 'fa-map-marker-alt' : 'fa-question-circle';
-                    let horaireDisplay = formatDateDisplay(event.horaire);
-                    
-                    html += `
-                        <div class="event-upcoming-card">
-                            <div class="event-upcoming-header">
-                                <span class="event-upcoming-team">
-                                    <span class="team-icon"><i class="fas fa-star"></i></span>
-                                    ${event.equipe}
-                                </span>
-                                <span class="event-upcoming-badge">
-                                    <i class="fas fa-calendar"></i> À venir
-                                </span>
-                            </div>
-                            <div class="event-upcoming-body">
-                                <h3 class="event-upcoming-title">${event.adversaire !== "—" ? event.adversaire : "Événement SDBB"}</h3>
-                                <div class="event-upcoming-details">
-                                    <div class="event-upcoming-detail">
-                                        <i class="fas fa-calendar-day"></i>
-                                        <span><strong>Date :</strong> ${horaireDisplay}</span>
-                                    </div>
-                                    <div class="event-upcoming-detail">
-                                        <i class="fas ${lieuIcon}"></i>
-                                        <span><strong>Lieu :</strong> ${lieuDisplay}</span>
-                                    </div>
-                                </div>
-                                ${event.commentaire ? `<div class="event-upcoming-comment"><i class="fas fa-info-circle"></i> ${event.commentaire}</div>` : ''}
-                            </div>
-                        </div>
-                    `;
-                });
-
-                html += '</div>';
-                container.innerHTML = html;
-            },
-            error: function() {
-                container.innerHTML = `
-                    <div class="event-upcoming-empty">
-                        <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
-                        <p>Impossible de charger les événements pour le moment.</p>
-                    </div>
-                `;
-            }
-        });
-    })();
-</script>
-
+            });
+        })();
+    </script>
 </body>
 </html>
