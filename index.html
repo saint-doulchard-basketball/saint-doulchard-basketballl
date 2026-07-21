@@ -158,6 +158,21 @@
                 <br>
                 <br>
 
+            <!-- Événements à venir (depuis le planning Google Sheet) -->
+            <div id="upcoming-events-section" class="animate-on-scroll" style="margin-bottom: 50px;">
+                <div class="section-title">
+                    <h2>Événements à venir</h2>
+                    <div class="underline"></div>
+                </div>
+                <div id="upcoming-events-container" style="min-height: 100px;">
+                    <p style="color: var(--text-light);"><i class="fas fa-circle-notch fa-spin"></i> Chargement des événements...</p>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="planning.html" class="btn btn-secondary">Voir tout le planning</a>
+                </div>
+            </div>
+            <br>
+
             <div class="cards-grid">
 
 
@@ -326,9 +341,487 @@
         </div>
     </div>
 
+    <!-- Style pour la section événements à venir -->
+    <style>
+        /* =========================================
+           ÉVÉNEMENTS À VENIR - STYLES SPÉCIFIQUES
+        ========================================= */
+        #upcoming-events-section {
+            position: relative;
+        }
+
+        #upcoming-events-section::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            border-radius: 2px;
+            opacity: 0.4;
+        }
+
+        .events-upcoming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 28px;
+        }
+
+        .event-upcoming-card {
+            background: var(--white);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0, 51, 160, 0.06);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .event-upcoming-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), #FFE44D, var(--primary-color));
+            background-size: 200% 100%;
+            animation: shimmerBar 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmerBar {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 100% 0%; }
+        }
+
+        .event-upcoming-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 20px 50px rgba(0, 51, 160, 0.12), 0 8px 20px rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.2);
+        }
+
+        .event-upcoming-header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #0d47a1 100%);
+            color: var(--white);
+            padding: 16px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-upcoming-header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.12), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .event-upcoming-team {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .event-upcoming-team .team-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 215, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .event-upcoming-badge {
+            background: var(--primary-color);
+            color: var(--secondary-dark);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+            animation: pulseBadge 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes pulseBadge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .event-upcoming-body {
+            padding: 22px 22px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, var(--white) 0%, #fafcff 100%);
+        }
+
+        .event-upcoming-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            line-height: 1.3;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .event-upcoming-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 45px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .event-upcoming-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .event-upcoming-detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.92rem;
+            color: var(--text-light);
+            padding: 8px 12px;
+            background: rgba(0, 51, 160, 0.03);
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .event-upcoming-detail:hover {
+            background: rgba(255, 215, 0, 0.08);
+        }
+
+        .event-upcoming-detail i {
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .event-upcoming-detail strong {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .event-upcoming-comment {
+            margin-top: auto;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, #fefce8, #fffdf0);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 0.88rem;
+            color: #7c5c0e;
+            font-weight: 500;
+            line-height: 1.5;
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.1);
+        }
+
+        .event-upcoming-comment i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+
+        .event-upcoming-empty {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--white);
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            border: 2px dashed rgba(255, 215, 0, 0.3);
+        }
+
+        .event-upcoming-empty i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+            opacity: 0.6;
+        }
+
+        .event-upcoming-empty p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        /* Effet de particules décoratives */
+        .event-upcoming-body {
+            position: relative;
+        }
+
+        .event-upcoming-body::after {
+            content: '🏀';
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 2.5rem;
+            opacity: 0.04;
+            pointer-events: none;
+            transform: rotate(-15deg);
+        }
+
+        @media (max-width: 768px) {
+            .events-upcoming-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .event-upcoming-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .event-upcoming-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .event-upcoming-title {
+                text-align: center;
+            }
+
+            .event-upcoming-body::after {
+                display: none;
+            }
+        }
+    </style>
+
     <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 <script src="JS/script.js" defer></script>
 <script src="JS/actualite-slider.js" defer></script>
+
+<script>
+    // =========================================
+    // CHARGEMENT DES ÉVÉNEMENTS À VENIR
+    // =========================================
+    (function() {
+        const googleSheetCsvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQCdqZz86gad3qoETASJvaQqpA_IZkcefdjQqRQzOMzKiLS3G-5n_kJNYzrnKyZyaRa2qRdOnKNK1Om/pub?gid=0&single=true&output=csv';
+        const container = document.getElementById('upcoming-events-container');
+
+        function getWeekRangeString(numSemaine) {
+            let year = 2026;
+            if (numSemaine >= 1 && numSemaine <= 30) year = 2027;
+            let simple = new Date(year, 0, 1 + (numSemaine - 1) * 7);
+            let dow = simple.getDay();
+            let ISOweekStart = simple;
+            if (dow <= 4) {
+                ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+            } else {
+                ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+            }
+            let ISOweekEnd = new Date(ISOweekStart);
+            ISOweekEnd.setDate(ISOweekStart.getDate() + 6);
+            let pad = (n) => String(n).padStart(2, '0');
+            let debutStr = pad(ISOweekStart.getDate()) + "/" + pad(ISOweekStart.getMonth() + 1);
+            let finStr = pad(ISOweekEnd.getDate()) + "/" + pad(ISOweekEnd.getMonth() + 1);
+            return `SEMAINE ${numSemaine} (du ${debutStr} au ${finStr})`;
+        }
+
+        function cleanVal(val) {
+            if (!val) return "—";
+            let v = val.trim();
+            return (v === "" || v === "—" || v === "-") ? "—" : v;
+        }
+
+        function parseDateFromHoraire(horaireStr) {
+            if (!horaireStr || horaireStr === "—") return null;
+            // Try to extract a date from the horaire string
+            // Format examples: "Samedi 29 Août", "Samedi 29 Août à 14h", etc.
+            const months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+            const lowercaseStr = horaireStr.toLowerCase();
+            
+            for (let i = 0; i < months.length; i++) {
+                if (lowercaseStr.includes(months[i])) {
+                    // Found a month, try to extract day number
+                    const match = horaireStr.match(/(\d+)/);
+                    if (match) {
+                        const day = parseInt(match[1]);
+                        // Create a date - use year 2026 as base
+                        let year = 2026;
+                        if (i <= 5) year = 2027; // Jan-Jun = 2027 (next year in our context)
+                        return new Date(year, i, day);
+                    }
+                }
+            }
+            return null;
+        }
+
+        function formatDateDisplay(horaireStr) {
+            if (!horaireStr || horaireStr === "—") return "Date à définir";
+            
+            // Clean up the horaire string: remove the day name if present, keep date + time
+            let display = horaireStr;
+            // If it has "Samedi 29 Août" format, keep as is since it's already well formatted
+            const dayNames = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
+            let hasDayName = false;
+            for (let d of dayNames) {
+                if (display.toLowerCase().includes(d)) {
+                    hasDayName = true;
+                    break;
+                }
+            }
+            
+            if (hasDayName) {
+                return display.charAt(0).toUpperCase() + display.slice(1);
+            }
+            
+            return display;
+        }
+
+        Papa.parse(googleSheetCsvUrl, {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                const events = [];
+                
+                results.data.forEach(row => {
+                    if (!row["Semaine"] || row["Semaine"].trim() === "") return;
+                    
+                    let equipe = cleanVal(row["equipe"]).toLowerCase();
+                    // Filter only rows where equipe contains "evenement" or "manifestation"
+                    if (equipe.includes("evenement") || equipe.includes("manifestation") || equipe.includes("club")) {
+                        
+                        let dateText = cleanVal(row["jour"]);
+                        if (row["Date"]) dateText += " " + row["Date"].trim();
+                        
+                        let heureSaisie = row["Heure"] || row["heure"];
+                        if (heureSaisie && heureSaisie.trim() !== "" && heureSaisie.trim() !== "—") {
+                            dateText += " à " + heureSaisie.trim();
+                        }
+
+                        events.push({
+                            semaine: getWeekRangeString(parseInt(row["Semaine"].trim())),
+                            equipe: cleanVal(row["equipe"]),
+                            adversaire: cleanVal(row["adversaire"]),
+                            lieu: cleanVal(row["Lieu"]),
+                            horaire: dateText,
+                            commentaire: row["Commentaire"] && row["Commentaire"].trim() !== "—" ? row["Commentaire"].trim() : "",
+                            dateObj: parseDateFromHoraire(dateText)
+                        });
+                    }
+                });
+
+                // Filter only FUTURE events (date is today or later)
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                
+                const futureEvents = events.filter(event => {
+                    if (!event.dateObj) return true; // No date = keep it (still upcoming)
+                    return event.dateObj >= today;   // Only future or today
+                });
+
+                // Sort by date (ascending) - events with no date go to the end
+                futureEvents.sort((a, b) => {
+                    if (!a.dateObj && !b.dateObj) return 0;
+                    if (!a.dateObj) return 1;
+                    if (!b.dateObj) return -1;
+                    return a.dateObj - b.dateObj;
+                });
+
+                // Show max 6 upcoming events
+                const eventsToShow = futureEvents.slice(0, 6);
+
+                if (eventsToShow.length === 0) {
+                    container.innerHTML = `
+                        <div class="event-upcoming-empty">
+                            <i class="fas fa-calendar-check"></i>
+                            <p>Aucun événement planifié pour le moment. Revenez bientôt !</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = '<div class="events-upcoming-grid">';
+                
+                eventsToShow.forEach(event => {
+                    let lieuDisplay = event.lieu !== "—" ? event.lieu : "Lieu à définir";
+                    let lieuIcon = event.lieu !== "—" ? 'fa-map-marker-alt' : 'fa-question-circle';
+                    let horaireDisplay = formatDateDisplay(event.horaire);
+                    
+                    html += `
+                        <div class="event-upcoming-card">
+                            <div class="event-upcoming-header">
+                                <span class="event-upcoming-team">
+                                    <span class="team-icon"><i class="fas fa-star"></i></span>
+                                    ${event.equipe}
+                                </span>
+                                <span class="event-upcoming-badge">
+                                    <i class="fas fa-calendar"></i> À venir
+                                </span>
+                            </div>
+                            <div class="event-upcoming-body">
+                                <h3 class="event-upcoming-title">${event.adversaire !== "—" ? event.adversaire : "Événement SDBB"}</h3>
+                                <div class="event-upcoming-details">
+                                    <div class="event-upcoming-detail">
+                                        <i class="fas fa-calendar-day"></i>
+                                        <span><strong>Date :</strong> ${horaireDisplay}</span>
+                                    </div>
+                                    <div class="event-upcoming-detail">
+                                        <i class="fas ${lieuIcon}"></i>
+                                        <span><strong>Lieu :</strong> ${lieuDisplay}</span>
+                                    </div>
+                                </div>
+                                ${event.commentaire ? `<div class="event-upcoming-comment"><i class="fas fa-info-circle"></i> ${event.commentaire}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
+                container.innerHTML = html;
+            },
+            error: function() {
+                container.innerHTML = `
+                    <div class="event-upcoming-empty">
+                        <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
+                        <p>Impossible de charger les événements pour le moment.</p>
+                    </div>
+                `;
+            }
+        });
+    })();
+</script>
 
 </body>
 </html>
