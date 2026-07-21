@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page non trouvée | SDBB</title>
+    <meta name="description" content="Page introuvable - Saint Doulchard Basketball. Merci de contacter support.sdbb@gmail.com pour signaler l'erreur.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="404 - Page non trouvée | SDBB">
+    <meta property="og:description" content="Oups ! Cette page n'existe pas ou a été déplacée. Contactez-nous pour signaler l'erreur.">
+    <meta property="og:image" content="https://saint-doulchard-basketball.fr/Logo-club/logo%20SDBB.png">
+    <meta property="og:url" content="https://saint-doulchard-basketball.fr/404.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
+
+    <style>
+        /* =========================================
+           PAGE 404 - STYLES SPÉCIFIQUES
+        ========================================= */
+        .page-404 {
+            min-height: calc(100vh - 250px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #ffffff 100%);
+        }
+
+        /* Cercle décoratif animé (ballon de basket) */
+        .page-404::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, rgba(255, 215, 0, 0) 70%);
+            animation: floatBall 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .page-404::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 51, 160, 0.06) 0%, rgba(0, 51, 160, 0) 70%);
+            animation: floatBall 10s ease-in-out infinite reverse;
+            pointer-events: none;
+        }
+
+        @keyframes floatBall {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.05); }
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Illustration 404 avec ballon */
+        .error-illustration {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .error-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(6rem, 20vw, 12rem);
+            line-height: 1;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+            letter-spacing: -5px;
+        }
+
+        .error-basketball {
+            position: absolute;
+            top: -20px;
+            right: -60px;
+            width: 80px;
+            height: 80px;
+            animation: bounceBall 2s ease-in-out infinite;
+        }
+
+        @keyframes bounceBall {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(-10deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-8px) rotate(10deg); }
+        }
+
+        .error-basketball svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 8px 20px rgba(255, 215, 0, 0.3));
+        }
+
+        /* Titre */
+        .error-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .error-title span {
+            display: inline-block;
+            animation: pulseText 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Message principal */
+        .error-message {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Carte contact email */
+        .error-contact-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--white);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 16px;
+            padding: 18px 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .error-contact-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .error-contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), #FFE44D);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .error-contact-text {
+            text-align: left;
+        }
+
+        .error-contact-text small {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 3px;
+            font-weight: 500;
+        }
+
+        .error-contact-text a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .error-contact-text a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Boutons */
+        .error-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .error-actions .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-size: 1rem;
+        }
+
+        .error-actions .btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Points de suspension animés */
+        .error-dots {
+            display: inline-flex;
+            gap: 6px;
+            margin-left: 5px;
+        }
+
+        .error-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: inline-block;
+            animation: dotBounce 1.4s ease-in-out infinite;
+        }
+
+        .error-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .error-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes dotBounce {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Liens utiles */
+        .error-links {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .error-links a {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        .error-links a:hover {
+            color: var(--secondary-color);
+            background: rgba(0, 51, 160, 0.05);
+        }
+
+        .error-links a i {
+            color: var(--primary-color);
+        }
+
+        /* Bandeau de suggestion */
+        .error-suggestion {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0, 51, 160, 0.03);
+            border-radius: 12px;
+            border: 1px dashed rgba(0, 51, 160, 0.1);
+        }
+
+        .error-suggestion p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .error-suggestion strong {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-404 {
+                padding: 60px 20px;
+            }
+
+            .error-basketball {
+                width: 60px;
+                height: 60px;
+                top: -10px;
+                right: -40px;
+            }
+
+            .error-contact-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .error-contact-text {
+                text-align: center;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .error-actions .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .page-404 {
+                padding: 40px 15px;
+            }
+
+            .error-number {
+                font-size: 5rem;
+            }
+
+            .error-basketball {
+                width: 45px;
+                height: 45px;
+                top: -5px;
+                right: -30px;
+            }
+
+            .error-contact-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation (identique au site) -->
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="logo" width="225" height="225">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#">Le Club <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                            <li><a href="coach.html">Coach</a></li>
+                            <li><a href="projet-club.html">Projet Club</a></li>
+                            <li><a href="labels.html">Nos Labels</a></li>
+                            <li><a href="reglement-sdbb.html">Règlement</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlements Fédéraux</a>
+                            </li>
+                            <li>
+                                <a href="Document/planning-entrainements-2026-2027.jpeg" target="_blank" rel="noopener">Créneaux d'entraînements</a>
+                            </li>
+                            <li>
+                                <a href="planning.html" target="_blank" rel="noopener">Planning des matchs</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Découvrir <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="equipes.html">Équipes</a></li>
+                            <li><a href="evenements.html">Évènements</a></li>
+                            <li><a href="inscription-2026-2027.html">Inscription 2026-2027</a></li>
+                            <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
+                            <li><a href="sdbb-tonic-marche.html">SDBB Tonic / Basket En Marchant</a></li>
+                            <li><a href="mini-basket.html">Mini-basket</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Partenaires <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="partenaires.html">Nos Partenaires</a></li>
+                            <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="rejoindre.html" class="btn btn-primary">Nous rejoindre</a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page 404 -->
+    <section class="page-404">
+        <div class="error-container">
+
+            <!-- Illustration 404 avec ballon de basket animé -->
+            <div class="error-illustration">
+                <div class="error-number">404</div>
+                <div class="error-basketball">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Ballon de basket -->
+                        <circle cx="50" cy="50" r="45" fill="#D2691E" stroke="#8B4513" stroke-width="2"/>
+                        <!-- Lignes du ballon -->
+                        <path d="M50 5 L50 95" stroke="#8B4513" stroke-width="2" fill="none"/>
+                        <path d="M5 50 L95 50" stroke="#8B4513" stroke-width="2" fill="none"/>
+                        <path d="M15 15 Q50 35 85 15" stroke="#8B4513" stroke-width="2" fill="none"/>
+                        <path d="M15 85 Q50 65 85 85" stroke="#8B4513" stroke-width="2" fill="none"/>
+                        <!-- Reflet -->
+                        <ellipse cx="35" cy="30" rx="10" ry="6" fill="rgba(255,255,255,0.25)" transform="rotate(-20, 35, 30)"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Titre avec animation -->
+            <h1 class="error-title">
+                <span>Oups !</span> Page introuvable
+            </h1>
+
+            <!-- Message principal -->
+            <p class="error-message">
+                Il semble que cette page ait dribblé ailleurs 
+                <span class="error-dots">
+                    <span></span><span></span><span></span>
+                </span>
+            </p>
+
+            <!-- Carte de contact email (élément clé) -->
+            <div class="error-contact-card">
+                <div class="error-contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="error-contact-text">
+                    <small>Signaler l'erreur à :</small>
+                    <a href="mailto:support.sdbb@gmail.com">support.sdbb@gmail.com</a>
+                </div>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="error-actions">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Retour à l'accueil
+                </a>
+                <a href="contact.html" class="btn btn-secondary">
+                    <i class="fas fa-comment"></i> Nous contacter
+                </a>
+            </div>
+
+            <!-- Suggestion de navigation -->
+            <div class="error-suggestion">
+                <p>
+                    <strong><i class="fas fa-lightbulb" style="color: var(--primary-color);"></i> Suggestions :</strong>
+                    Consultez nos <a href="evenements.html">évènements</a>, 
+                    découvrez nos <a href="equipes.html">équipes</a> ou 
+                    visitez notre <a href="boutique.html">boutique</a>.
+                </p>
+            </div>
+
+            <!-- Liens rapides -->
+            <div class="error-links">
+                <a href="equipes.html"><i class="fas fa-users"></i> Équipes</a>
+                <a href="evenements.html"><i class="fas fa-calendar-alt"></i> Évènements</a>
+                <a href="inscription-2026-2027.html"><i class="fas fa-pen"></i> Inscriptions</a>
+                <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer (identique au site) -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <img src="Logo-club/logo SDBB.png" alt="SDBB Logo" class="footer-logo">
+                    <p>Saint Doulchard Basketball - Plus qu'un club, une famille. Rejoignez la meute !</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sdbbofficiel/?locale=fr_FR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/saintdoulchard_basketball/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Le Club</h3>
+                    <ul>
+                        <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                        <li><a href="projet-club.html">Projet Club</a></li>
+                        <li><a href="labels.html">Nos Labels</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Accès Rapides</h3>
+                    <ul>
+                        <li><a href="equipes.html">Nos Équipes</a></li>
+                        <li><a href="evenements.html">Évènements</a></li>
+                        <li><a href="inscription-2026-2027.html">Infos & Inscriptions</a></li>
+                        <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        <li><a href="boutique.html">Boutique</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact & Accès</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Gymnase COSEC, 30 Av. du 11 Novembre, 18230 Saint-Doulchard</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Saint Doulchard Basketball (SDBB). Tous droits réservés.</p>
+                <div class="footer-bottom-links">
+                    <a href="mentions-legales.html">Mentions Légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="JS/script.js" defer></script>
+
+</body>
+</html>
+
