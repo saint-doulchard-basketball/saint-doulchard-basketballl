@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devenir Partenaire - SDBB</title>
+    <title>Évènements - SDBB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/event-lightbox.css">
     <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
+
 </head>
 <body>
 
@@ -18,32 +20,29 @@
         <div class="container header-container">
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="logo">
+                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="logo" width="225" height="225">
                 </a>
             </div>
             
             <nav class="main-nav">
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="index.html">Accueil</a></li>
                     <li class="dropdown">
                         <a href="#">Le Club <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
                             <li><a href="coach.html">Coach</a></li>
                             <li><a href="projet-club.html">Projet Club</a></li>
-
                             <li><a href="labels.html">Nos Labels</a></li>
                             <li><a href="reglement-sdbb.html">Règlement</a></li>
                             <li>
                                 <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlements Fédéraux</a>
                             </li>
-
                             <li>
                                 <a href="Document/planning-entrainements-2026-2027.jpeg" target="_blank" rel="noopener">Créneaux d'entraînements</a>
                             </li>
-
                             <li>
-                                <a href="https://docs.google.com/spreadsheets/d/1j-IA_FY40LEulchpNvNbRPvi2CXn0QF2wuzDTgFygts/edit?gid=0#gid=0" target="_blank" rel="noopener">Planning des matchs</a>
+                                <a href="planning.html" target="_blank" rel="noopener">Planning des matchs</a>
                             </li>
                         </ul>
                     </li>
@@ -52,16 +51,15 @@
                         <a href="#">Découvrir <i class="fas fa-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="equipes.html">Équipes</a></li>
-                            <li><a href="evenements.html">Évènements</a></li>
-                            <li><a href="inscription-2025-2026.html">inscription-2026-2027</a></li>
+                            <li><a href="evenements.html" class="active">Évènements</a></li>
+                            <!-- <li><a href="photos.html">Photos</a></li> -->
+                            <li><a href="inscription-2026-2027.html">inscription-2026-2027</a></li>
                             <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
                             <li><a href="sdbb-tonic-marche.html">sdbbTonic/BasketEnMarchant</a></li>
                             <li><a href="mini-basket.html">Mini-basket</a></li>
                             <li>
                                 <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
                             </li>
-
-
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -73,13 +71,11 @@
                     </li>
                     <li><a href="boutique.html">Boutique</a></li>
                     <li><a href="contact.html">Contact</a></li>
-
-
                 </ul>
             </nav>
 
             <div class="header-actions">
-                    <a href="rejoindre.html" class="btn btn-primary">Nous rejoindre</a>
+                <a href="rejoindre.html" class="btn btn-primary">Nous rejoindre</a>
                 <div class="menu-toggle" id="mobile-menu">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -89,58 +85,97 @@
 
     <section class="page-header">
         <div class="container animate-on-scroll">
-            <h1>Devenir Partenaire</h1>
-            <p>Associez l'image de votre entreprise aux valeurs du sport, de la jeunesse et de notre club.</p>
+            <h1>Évènements du Club</h1>
+            <p>Retrouvez l'agenda complet de nos manifestations sportives et extra-sportives.</p>
         </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section bg-light">
         <div class="container">
-            
-            <div class="grid-2">
-                <div class="member-card animate-on-scroll delay-100" style="text-align: left;">
-                    <h3><i class="fas fa-handshake" style="color:var(--primary-color);"></i> Pourquoi nous soutenir ?</h3>
-                    <p class="mt-3">Le Saint Doulchard Basketball est une association dynamique qui joue un rôle majeur dans la vie sportive locale. Nous soutenir, c'est :</p>
-                    <ul class="check-list mt-3">
-                        <li><i class="fas fa-check"></i> Participer au développement de nos jeunes et à leur éducation par le sport.</li>
-                        <li><i class="fas fa-check"></i> Bénéficier d'une visibilité locale sur nos équipements, nos réseaux sociaux et dans notre salle.</li>
-                        <li><i class="fas fa-check"></i> Associer votre entreprise aux valeurs de solidarité, d'effort et d'esprit d'équipe.</li>
-                        <li><i class="fas fa-check"></i> Profiter d'une déduction fiscale avantageuse pour les entreprises.</li>
-                    </ul>
-                </div>
+            <div class="cards-grid">
 
-                <div class="member-card animate-on-scroll delay-200" style="text-align: left;">
-                    <h3><i class="fas fa-file-pdf" style="color:var(--primary-color);"></i> Nos offres de partenariat</h3>
-                    <p class="mt-3">Que vous soyez une grande entreprise ou un artisan local, nous avons des offres adaptées à votre budget et à vos objectifs de communication (panneaux dans la salle, flocage maillots, sponsoring d'évènements...).</p>
-                    <p class="mt-3">Téléchargez nos dossiers complets pour découvrir nos offres en détail :</p>
-                    
-                    <div style="display:flex; flex-direction:column; gap:15px; margin-top:20px;">
-                        <h4 style="color:var(--primary-color);">Dossier Partenariat SDBB</h4>
-                        <iframe src="Partenaire/DOSSIER%20PARTENARIAT%20SDBB.pdf" width="100%" height="600px" style="border: 1px solid #ddd; border-radius: 8px;"></iframe>
-                        <a href="Partenaire/DOSSIER%20PARTENARIAT%20SDBB.pdf" target="_blank" class="btn btn-secondary text-center" style="display:block;">
-                            <i class="fas fa-download"></i> Télécharger le Dossier Partenariat SDBB
-                        </a>
-                        
-                        <h4 style="color:var(--primary-color);" class="mt-3">Pack Partenaires (Offres détaillées)</h4>
-                        <iframe src="Partenaire/PACK%20PARTENAIRES.pdf" width="100%" height="600px" style="border: 1px solid #ddd; border-radius: 8px;"></iframe>
-                        <a href="Partenaire/PACK%20PARTENAIRES.pdf" target="_blank" class="btn btn-primary text-center" style="display:block;">
-                            <i class="fas fa-download"></i> Télécharger le Pack Partenaires
-                        </a>
+                <div class="card animate-on-scroll delay-100">
+                    <button class="card-img event-thumb" type="button" data-event-img="evenement/InfoRentree.jpg" aria-label="Voir l'affiche Basket d'or et Panier d'or">
+                        <img src="evenement/InfoRentree.jpg" alt="Info Rentrée">
+                    </button>
+                    <div class="card-content">
+                        <span style="color: #0033a0; font-weight:bold; font-size:0.9rem;">SAMEDI 29 Août</span>
+                        <h3>INFO RENTREE</h3>
+                        <p>Le matin: Lancement de la saison; Après-midi: Portes ouvertes et brocante</p> </p>
                     </div>
                 </div>
+
+                <div class="card animate-on-scroll delay-100">
+                    <button class="card-img event-thumb" type="button" data-event-img="evenement/BASKET EN MARCHANT.png" aria-label="Voir l'affiche Basket d'or et Panier d'or">
+                        <img src="evenement/BASKET EN MARCHANT.png" alt="Tournoi Basket d'or">
+                    </button>
+                    <div class="card-content">
+                        <span style="color: #0033a0; font-weight:bold; font-size:0.9rem;">SAMEDI 6 JUIN 14H</span>
+                        <h3>BASKET EN MARCHANT</h3>
+                        <p>Découvrez une nouvelle discipline du SDBB : le basket en marchant ! Quel que soit votre âge, venez l'essayer : vous ne le regretterez pas ! </p>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll delay-100">
+                    <button class="card-img event-thumb" type="button" data-event-img="evenement/AFFICHE ASSEMBLEE GENERALE.jpg" aria-label="Voir l'affiche du Stage">
+                        <img src="evenement/AFFICHE ASSEMBLEE GENERALE.jpg" alt="Stage">
+                    </button>
+                    <div class="card-content">
+                        <span style="color: #0033a0; font-weight:bold; font-size:0.9rem;">VENDREDI 19 JUIN 19H</span>
+                        <h3>ASSEMBLEE GENERALE DU SDBB</h3>
+                        <p>L'assemblée générale du SDBB aura lieu le Vendredi 19 Juin ! A vos agendas !</p>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll delay-100">
+                    <button class="card-img event-thumb" type="button" data-event-img="evenement/NEWSLETTER%20JUIN%202026.jpg" aria-label="Voir la newsletter Juin 2026">
+                        <img src="evenement/NEWSLETTER%20JUIN%202026.jpg" alt="Newsletter Juin 2026">
+                    </button>
+                    <div class="card-content">
+                        <span style="color: #0033a0; font-weight:bold; font-size:0.9rem;">Actualité</span>
+                        <h3>NEWSLETTER JUIN 2026</h3>
+                        <p>Retrouvez toutes les actualités du mois de juin.</p>
+                    </div>
+                </div>
+                
+                
+
+                <div class="card animate-on-scroll delay-200">
+                    <button class="card-img event-thumb" type="button" data-event-img="Images/Loto%20du%20sdbb.jpg" aria-label="Voir l'affiche du Loto">
+                        <img src="Images/Loto du sdbb.jpg" alt="Loto">
+                    </button>
+                    <div class="card-content">
+                        <span style="color: #0033a0; font-weight:bold; font-size:0.9rem;">Mars 2026</span>
+                        <h3>LOTO DU SDBB</h3>
+                        <p>Venez nombreux tenter votre chance lors de notre traditionnel loto au profit des équipes jeunes du club. De nombreux lots à gagner.</p>
+                    </div>
+                </div>
+
+                <div class="card animate-on-scroll delay-300">
+                    <button class="card-img event-thumb" type="button" data-event-img="Images/Panier%20d'or.jpg" aria-label="Voir l'affiche du Stage">
+                        <img src="evenement/Stage Avril 2026.pdf.png" alt="Stage">
+                    </button>
+                    <div class="card-content">
+                        <span style="color: #0033a0; font-weight:bold; font-size:0.9rem;">Avril 2025</span>
+                        <h3>STAGE VACANCES</h3>
+                        <p></p>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="section-title text-center animate-on-scroll mt-5" style="margin-top: 80px;">
-                <h2>Contactez notre pôle partenariat</h2>
-                <div class="underline center"></div>
-                <p class="subtitle mt-3">Pour toute question ou pour élaborer un partenariat sur-mesure, n'hésitez pas à nous contacter :</p>
-                <a href="mailto:contact@saint-doulchard-basketball.fr" class="btn btn-outline mt-3" style="color:var(--secondary-color); border-color:var(--secondary-color);">
-                    <i class="fas fa-envelope"></i> partenariats.sdbb@gmail.com
-                </a>
+            <div class="event-lightbox" id="event-lightbox" aria-hidden="true">
+                <div class="event-lightbox-overlay" data-event-lightbox-overlay>
+                    <button class="event-lightbox-close" id="event-lightbox-close" type="button" aria-label="Fermer">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <img class="event-lightbox-img" id="event-lightbox-img" src="" alt="Affiche événement">
+                </div>
             </div>
-            
+
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -163,13 +198,24 @@
                     <ul>
                         <li><a href="equipes.html">Nos Équipes</a></li>
                         <li><a href="evenements.html">Évènements</a></li>
+                        <li><a href="inscription-2026-2027.html">Infos & Inscriptions</a></li>
+                        <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        <li><a href="boutique.html">Boutique</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h3>Contact & Accès</h3>
                     <ul class="contact-info">
                         <li><i class="fas fa-map-marker-alt"></i> Gymnase COSEC, 30 Av. du 11 Novembre, 18230 Saint-Doulchard</li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Saint Doulchard Basketball (SDBB). Tous droits réservés.</p>
+                <div class="footer-bottom-links">
+                    <a href="mentions-legales.html">Mentions Légales</a>
+                    <a href="#">Politique de confidentialité</a>
                 </div>
             </div>
         </div>
@@ -177,4 +223,5 @@
 
     <script src="JS/script.js"></script>
 </body>
-</html>
+</html></content>
+
