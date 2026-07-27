@@ -2304,3 +2304,499 @@ html {
     }
 }
 
+/* =========================================
+   BOÎTE À IDÉES
+========================================= */
+.ideas-section {
+    background-color: var(--bg-light);
+}
+
+.ideas-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+}
+
+.ideas-intro-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), #FFE44D);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+.ideas-intro-icon i {
+    font-size: 2.2rem;
+    color: var(--secondary-dark);
+}
+
+.ideas-intro h2 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.ideas-intro p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Formulaire */
+.ideas-form-container {
+    max-width: 750px;
+    margin: 0 auto 50px;
+    background-color: var(--white);
+    padding: 50px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.ideas-form .input-group {
+    margin-bottom: 25px;
+}
+
+.ideas-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+}
+
+.ideas-form label .required {
+    color: #E30613;
+}
+
+.ideas-form input[type="text"],
+.ideas-form input[type="email"],
+.ideas-form textarea {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fcfcfc;
+}
+
+.ideas-form input[type="text"]:focus,
+.ideas-form input[type="email"]:focus,
+.ideas-form textarea:focus {
+    border-color: var(--secondary-color);
+    background-color: var(--white);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 51, 160, 0.1);
+}
+
+.ideas-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.ideas-form .field-hint {
+    display: block;
+    margin-top: 6px;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* Nom + Anonyme : row */
+.form-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.form-row-field {
+    flex: 1;
+}
+
+.form-row-check {
+    flex-shrink: 0;
+    padding-bottom: 2px;
+}
+
+.anonyme-check {
+    display: flex !important;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    padding: 12px 18px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: #fcfcfc;
+    margin-bottom: 0 !important;
+}
+
+.anonyme-check:hover {
+    border-color: var(--secondary-color);
+    background-color: rgba(0, 51, 160, 0.03);
+}
+
+.anonyme-check input[type="checkbox"] {
+    display: none;
+}
+
+.anonyme-check .check-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.anonyme-check .check-box i {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.anonyme-check input[type="checkbox"]:checked + .check-box i {
+    color: var(--secondary-color);
+}
+
+.anonyme-check input[type="checkbox"]:checked + .check-box {
+    color: var(--secondary-color);
+}
+
+.anonyme-check input[type="checkbox"]:checked ~ .anonyme-check {
+    border-color: var(--secondary-color);
+}
+
+/* Catégories : boutons radio visuels */
+.category-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.category-option {
+    cursor: pointer;
+    display: block;
+}
+
+.category-option input[type="radio"] {
+    display: none;
+}
+
+.category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 25px 15px;
+    border-radius: 12px;
+    border: 3px solid #eee;
+    transition: all 0.3s ease;
+    text-align: center;
+    background-color: #fcfcfc;
+}
+
+.category-card i {
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.category-card .category-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.category-card .category-desc {
+    font-size: 0.82rem;
+    color: var(--text-light);
+}
+
+/* Couleurs par catégorie */
+.category-add {
+    color: #16a34a;
+    border-color: #bbf7d0;
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+
+.category-add i { color: #16a34a; }
+
+.category-option input[type="radio"]:checked + .category-add {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.15), 0 8px 25px rgba(22, 163, 74, 0.15);
+    transform: translateY(-3px);
+}
+
+.category-edit {
+    color: #2563eb;
+    border-color: #bfdbfe;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+}
+
+.category-edit i { color: #2563eb; }
+
+.category-option input[type="radio"]:checked + .category-edit {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15), 0 8px 25px rgba(37, 99, 235, 0.15);
+    transform: translateY(-3px);
+}
+
+.category-remove {
+    color: #dc2626;
+    border-color: #fecaca;
+    background: linear-gradient(135deg, #fef2f2, #fee2e2);
+}
+
+.category-remove i { color: #dc2626; }
+
+.category-option input[type="radio"]:checked + .category-remove {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15), 0 8px 25px rgba(220, 38, 38, 0.15);
+    transform: translateY(-3px);
+}
+
+.category-option input[type="radio"]:checked + .category-card i {
+    transform: scale(1.2);
+}
+
+/* Options d'aide au projet */
+.help-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.help-option {
+    cursor: pointer;
+    display: block;
+}
+
+.help-option input[type="radio"] {
+    display: none;
+}
+
+.help-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 15px;
+    border-radius: 12px;
+    border: 3px solid #eee;
+    transition: all 0.3s ease;
+    text-align: center;
+    background-color: #fcfcfc;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.help-card i {
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+}
+
+.help-yes {
+    color: #16a34a;
+    border-color: #bbf7d0;
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+
+.help-yes i { color: #16a34a; }
+
+.help-option input[type="radio"]:checked + .help-yes {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.15);
+    transform: translateY(-3px);
+}
+
+.help-no {
+    color: #dc2626;
+    border-color: #fecaca;
+    background: linear-gradient(135deg, #fef2f2, #fee2e2);
+}
+
+.help-no i { color: #dc2626; }
+
+.help-option input[type="radio"]:checked + .help-no {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.15);
+    transform: translateY(-3px);
+}
+
+.help-maybe {
+    color: #d97706;
+    border-color: #fde68a;
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+}
+
+.help-maybe i { color: #d97706; }
+
+.help-option input[type="radio"]:checked + .help-maybe {
+    border-color: #d97706;
+    box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.15);
+    transform: translateY(-3px);
+}
+
+.help-option input[type="radio"]:checked + .help-card i {
+    transform: scale(1.2);
+}
+
+/* Bouton submit */
+.btn-submit-ideas {
+    width: 100%;
+    font-size: 1.15rem;
+    padding: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-submit-ideas:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.btn-submit-ideas i {
+    font-size: 1.3rem;
+}
+
+/* Message de succès */
+.ideas-success {
+    max-width: 750px;
+    margin: 0 auto 50px;
+}
+
+.ideas-success-content {
+    text-align: center;
+    padding: 60px 40px;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.ideas-success-content i {
+    font-size: 4rem;
+    color: #16a34a;
+    margin-bottom: 20px;
+}
+
+.ideas-success-content h3 {
+    color: var(--secondary-color);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.ideas-success-content p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* Cartes d'engagement */
+.ideas-commitment {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.commitment-card {
+    background-color: var(--white);
+    padding: 35px 25px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--primary-color);
+}
+
+.commitment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.commitment-card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.commitment-card h3 {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.commitment-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ideas-form-container {
+        padding: 30px 20px;
+    }
+
+    .category-options {
+        grid-template-columns: 1fr;
+    }
+
+    .help-options {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-row-check {
+        width: 100%;
+    }
+
+    .anonyme-check {
+        justify-content: center;
+    }
+
+    .ideas-commitment {
+        grid-template-columns: 1fr;
+    }
+
+    .ideas-success-content {
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ideas-intro-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .ideas-intro-icon i {
+        font-size: 1.6rem;
+    }
+}
+

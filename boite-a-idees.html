@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boîte à Idées - Saint Doulchard Basketball (SDBB)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header id="main-header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="Logo-club/logo SDBB.png" alt="Logo SDBB" class="logo" width="225" height="225">
+                </a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#">Le Club <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                            <li><a href="coach.html">Coach</a></li>
+                            <li><a href="projet-club.html">Projet Club</a></li>
+                            <li><a href="labels.html">Nos Labels</a></li>
+                            <li><a href="reglement-sdbb.html">Règlement</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/Pageliensutiles.php" target="_blank" rel="noopener">Règlements Fédéraux</a>
+                            </li>
+                            <li>
+                                <a href="Document/planning-entrainements-2026-2027.jpeg" target="_blank" rel="noopener">Créneaux d'entraînements</a>
+                            </li>
+                            <li><a href="boite-a-idees.html">Boite à idées</a></li>
+                            </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#">Découvrir <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="equipes.html">Équipes</a></li>
+                            <li><a href="evenements.html">Évènements</a></li>
+                            <!-- <li><a href="photos.html">Photos</a></li> -->
+                            <li><a href="inscription-2026-2027.html">inscription-2026-2027</a></li>
+                            <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
+                            <li><a href="sdbb-tonic-marche.html">sdbbTonic/BasketEnMarchant</a></li>
+                            <li><a href="mini-basket.html">Mini-basket</a></li>
+                            <li>
+                                <a href="https://arbitrage-sdbb.alwaysdata.net/" target="_blank" rel="noopener">Ecole d'arbitrage</a>
+                            </li>
+                            <li><a href="planning.html">Planning</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Partenaires <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="partenaires.html">Nos Partenaires</a></li>
+                            <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="rejoindre.html" class="btn btn-primary">Nous rejoindre</a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Boîte à Idées</h1>
+            <p>Partagez vos idées pour faire évoluer le club !</p>
+        </div>
+    </section>
+
+    <!-- Boîte à Idées Section -->
+    <section class="ideas-section section-padding">
+        <div class="container">
+
+            <div class="ideas-intro animate-on-scroll">
+                <div class="ideas-intro-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h2>Donnez-nous vos idées</h2>
+                <p>Que souhaitez-vous <strong>ajouter</strong>, <strong>modifier</strong> ou <strong>enlever</strong> au sein du SDBB ? Chaque idée compte pour améliorer notre club et le faire grandir ensemble.</p>
+            </div>
+
+            <div class="ideas-form-container animate-on-scroll delay-100">
+                <form action="https://formspree.io/f/mdaqwkne" method="POST" class="ideas-form" id="ideas-form">
+
+                    <!-- Champ caché pour le sujet -->
+                    <input type="hidden" name="_subject" value="Nouvelle idée - Boîte à Idées SDBB">
+
+                    <!-- Catégorie : boutons radio visuels -->
+                    <div class="input-group">
+                        <label>Catégorie de votre idée <span class="required">*</span></label>
+                        <div class="category-options">
+                            <label class="category-option">
+                                <input type="radio" name="categorie" value="Ajouter" required>
+                                <span class="category-card category-add">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span class="category-label">Ajouter</span>
+                                    <span class="category-desc">Proposer quelque chose de nouveau</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="categorie" value="Modifier">
+                                <span class="category-card category-edit">
+                                    <i class="fas fa-edit"></i>
+                                    <span class="category-label">Modifier</span>
+                                    <span class="category-desc">Améliorer ce qui existe déjà</span>
+                                </span>
+                            </label>
+                            <label class="category-option">
+                                <input type="radio" name="categorie" value="Enlever">
+                                <span class="category-card category-remove">
+                                    <i class="fas fa-minus-circle"></i>
+                                    <span class="category-label">Enlever</span>
+                                    <span class="category-desc">Supprimer quelque chose</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Nom / Prénom + Anonyme -->
+                    <div class="form-row">
+                        <div class="input-group form-row-field">
+                            <label for="nom">Votre nom et prénom</label>
+                            <input type="text" id="nom" name="nom" placeholder="Ex: Jean Dupont" class="name-input">
+                            <small class="field-hint">Laissez vide si vous souhaitez rester anonyme</small>
+                        </div>
+                        <div class="input-group form-row-check">
+                            <label class="anonyme-check">
+                                <input type="checkbox" id="anonyme" name="anonyme" value="oui">
+                                <span class="check-box">
+                                    <i class="fas fa-user-secret"></i>
+                                    Je reste anonyme
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Email (optionnel) -->
+                    <div class="input-group">
+                        <label for="email">Votre adresse email (optionnelle)</label>
+                        <input type="email" id="email" name="email" placeholder="exemple@email.com">
+                        <small class="field-hint">Si vous souhaitez être recontacté à propos de votre idée</small>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="input-group">
+                        <label for="message">Votre idée en détails <span class="required">*</span></label>
+                        <textarea id="message" name="message" rows="6" placeholder="Décrivez votre idée le plus précisément possible..." required></textarea>
+                    </div>
+
+                    <!-- Aide au projet : boutons radio -->
+                    <div class="input-group">
+                        <label>Si le club décide de lancer ce projet, souhaitez-vous aider à le réaliser ? <span class="required">*</span></label>
+                        <div class="help-options">
+                            <label class="help-option">
+                                <input type="radio" name="aide_projet" value="Oui" required>
+                                <span class="help-card help-yes">
+                                    <i class="fas fa-thumbs-up"></i>
+                                    <span>Oui, je veux aider</span>
+                                </span>
+                            </label>
+                            <label class="help-option">
+                                <input type="radio" name="aide_projet" value="Non">
+                                <span class="help-card help-no">
+                                    <i class="fas fa-thumbs-down"></i>
+                                    <span>Non</span>
+                                </span>
+                            </label>
+                            <label class="help-option">
+                                <input type="radio" name="aide_projet" value="Peut-etre">
+                                <span class="help-card help-maybe">
+                                    <i class="fas fa-question"></i>
+                                    <span>Peut-être, selon le projet</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Commentaire supplémentaire -->
+                    <div class="input-group">
+                        <label for="commentaire_aide">Commentaire sur votre aide (optionnel)</label>
+                        <textarea id="commentaire_aide" name="commentaire_aide" rows="2" placeholder="Si vous avez coché 'Oui' ou 'Peut-être', précisez en quoi vous pourriez aider (temps, compétences, matériel, etc.)"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit btn-submit-ideas">
+                        <span>Envoyer mon idée</span>
+                        <i class="fas fa-lightbulb"></i>
+                    </button>
+
+                </form>
+
+                <!-- Message de succès -->
+                <div class="ideas-success" id="ideas-success" hidden>
+                    <div class="ideas-success-content">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Merci pour votre idée !</h3>
+                        <p>Votre suggestion a bien été envoyée. L'équipe du SDBB l'étudiera avec attention.</p>
+                        <a href="boite-a-idees.html" class="btn btn-primary">Envoyer une autre idée</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Engagement -->
+            <div class="ideas-commitment animate-on-scroll delay-200">
+                <div class="commitment-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Chaque idée compte</h3>
+                    <p>Toutes les idées sont lues et étudiées par le conseil d'administration. Ensemble, construisons le SDBB de demain !</p>
+                </div>
+                <div class="commitment-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Un club participatif</h3>
+                    <p>Que vous soyez joueur, parent, bénévole ou partenaire, votre avis est essentiel pour faire vivre le club.</p>
+                </div>
+                <div class="commitment-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Des idées qui deviennent réalité</h3>
+                    <p>Plusieurs projets du club sont nés d'idées partagées par nos membres. La vôtre sera peut-être la prochaine !</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <img src="Logo-club/logo SDBB.png" alt="SDBB Logo" class="footer-logo">
+                    <p>Saint Doulchard Basketball - Plus qu'un club, une famille. Rejoignez la meute !</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/sdbbofficiel/?locale=fr_FR" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/saintdoulchard_basketball/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Le Club</h3>
+                    <ul>
+                        <li><a href="conseil-administration.html">Conseil d'Administration</a></li>
+                        <li><a href="projet-club.html">Projet Club</a></li>
+                        <li><a href="boite-a-idees.html">Boîte à Idées</a></li>
+                        <li><a href="labels.html">Nos Labels</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Accès Rapides</h3>
+                    <ul>
+                        <li><a href="equipes.html">Nos Équipes</a></li>
+                        <li><a href="evenements.html">Évènements</a></li>
+                        <li><a href="inscription-2026-2027.html">Infos & Inscriptions</a></li>
+                        <li><a href="devenir-partenaire.html">Devenir Partenaire</a></li>
+                        <li><a href="boutique.html">Boutique</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact & Accès</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Gymnase COSEC, 30 Av. du 11 Novembre, 18230 Saint-Doulchard</li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Saint Doulchard Basketball (SDBB). Tous droits réservés.</p>
+                <div class="footer-bottom-links">
+                    <a href="mentions-legales.html">Mentions Légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="JS/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ideasForm = document.getElementById('ideas-form');
+            const successMessage = document.getElementById('ideas-success');
+            const anonymeCheck = document.getElementById('anonyme');
+            const nameInput = document.getElementById('nom');
+
+            // Gestion de la case "Anonyme" : désactive le champ nom
+            anonymeCheck.addEventListener('change', function() {
+                if (this.checked) {
+                    nameInput.disabled = true;
+                    nameInput.value = '';
+                    nameInput.placeholder = 'Anonyme';
+                } else {
+                    nameInput.disabled = false;
+                    nameInput.placeholder = 'Ex: Jean Dupont';
+                }
+            });
+
+            // Gestion de l'envoi du formulaire avec Formspree
+            ideasForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(ideasForm);
+
+                // Si anonyme est coché, envoyer "Anonyme" comme nom
+                if (anonymeCheck.checked) {
+                    formData.set('nom', 'Anonyme');
+                }
+
+                fetch(ideasForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(function(response) {
+                    if (response.ok) {
+                        ideasForm.style.display = 'none';
+                        successMessage.hidden = false;
+                    } else {
+                        alert('Une erreur est survenue. Veuillez réessayer ou nous contacter directement.');
+                    }
+                }).catch(function(error) {
+                    alert('Une erreur est survenue. Veuillez réessayer ou nous contacter directement.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
