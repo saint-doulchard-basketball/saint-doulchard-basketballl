@@ -1098,8 +1098,8 @@ img {
 @media (max-width: 768px) {
     /* On force les grilles à n'avoir qu'une seule colonne qui prend toute la largeur disponible */
     .grid-2, .grid-3, .commission-list, .cards-grid {
-        display: flex !important;
-        flex-direction: column !important;
+        /* display: flex !important; */ /* Supprimé pour permettre le comportement de grille */
+        /* flex-direction: column !important; */ /* Supprimé pour permettre le comportement de grille */
         gap: 20px !important;
         width: 100% !important;
         max-width: 100% !important;
@@ -2799,4 +2799,3 @@ html {
         font-size: 1.6rem;
     }
 }
-
