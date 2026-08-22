@@ -455,7 +455,7 @@
                                 <a href="Document/planning-entrainements-2026-2027.jpeg" target="_blank" rel="noopener">Créneaux d'entraînements</a>
                             </li>
                             <li><a href="boite-a-idees.html">Boite à idées</a></li>
-                            </ul>
+                        </ul>
                     </li>
 
                     <li class="dropdown">
@@ -463,7 +463,6 @@
                         <ul class="dropdown-menu">
                             <li><a href="equipes.html">Équipes</a></li>
                             <li><a href="evenements.html">Évènements</a></li>
-                            <!-- <li><a href="photos.html">Photos</a></li> -->
                             <li><a href="inscription-2026-2027.html">inscription-2026-2027</a></li>
                             <li><a href="presentation-sdbb.html">Qui sommes-nous ?</a></li>
                             <li><a href="sdbb-tonic-marche.html">sdbbTonic/BasketEnMarchant</a></li>
@@ -598,12 +597,19 @@
             };
 
             let eq = cleanVal(row["equipe"]);
-            if(eq && eq !== "—") teamsSet.add(eq);
+            
+            // Regroupement d'EVENEMENTS et EVENEMENTS 2 sous une seule option dans le menu déroulant
+            if (eq && eq !== "—") {
+                if (eq.toUpperCase().includes("EVENEMENT")) {
+                    teamsSet.add("EVENEMENTS");
+                } else {
+                    teamsSet.add(eq);
+                }
+            }
 
             let dateText = cleanVal(row["jour"]);
             if (row["Date"]) dateText += " " + row["Date"].trim();
             
-            // MODIFIÉ ICI : Lecture ultra-sécurisée insensible à la casse ("Heure" ou "heure")
             let heureSaisie = row["Heure"] || row["heure"];
             if (heureSaisie && heureSaisie.trim() !== "" && heureSaisie.trim() !== "—") {
                 dateText += " à " + heureSaisie.trim();
@@ -693,7 +699,14 @@
             filtered = filtered.filter(m => m.semaineTextAffichage === currentWeek);
         }
         
-        if (currentTeam !== "ALL") filtered = filtered.filter(m => m.equipe === currentTeam);
+        // Filtrage par équipe prenant en compte EVENEMENTS 1 et 2
+        if (currentTeam !== "ALL") {
+            if (currentTeam === "EVENEMENTS") {
+                filtered = filtered.filter(m => m.equipe.toUpperCase().includes("EVENEMENT"));
+            } else {
+                filtered = filtered.filter(m => m.equipe === currentTeam);
+            }
+        }
 
         if (filtered.length === 0) {
             grid.innerHTML = "<p style='text-align:center; width:100%; color:#64748b; padding: 40px;'>Aucune rencontre planifiée pour les critères sélectionnés.</p>";
@@ -710,6 +723,7 @@
                 
                 let cardClass = "away", badgeClass = "type-away", badgeText = "<i class='fas fa-bus'></i> Extérieur";
                 let lieuAffichage = `Salle : ${m.lieu}`;
+                let badgeEquipeText = isEvent ? "ÉVÉNEMENT" : m.equipe;
 
                 if (isEvent) { 
                     cardClass = "event"; badgeClass = "type-event"; badgeText = "<i class='fas fa-star'></i> Club"; 
@@ -723,12 +737,12 @@
                 grid.innerHTML += `
                     <div class="match-card ${cardClass}">
                         <div class="card-header">
-                            <span class="team-badge">${m.equipe}</span>
+                            <span class="team-badge">${badgeEquipeText}</span>
                             <span class="match-type ${badgeClass}">${badgeText}</span>
                         </div>
                         <div class="card-body">
                             <div>
-                                <div class="match-opponent">${m.adversaire !== "—" ? m.adversaire : "Match"}</div>
+                                <div class="match-opponent">${m.adversaire !== "—" ? m.adversaire : (isEvent ? "Événement Club" : "Match")}</div>
                                 <div class="match-details-box">
                                     <div class="detail-item time"><i class="fas fa-clock"></i> ${m.horaire}</div>
                                     <div class="detail-item location"><i class="fas fa-map-marker-alt"></i> ${lieuAffichage}</div>
@@ -764,6 +778,7 @@
                 
                 let rowClass = "away", badgeClass = "type-away", badgeText = "Extérieur";
                 let lieuAffichage = `(${m.lieu})`;
+                let teamAffichage = isEvent ? "Événement Club" : m.equipe;
 
                 if (isEvent) { 
                     rowClass = "event"; badgeClass = "type-event"; badgeText = "Club"; 
@@ -776,9 +791,9 @@
 
                 containerList.innerHTML += `
                     <div class="match-row-compact ${rowClass}">
-                        <div class="compact-col-team">${m.equipe}</div>
-                        <div class="compact-col-vs">vs</div>
-                        <div class="compact-col-opponent">${m.adversaire !== "—" ? m.adversaire : "Rassemblement Club"}</div>
+                        <div class="compact-col-team">${teamAffichage}</div>
+                        <div class="compact-col-vs">${isEvent ? "•" : "vs"}</div>
+                        <div class="compact-col-opponent">${m.adversaire !== "—" ? m.adversaire : (isEvent ? "Rassemblement Club" : "Match")}</div>
                         <div class="compact-col-datetime"><i class="far fa-clock"></i> ${m.horaire}</div>
                         <div class="compact-col-venue ${badgeClass}">${badgeText} ${lieuAffichage}</div>
                     </div>`;
