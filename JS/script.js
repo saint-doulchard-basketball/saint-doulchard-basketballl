@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach(el => {
         observer.observe(el);
         
@@ -82,7 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 6. Event lightbox
+    // 6. Global Lightbox (for Events and Citoyen labels)
+    window.openLightbox = (imgSrc) => {
+        const lightbox = document.getElementById('event-lightbox');
+        const lightboxImg = document.getElementById('event-lightbox-img');
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = imgSrc;
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+
     const lightbox = document.getElementById('event-lightbox');
     const lightboxImg = document.getElementById('event-lightbox-img');
     const closeBtn = document.getElementById('event-lightbox-close');
@@ -90,11 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const openThumbs = document.querySelectorAll('.event-thumb');
 
     const openLightbox = (imgSrc) => {
-        if (!lightbox || !lightboxImg) return;
-        lightboxImg.src = imgSrc;
-        lightbox.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
+        window.openLightbox(imgSrc);
     };
+
 
     const closeLightbox = () => {
         if (!lightbox || !lightboxImg) return;
