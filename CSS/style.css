@@ -2523,6 +2523,33 @@ html {
     background: #f1f1f1;
 }
 
+.boutique-cta-wrapper {
+    margin-top: 40px;
+    padding: 35px 30px;
+    background: linear-gradient(135deg, rgba(0, 51, 160, 0.06), rgba(255, 215, 0, 0.12));
+    border: 2px solid rgba(255, 215, 0, 0.4);
+    border-radius: 16px;
+    text-align: center;
+}
+
+.boutique-cta-wrapper p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.boutique-cta-wrapper .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.boutique-cta-wrapper .btn i {
+    font-size: 1.1rem;
+}
+
 .boutique-categories {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
