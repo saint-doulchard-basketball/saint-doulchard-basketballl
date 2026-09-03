@@ -597,12 +597,14 @@
                 return (v === "" || v === "—" || v === "-") ? "—" : v;
             };
 
-            let eq = cleanVal(row["equipe"]);
+                        let eq = cleanVal(row["equipe"]);
+            let displayEquipe = eq;
             
             // Regroupement d'EVENEMENTS et EVENEMENTS 2 sous une seule option dans le menu déroulant
             if (eq && eq !== "—") {
                 if (eq.toUpperCase().includes("EVENEMENT")) {
                     teamsSet.add("EVENEMENTS");
+                    displayEquipe = "EVENEMENTS";
                 } else {
                     teamsSet.add(eq);
                 }
@@ -616,9 +618,9 @@
                 dateText += " à " + heureSaisie.trim();
             }
 
-            formattedMatches.push({
+                        formattedMatches.push({
                 semaineTextAffichage: semaineKey,
-                equipe: eq,
+                equipe: displayEquipe,
                 adversaire: cleanVal(row["adversaire"]),
                 lieu: cleanVal(row["Lieu"]),
                 horaire: dateText,
@@ -664,22 +666,41 @@
             selectTeam.appendChild(opt);
         });
 
-        // Sélection auto de la semaine en cours si elle existe
+                // Sélection intelligente de la semaine à afficher (automatiquement le prochain weekend si le précédent est passé)
         let today = new Date();
-        let d = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
-        let dayNum = d.getUTCDay() || 7;
-        d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-        let yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-        let currentISOWeek = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
-        
-        let currentWeekStr = getWeekRangeString(currentISOWeek);
+        let bestWeekStr = "";
 
-        if (uniqueWeeks.has(currentWeekStr)) {
-            selectWeek.value = currentWeekStr;
-            currentWeek = currentWeekStr;
+        for (let weekStr of sortedWeeks) {
+            let num = parseInt(weekStr.match(/\d+/)[0]);
+            let year = num >= 30 ? 2026 : 2027;
+            
+            // Calcul du dimanche de la semaine en question
+            let simple = new Date(year, 0, 1 + (num - 1) * 7);
+            let dow = simple.getDay();
+            let ISOweekStart = new Date(simple);
+            if (dow <= 4) {
+                ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+            } else {
+                ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+            }
+            let ISOweekEnd = new Date(ISOweekStart);
+            ISOweekEnd.setDate(ISOweekStart.getDate() + 6);
+            ISOweekEnd.setHours(23, 59, 59, 999);
+
+            // Si le dimanche de cette semaine n'est pas encore passé, on l'affiche
+            if (ISOweekEnd >= today) {
+                bestWeekStr = weekStr;
+                break;
+            }
+        }
+
+        if (bestWeekStr) {
+            selectWeek.value = bestWeekStr;
+            currentWeek = bestWeekStr;
         } else if (sortedWeeks.length > 0) {
-            selectWeek.value = sortedWeeks[0];
-            currentWeek = sortedWeeks[0];
+            // Si toutes les dates sont passées, on affiche la dernière semaine disponible
+            selectWeek.value = sortedWeeks[sortedWeeks.length - 1];
+            currentWeek = sortedWeeks[sortedWeeks.length - 1];
         }
         render();
     }
@@ -726,11 +747,13 @@
                 let lieuAffichage = `Salle : ${m.lieu}`;
                 let badgeEquipeText = isEvent ? "ÉVÉNEMENT" : m.equipe;
 
+                                let isWaiting = m.lieu === "—" || m.lieu === "" || lieuLower.includes("attente") || lieuLower.includes("inconnu");
+
                 if (isEvent) { 
                     cardClass = "event"; badgeClass = "type-event"; badgeText = "<i class='fas fa-star'></i> Club"; 
                 } else if (isHome) { 
                     cardClass = "home"; badgeClass = "type-home"; badgeText = "<i class='fas fa-home'></i> Domicile"; 
-                } else if (m.lieu === "—" || m.lieu === "" || lieuLower.includes("attente") || lieuLower.includes("inconnu")) {
+                } else if (isWaiting) {
                     cardClass = "tbd"; badgeClass = "type-tbd"; badgeText = "<i class='fas fa-question-circle'></i> Lieu en attente";
                     lieuAffichage = "En attente du lieu";
                 }
@@ -750,7 +773,7 @@
                                 </div>
                             </div>
                             <div>
-                                ${!isEvent ? `
+                                ${(!isEvent && (isHome || isWaiting)) ? `
                                 <div class="logistique-section">
                                     <div class="log-row"><span class="log-label"><i class="fas fa-user-shield"></i> Arbitre A</span><span class="log-value">${m.arbitreA}</span></div>
                                     <div class="log-row"><span class="log-label"><i class="fas fa-user-shield"></i> Arbitre B</span><span class="log-value">${m.arbitreB}</span></div>

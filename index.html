@@ -136,9 +136,6 @@
                     <div class="news-slide" data-news-slide>
                         <img src="Document/Permanance.webp" alt="Permanance" width="1100" height="1375" loading="lazy">
                     </div>
-                    <div class="news-slide" data-news-slide>
-                        <img src="evenement/InfoRentree.jpg" alt="Info Rentrée" width="600" height="849" loading="lazy">
-                    </div>
                 </div>
 
                 <button class="news-slider-btn prev" type="button" data-news-prev aria-label="Slide précédent"><i class="fas fa-chevron-left"></i></button>
@@ -147,7 +144,7 @@
                 <div class="news-slider-dots" aria-label="Navigation des actualités">
                     <button class="news-dot active" type="button" data-news-dot aria-label="Aller au slide 1"></button>
                     <button class="news-dot" type="button" data-news-dot aria-label="Aller au slide 2"></button>
-                    <button class="news-dot" type="button" data-news-dot aria-label="Aller au slide 3"></button>
+                    
                 </div>
             </div>
 
@@ -642,30 +639,60 @@
                 return `SEMAINE ${numSemaine} (du ${debutStr} au ${finStr})`;
             }
 
+                        function getWeekEndDate(numSemaine) {
+                let year = 2026;
+                if (numSemaine >= 1 && numSemaine <= 30) year = 2027;
+                let simple = new Date(year, 0, 1 + (numSemaine - 1) * 7);
+                let dow = simple.getDay();
+                let ISOweekStart = simple;
+                if (dow <= 4) {
+                    ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+                } else {
+                    ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+                }
+                let ISOweekEnd = new Date(ISOweekStart);
+                ISOweekEnd.setDate(ISOweekStart.getDate() + 6);
+                ISOweekEnd.setHours(23, 59, 59, 999);
+                return ISOweekEnd;
+            }
+
             function cleanVal(val) {
+
                 if (!val) return "—";
                 let v = val.trim();
                 return (v === "" || v === "—" || v === "-") ? "—" : v;
             }
 
-            function parseDateFromHoraire(horaireStr) {
+                        function parseDateFromHoraire(horaireStr) {
                 if (!horaireStr || horaireStr === "—") return null;
                 const months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
                 const lowercaseStr = horaireStr.toLowerCase();
                 
+                // 1. Essayer le format DD/MM (ex: 29/08) car présent dans le CSV
+                const dmMatch = horaireStr.match(/(\d{1,2})\/(\d{1,2})/);
+                if (dmMatch) {
+                    const day = parseInt(dmMatch[1]);
+                    const month = parseInt(dmMatch[2]) - 1; // 0-11 en JS
+                    let year = 2026;
+                    if (month <= 6) year = 2027; // Janvier à Juillet -> 2027
+                    return new Date(year, month, day);
+                }
+
+                // 2. Essayer avec les noms de mois
                 for (let i = 0; i < months.length; i++) {
                     if (lowercaseStr.includes(months[i])) {
                         const match = horaireStr.match(/(\d+)/);
                         if (match) {
                             const day = parseInt(match[1]);
                             let year = 2026;
-                            if (i <= 5) year = 2027;
+                            if (i <= 6) year = 2027;
                             return new Date(year, i, day);
                         }
                     }
                 }
                 return null;
             }
+
 
             function formatDateDisplay(horaireStr) {
                 if (!horaireStr || horaireStr === "—") return "Date à définir";
@@ -694,12 +721,18 @@
                 complete: function(results) {
                     const events = [];
                     
-                    results.data.forEach(row => {
+                                        results.data.forEach(row => {
                         if (!row["Semaine"] || row["Semaine"].trim() === "") return;
                         
-                        let equipe = cleanVal(row["equipe"]).toLowerCase();
-                        if (equipe.includes("evenement") || equipe.includes("manifestation") || equipe.includes("club")) {
+                                                let equipeLower = cleanVal(row["equipe"]).toLowerCase();
+                        if (equipeLower.includes("evenement") || equipeLower.includes("manifestation") || equipeLower.includes("club") || equipeLower.includes("info")) {
                             
+                            let displayEquipe = cleanVal(row["equipe"]);
+                            // Normalisation : EVENEMENTS 2 (ou autre variante) devient EVENEMENTS
+                            if (displayEquipe.toUpperCase().includes("EVENEMENT")) {
+                                displayEquipe = "EVENEMENTS";
+                            }
+
                             let dateText = cleanVal(row["jour"]);
                             if (row["Date"]) dateText += " " + row["Date"].trim();
                             
@@ -708,14 +741,22 @@
                                 dateText += " à " + heureSaisie.trim();
                             }
 
-                            events.push({
-                                semaine: getWeekRangeString(parseInt(row["Semaine"].trim())),
-                                equipe: cleanVal(row["equipe"]),
+                            let dateObj = parseDateFromHoraire(dateText);
+                            const numSemaine = parseInt(row["Semaine"].trim());
+                            
+                            // Si pas de date précise, on utilise le dimanche de la semaine comme date limite
+                            if (!dateObj && !isNaN(numSemaine)) {
+                                dateObj = getWeekEndDate(numSemaine);
+                            }
+
+                                                        events.push({
+                                semaine: getWeekRangeString(numSemaine),
+                                equipe: displayEquipe,
                                 adversaire: cleanVal(row["adversaire"]),
                                 lieu: cleanVal(row["Lieu"]),
                                 horaire: dateText,
                                 commentaire: row["Commentaire"] && row["Commentaire"].trim() !== "—" ? row["Commentaire"].trim() : "",
-                                dateObj: parseDateFromHoraire(dateText)
+                                dateObj: dateObj
                             });
                         }
                     });
@@ -724,16 +765,12 @@
                     today.setHours(0, 0, 0, 0);
                     
                     const futureEvents = events.filter(event => {
-                        if (!event.dateObj) return true;
-                        return event.dateObj >= today;
+                        // On ne garde que les évènements qui ont une date valide et qui ne sont pas passés
+                        return event.dateObj && event.dateObj >= today;
                     });
 
-                    futureEvents.sort((a, b) => {
-                        if (!a.dateObj && !b.dateObj) return 0;
-                        if (!a.dateObj) return 1;
-                        if (!b.dateObj) return -1;
-                        return a.dateObj - b.dateObj;
-                    });
+                    futureEvents.sort((a, b) => a.dateObj - b.dateObj);
+
 
                     const eventsToShow = futureEvents.slice(0, 6);
 
