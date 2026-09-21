@@ -629,6 +629,7 @@
                 chrono: cleanVal(row["Chronomètre"]),
                 emarque: cleanVal(row["E-marque"]),
                 aideAdulte: cleanVal(row["aide adulte"]),
+                Aideparentsgouter: cleanVal(row["Aide parents gouter"]),
                 respSalle: cleanVal(row["Responsable de salle"]),
                 buvette: cleanVal(row["Buvette"]),
                 commentaire: row["Commentaire"] && row["Commentaire"].trim() !== "—" ? row["Commentaire"].trim() : ""
@@ -779,7 +780,8 @@
                                     <div class="log-row"><span class="log-label"><i class="fas fa-user-shield"></i> Arbitre B</span><span class="log-value">${m.arbitreB}</span></div>
                                     <div class="log-row"><span class="log-label"><i class="fas fa-stopwatch"></i> Chronomètre</span><span class="log-value">${m.chrono}</span></div>
                                     <div class="log-row"><span class="log-label"><i class="fas fa-tablet-alt"></i> E-Marque</span><span class="log-value">${m.emarque}</span></div>
-                                    <div class="log-row"><span class="log-label"><i class="fas fa-user-friends"></i> Aide Adulte</span><span class="log-value">${m.aideAdulte}</span></div>
+                                     <div class="log-row"><span class="log-label"><i class="fas fa-user-friends"></i> Aide Adulte</span><span class="log-value">${m.aideAdulte}</span></div>
+                                    <div class="log-row"><span class="log-label"><i class="fas fa-user-friends"></i> Aide parents gouter</span><span class="log-value">${m.Aideparentsgouter}</span></div>
                                     <div class="log-row"><span class="log-label"><i class="fas fa-door-open"></i> Resp. Salle</span><span class="log-value">${m.respSalle}</span></div>
                                     <div class="log-row"><span class="log-label"><i class="fas fa-cookie-bite"></i> Buvette</span><span class="log-value">${m.buvette}</span></div>
                                 </div>` : ''}
