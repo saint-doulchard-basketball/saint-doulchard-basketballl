@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Fermeture avec la touche Échap
+                // Fermeture avec la touche Échap
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && welcomePopup.getAttribute('aria-hidden') === 'false') {
                 closeWelcomePopup();
@@ -176,6 +176,99 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 8. Event Sorting
+    const eventSort = document.getElementById('event-sort');
+    const eventsGrid = document.getElementById('events-grid');
+    
+    if (eventSort && eventsGrid) {
+        let eventSortTimer;
+
+        const sortEvents = () => {
+            const cards = Array.from(eventsGrid.querySelectorAll('.card'));
+            const now = new Date();
+            const mode = eventSort.value;
+            const events = cards.map((card, index) => {
+                const dateValue = card.getAttribute('data-date');
+                const [datePart, timePart] = (dateValue || '').split('T');
+                const [year, month, day] = datePart.split('-').map(Number);
+                const [hours = 0, minutes = 0] = (timePart || '').split(':').map(Number);
+                const date = new Date(year, month - 1, day, hours, minutes);
+                const hasValidStartDate = !Number.isNaN(date.getTime())
+                    && date.getFullYear() === year
+                    && date.getMonth() === month - 1
+                    && date.getDate() === day;
+                const endDateValue = card.getAttribute('data-date-end');
+                const [endYear, endMonth, endDay] = (endDateValue || datePart).split('-').map(Number);
+                const eventEnd = new Date(endYear, endMonth - 1, endDay);
+                const hasValidEndDate = !Number.isNaN(eventEnd.getTime())
+                    && eventEnd.getFullYear() === endYear
+                    && eventEnd.getMonth() === endMonth - 1
+                    && eventEnd.getDate() === endDay
+                    && eventEnd >= new Date(year, month - 1, day);
+                const hasValidDate = hasValidStartDate && hasValidEndDate;
+
+                if (!hasValidDate) {
+                    console.error(`Dates d'évènement invalides : "${dateValue}" - "${endDateValue || datePart}"`, card);
+                }
+
+                const deadline = new Date(eventEnd);
+                if (hasValidDate && (endDateValue || !timePart)) {
+                    deadline.setHours(23, 59, 59, 999);
+                }
+
+                return {
+                    card,
+                    date,
+                    deadline,
+                    hasValidDate,
+                    index,
+                    isUpcoming: hasValidDate && deadline >= now
+                };
+            });
+
+            const visibleEvents = events.filter(({ isUpcoming, hasValidDate }) => {
+                if (mode === 'upcoming' || mode === 'farthest') return isUpcoming;
+                if (mode === 'past') return hasValidDate && !isUpcoming;
+                return true;
+            });
+
+            visibleEvents.sort((a, b) => {
+                if (mode === 'all' && a.isUpcoming !== b.isUpcoming) {
+                    return a.isUpcoming ? -1 : 1;
+                }
+
+                const direction = mode === 'farthest' || mode === 'past'
+                    || (mode === 'all' && !a.isUpcoming) ? -1 : 1;
+                return direction * (a.date - b.date) || a.index - b.index;
+            });
+
+            const visibleCards = new Set(visibleEvents.map(({ card }) => card));
+            cards.forEach(card => {
+                card.hidden = !visibleCards.has(card);
+            });
+            visibleEvents.forEach(({ card }) => eventsGrid.appendChild(card));
+
+            window.clearTimeout(eventSortTimer);
+            const nextDeadline = events
+                .filter(({ isUpcoming }) => isUpcoming)
+                .reduce((next, { deadline }) => Math.min(next, deadline.getTime() + 1), Infinity);
+
+            if (Number.isFinite(nextDeadline)) {
+                eventSortTimer = window.setTimeout(
+                    sortEvents,
+                    Math.min(
+                        Math.max(0, nextDeadline - now.getTime()),
+                        24 * 60 * 60 * 1000
+                    )
+                );
+            }
+        };
+
+        eventSort.addEventListener('change', sortEvents);
+        
+        sortEvents();
+    }
+
+
     
 });
-

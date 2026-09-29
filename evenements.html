@@ -90,11 +90,20 @@
         </div>
     </section>
 
-    <section class="content-section bg-light">
+        <section class="content-section bg-light">
         <div class="container">
-            <div class="cards-grid">
+            <div class="sort-controls animate-on-scroll">
+                <label for="event-sort"><span class="sort-icon"><i class="fas fa-calendar-alt" aria-hidden="true"></i></span><span class="sort-label-text"><small>AGENDA DU CLUB</small>Filtrer les évènements</span></label>
+                <select id="event-sort" class="sort-select" aria-label="Filtrer les évènements par date">
+                    <option value="all">Tous les évènements</option>
+                    
+                    <option value="farthest">Évènements à venir — du plus lointain au plus proche</option>
+                    <option value="past">Évènements passés — du plus récent au plus ancien</option>
+                </select>
+            </div>
+            <div class="cards-grid" id="events-grid">
 
-                <div class="card animate-on-scroll delay-100">
+                <div class="card animate-on-scroll delay-100" data-date="2026-10-03T09:30">
                     <button class="card-img event-thumb" type="button" data-event-img="evenement/Marche-emilie.jpg" aria-label="Voir l'affiche Basket d'or et Panier d'or">
                         <img src="evenement/Marche-emilie.jpg" alt="Info Rentrée">
                     </button>
@@ -105,7 +114,7 @@
                     </div>
                 </div>
 
-                <div class="card animate-on-scroll delay-100">
+                <div class="card animate-on-scroll delay-100" data-date="2026-10-03" data-date-end="2026-10-04">
                     <button class="card-img event-thumb" type="button" data-event-img="evenement/Vente-barbe-à-papa.png" aria-label="Voir l'affiche Basket d'or et Panier d'or">
                         <img src="evenement/Vente-barbe-à-papa.png" alt="Info Rentrée">
                     </button>
@@ -116,7 +125,7 @@
                     </div>
                 </div>
 
-                <div class="card animate-on-scroll delay-100">
+                <div class="card animate-on-scroll delay-100" data-date="2026-10-04T10:30">
                     <button class="card-img event-thumb" type="button" data-event-img="evenement/SDBB-TONIC.png" aria-label="Voir l'affiche Basket d'or et Panier d'or">
                         <img src="evenement/SDBB-TONIC.png" alt="Info Rentrée">
                     </button>
@@ -127,7 +136,7 @@
                     </div>
                 </div>
 
-                <div class="card animate-on-scroll delay-100">
+                <div class="card animate-on-scroll delay-100" data-date="2026-10-17">
                     <button class="card-img event-thumb" type="button" data-event-img="evenement/TOURNOI-OCTOBRE-ROSE.jpg" aria-label="Voir l'affiche Basket d'or et Panier d'or">
                         <img src="evenement/TOURNOI-OCTOBRE-ROSE.jpg" alt="Info Rentrée">
                     </button>
@@ -138,7 +147,7 @@
                     </div>
                 </div>
 
-                <div class="card animate-on-scroll delay-100">
+                <div class="card animate-on-scroll delay-100" data-date="2026-10-18T10:30">
                     <button class="card-img event-thumb" type="button" data-event-img="evenement/SDBB-TONIC.png" aria-label="Voir l'affiche Basket d'or et Panier d'or">
                         <img src="evenement/Basket-en-marchand.png" alt="Info Rentrée">
                     </button>
@@ -150,7 +159,7 @@
                 </div>
 
 
-                <div class="card animate-on-scroll delay-100">
+                <div class="card animate-on-scroll delay-100" data-date="2026-10-19" data-date-end="2026-10-23">
                     <button class="card-img event-thumb" type="button" data-event-img="evenement/Octobre1ere.png" aria-label="Voir l'affiche Basket d'or et Panier d'or">
                         <img src="evenement/Octobre1ere.png" alt="Info Rentrée">
                     </button>
@@ -161,7 +170,7 @@
                     </div>
                 </div>
 
-                <div class="card animate-on-scroll delay-100">
+                <div class="card animate-on-scroll delay-100" data-date="2026-10-26" data-date-end="2026-10-30">
                     <button class="card-img event-thumb" type="button" data-event-img="evenement/Octobre2eme.png" aria-label="Voir l'affiche Basket d'or et Panier d'or">
                         <img src="evenement/Octobre2eme.png" alt="Info Rentrée">
                     </button>
