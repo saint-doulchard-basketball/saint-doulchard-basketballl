@@ -28,6 +28,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/wolfy-chatbot.css">
     <link rel="icon" href="Logo-club/logo SDBB.png" type="image/png" />
 </head>
 <body>
@@ -348,6 +349,43 @@
         </div>
     </footer>
 
+    <div class="wolfy-chatbot" data-wolfy-chatbot>
+        <button class="wolfy-chatbot__launcher" type="button" aria-label="Ouvrir le chat avec Wolfy" aria-expanded="false" aria-controls="wolfy-chat-panel">
+            <img src="Logo-club/wolfy.png" alt="" width="80" height="80">
+            <span class="wolfy-chatbot__launcher-label">Une question ?</span>
+        </button>
+
+        <section class="wolfy-chatbot__panel" id="wolfy-chat-panel" aria-labelledby="wolfy-chat-title" hidden>
+            <header class="wolfy-chatbot__header">
+                <img src="Logo-club/wolfy.png" alt="Wolfy, la mascotte du SDBB" width="48" height="48">
+                <div>
+                    <h2 id="wolfy-chat-title">Wolfy, votre guide</h2>
+                    <p>Saint Doulchard Basketball</p>
+                </div>
+                <button class="wolfy-chatbot__close" type="button" aria-label="Fermer le chat">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </header>
+
+            <div class="wolfy-chatbot__messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+            <div class="wolfy-chatbot__suggestions" aria-label="Questions suggérées">
+                <button type="button" data-wolfy-question="Comment inscrire mon enfant ou moi-même ?">Inscriptions</button>
+                <button type="button" data-wolfy-question="Quels sont les horaires d'entraînement ?">Horaires</button>
+                <button type="button" data-wolfy-question="Quelles équipes propose le club ?">Équipes</button>
+                <button type="button" data-wolfy-question="Où trouver le planning des matchs ?">Matchs</button>
+            </div>
+
+            <form class="wolfy-chatbot__form">
+                <label class="wolfy-chatbot__sr-only" for="wolfy-chat-input">Votre question à Wolfy</label>
+                <input id="wolfy-chat-input" name="question" type="text" maxlength="300" placeholder="Écrivez votre question…" autocomplete="off" required>
+                <button type="submit" aria-label="Envoyer la question">
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                </button>
+            </form>
+        </section>
+    </div>
+
     <!-- Popup de bienvenue -->
     <div id="welcome-popup" class="welcome-popup" aria-hidden="true">
         <div class="welcome-popup-content">
@@ -639,6 +677,7 @@
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="JS/script.js" defer></script>
     <script src="JS/actualite-slider.js" defer></script>
+    <script src="JS/wolfy-chatbot.js?v=20260930-2" defer></script>
 
     <script>
         (function() {
@@ -859,5 +898,7 @@
             });
         })();
     </script>
+
+    
 </body>
 </html>
