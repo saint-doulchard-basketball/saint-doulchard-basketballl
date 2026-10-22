@@ -143,37 +143,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomePopupClose = document.getElementById('welcome-popup-close');
 
     if (welcomePopup && welcomePopupClose) {
-        // Optionnel : on peut utiliser sessionStorage pour ne l'afficher qu'une fois par session de navigation
-        if (!sessionStorage.getItem('welcomePopupShown')) {
-            // Afficher le popup
-            welcomePopup.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden'; // Empêche de scroller
-            
-            // Marquer comme affiché
-            sessionStorage.setItem('welcomePopupShown', 'true');
+        const popupEndDate = welcomePopup.dataset.endDate;
+        let isPopupExpired = false;
+
+        if (popupEndDate) {
+            const dateParts = /^(\d{4})-(\d{2})-(\d{2})$/.exec(popupEndDate);
+            const endDate = dateParts
+                ? new Date(Number(dateParts[1]), Number(dateParts[2]) - 1, Number(dateParts[3]))
+                : null;
+            const isValidEndDate = endDate
+                && endDate.getFullYear() === Number(dateParts[1])
+                && endDate.getMonth() === Number(dateParts[2]) - 1
+                && endDate.getDate() === Number(dateParts[3]);
+
+            if (!isValidEndDate) {
+                console.error(`Date de fin invalide pour le popup : "${popupEndDate}". Format attendu : AAAA-MM-JJ.`);
+                isPopupExpired = true;
+            } else {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                isPopupExpired = today > endDate;
+            }
         }
 
-        const closeWelcomePopup = () => {
+        if (isPopupExpired) {
             welcomePopup.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        };
-
-        // Fermeture via le bouton X
-        welcomePopupClose.addEventListener('click', closeWelcomePopup);
-
-        // Fermeture via le clic en dehors du contenu (sur le fond gris)
-        welcomePopup.addEventListener('click', (e) => {
-            if (e.target === welcomePopup) {
-                closeWelcomePopup();
+        } else {
+            // Optionnel : on peut utiliser sessionStorage pour ne l'afficher qu'une fois par session de navigation
+            if (!sessionStorage.getItem('welcomePopupShown')) {
+                welcomePopup.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                sessionStorage.setItem('welcomePopupShown', 'true');
             }
-        });
 
-                // Fermeture avec la touche Échap
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && welcomePopup.getAttribute('aria-hidden') === 'false') {
-                closeWelcomePopup();
-            }
-        });
+            const closeWelcomePopup = () => {
+                welcomePopup.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            };
+
+            welcomePopupClose.addEventListener('click', closeWelcomePopup);
+
+            welcomePopup.addEventListener('click', (e) => {
+                if (e.target === welcomePopup) {
+                    closeWelcomePopup();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && welcomePopup.getAttribute('aria-hidden') === 'false') {
+                    closeWelcomePopup();
+                }
+            });
+        }
     }
 
     // 8. Event Sorting
