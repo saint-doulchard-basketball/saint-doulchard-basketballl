@@ -2611,6 +2611,20 @@ html {
     background: #f1f1f1;
 }
 
+.boutique-poster-images {
+    display: grid;
+    gap: 20px;
+}
+
+.boutique-poster-images img {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
 .boutique-cta-wrapper {
     margin-top: 40px;
     padding: 35px 30px;
