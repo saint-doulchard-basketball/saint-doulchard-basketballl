@@ -294,3 +294,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 });
+
+/* =========================================================
+   GESTION DU CONSENTEMENT COOKIES & GOOGLE ANALYTICS (SDBB)
+   ========================================================= */
+(function () {
+    const STORAGE_KEY = 'sdbb_cookie_consent';
+    const GTM_ID = 'GTM-TX4V8K2F';
+
+    function loadGoogleAnalytics() {
+        if (window.sdbbGaLoaded) return;
+        window.sdbbGaLoaded = true;
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+        document.head.appendChild(script);
+    }
+
+    function showCookieBanner() {
+        if (document.getElementById('sdbb-cookie-banner')) return;
+
+        const banner = document.createElement('div');
+        banner.id = 'sdbb-cookie-banner';
+        banner.setAttribute('role', 'dialog');
+        banner.setAttribute('aria-label', 'Gestion des cookies');
+        banner.innerHTML = `
+            <div class="sdbb-cookie-content">
+                <p>
+                    <strong>Respect de votre vie privée :</strong> Le SDBB utilise des cookies de mesure d'audience (Google Analytics) afin de connaître la fréquentation du site et améliorer nos contenus.
+                    <a href="politique-confidentialite.html">En savoir plus</a>.
+                </p>
+                <div class="sdbb-cookie-actions">
+                    <button type="button" id="sdbb-cookie-refuse" class="sdbb-cookie-btn sdbb-btn-refuse">Tout refuser</button>
+                    <button type="button" id="sdbb-cookie-accept" class="sdbb-cookie-btn sdbb-btn-accept">Tout accepter</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(banner);
+
+        document.getElementById('sdbb-cookie-accept').addEventListener('click', function () {
+            localStorage.setItem(STORAGE_KEY, 'accepted');
+            banner.remove();
+            loadGoogleAnalytics();
+        });
+
+        document.getElementById('sdbb-cookie-refuse').addEventListener('click', function () {
+            localStorage.setItem(STORAGE_KEY, 'refused');
+            banner.remove();
+        });
+    }
+
+    function initCookieConsent() {
+        const choice = localStorage.getItem(STORAGE_KEY);
+        if (choice === 'accepted') {
+            loadGoogleAnalytics();
+        } else if (choice !== 'refused') {
+            showCookieBanner();
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCookieConsent);
+    } else {
+        initCookieConsent();
+    }
+})();
